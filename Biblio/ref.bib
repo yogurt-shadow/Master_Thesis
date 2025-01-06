@@ -1,970 +1,1452 @@
-@unpublished{inkala2006aisudoku,
-  title={{AI} {S}udoku Top 10},
-  author={Inkala, Arto},
-  year={2006},
-  note={Available at \url{http://www.aisudoku.com/index_en.html}}
-}
 
-@article{delahaye2006science,
-  title={The science behind {S}udoku},
-  author={Delahaye, Jean-Paul},
-  journal={Scientific American},
-  volume={294},
-  number={6},
-  pages={80--87},
-  year={2006},
-  publisher={JSTOR}
-}
+% Journals
 
-@article{hsiao2021steganography,
-  author    = {Tsung{-}Chih Hsiao and
-               Dong{-}Xu Liu and
-               Tzer{-}Long Chen and
-               Chih{-}Cheng Chen},
-  title     = {Research on Image Steganography Based on {S}udoku Matrix},
-  journal   = {Symmetry},
-  volume    = {13},
-  number    = {3},
-  pages     = {387},
-  year      = {2021},
-  url       = {https://doi.org/10.3390/sym13030387},
-  doi       = {10.3390/sym13030387},
-  timestamp = {Thu, 29 Apr 2021 15:11:19 +0200},
-  biburl    = {https://dblp.org/rec/journals/symmetry/HsiaoLCC21.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
+% First the Full Name is given, then the abbreviation used in the AMS Math
+% Reviews, with an indication if it could not be found there.
+% Note the 2nd overwrites the 1st, so swap them if you want the full name.
 
-@article{sarkar2015sudoku,
-  title={Sudoku squares as experimental designs},
-  author={Sarkar, Jyotirmoy and Sinha, Bikas K},
-  journal={Resonance},
-  volume={20},
-  number={9},
-  pages={788--802},
-  year={2015},
-  publisher={Springer}
-}
+ %{AMS}
+ @String{AMSTrans = "American Mathematical Society Translations" }
+ @String{AMSTrans = "Amer. Math. Soc. Transl." }
+ @String{BullAMS = "Bulletin of the American Mathematical Society" }
+ @String{BullAMS = "Bull. Amer. Math. Soc." }
+ @String{ProcAMS = "Proceedings of the American Mathematical Society" }
+ @String{ProcAMS = "Proc. Amer. Math. Soc." }
+ @String{TransAMS = "Transactions of the American Mathematical Society" }
+ @String{TransAMS = "Trans. Amer. Math. Soc." }
 
-@article{musliu2017sudoku,
-  author    = {Nysret Musliu and
-               Felix Winter},
-  title     = {A Hybrid Approach for the {S}udoku Problem: Using Constraint Programming in Iterated Local Search},
-  journal   = {{IEEE} Intelligent Systems},
-  volume    = {32},
-  number    = {2},
-  pages     = {52--62},
-  year      = {2017},
-  url       = {https://doi.org/10.1109/MIS.2017.29},
-  doi       = {10.1109/MIS.2017.29},
-  timestamp = {Tue, 29 Dec 2020 18:26:51 +0100},
-  biburl    = {https://dblp.org/rec/journals/expert/MusliuW17.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
+ %ACM
+ @String{CACM = "Communications of the {ACM}" }
+ @String{CACM = "Commun. {ACM}" }
+ @String{CompServ = "Comput. Surveys" }
+ @String{JACM = "J. ACM" }
+ @String{ACMMathSoft = "{ACM} Transactions on Mathematical Software" }
+ @String{ACMMathSoft = "{ACM} Trans. Math. Software" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newsletter" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newslett." }
 
-@article{yato2003complexity,
-  author    = {Takayuki Yato and
-               Takahiro Seta},
-  title     = {Complexity and Completeness of Finding Another Solution and Its Application
-               to Puzzles},
-  journal   = {{IEICE} Transactions on Fundamentals of Electronics, Communications and Computer Sciences},
-  volume    = {86-A},
-  number    = {5},
-  pages     = {1052--1060},
-  year      = {2003},
-  url       = {http://search.ieice.org/bin/summary.php?id=e86-a\_5\_1052},
-  timestamp = {Tue, 08 Jun 2021 16:13:42 +0200},
-  biburl    = {https://dblp.org/rec/journals/ieiceta/YatoS03.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
+ @String{AmerSocio = "American Journal of Sociology" }
+ @String{AmerStatAssoc = "Journal of the American Statistical Association" }
+ @String{AmerStatAssoc = "J. Amer. Statist. Assoc." }
+ @String{ApplMathComp = "Applied Mathematics and Computation" }
+ @String{ApplMathComp = "Appl. Math. Comput." }
+ @String{AmerMathMonthly = "American Mathematical Monthly" }
+ @String{AmerMathMonthly = "Amer. Math. Monthly" }
+ @String{BIT = "{BIT}" }
+ @String{BritStatPsych = "British Journal of Mathematical and Statistical
+          Psychology" }
+ @String{BritStatPsych = "Brit. J. Math. Statist. Psych." }
+ @String{CanMathBull = "Canadian Mathematical Bulletin" }
+ @String{CanMathBull = "Canad. Math. Bull." }
+ @String{CompApplMath = "Journal of Computational and Applied Mathematics" }
+ @String{CompApplMath = "J. Comput. Appl. Math." }
+ @String{CompPhys = "Journal of Computational Physics" }
+ @String{CompPhys = "J. Comput. Phys." }
+ @String{CompStruct = "Computers and Structures" }
+ @String{CompStruct = "Comput. \& Structures" }
+ @String{CompJour = "The Computer Journal" }
+ @String{CompJour = "Comput. J." }
+ @String{CompSysSci = "Journal of Computer and System Sciences" }
+ @String{CompSysSci = "J. Comput. System Sci." }
+ @String{Computing = "Computing" }
+ @String{ContempMath = "Contemporary Mathematics" }
+ @String{ContempMath = "Contemp. Math." }
+ @String{Crelle = "Crelle's Journal" }
+ @String{GiornaleMath = "Giornale di Mathematiche" }
+ @String{GiornaleMath = "Giorn. Mat." } % didn't find in AMS MR., ibid.
 
-@article{bartlett2008integer,
-  title={An integer programming model for the {S}udoku problem},
-  author={Bartlett, Andrew and Chartier, Timothy P and Langville, Amy N and Rankin, Timothy D},
-  journal={Journal of Online Mathematics and its Applications},
-  volume={8},
-  number={1},
-  year={2008}
-}
+ %IEEE
+ @String{Computer = "{IEEE} Computer" }
+ @String{IEEETransComp = "{IEEE} Transactions on Computers" }
+ @String{IEEETransComp = "{IEEE} Trans. Comput." }
+ @String{IEEETransAC = "{IEEE} Transactions on Automatic Control" }
+ @String{IEEETransAC = "{IEEE} Trans. Automat. Control" }
+ @String{IEEESpec = "{IEEE} Spectrum" } % didn't find in AMS MR
+ @String{ProcIEEE = "Proceedings of the {IEEE}" }
+ @String{ProcIEEE = "Proc. {IEEE}" } % didn't find in AMS MR
+ @String{IEEETransAeroElec = "{IEEE} Transactions on Aerospace and Electronic
+     Systems" }
+ @String{IEEETransAeroElec = "{IEEE} Trans. Aerospace Electron. Systems" }
 
-@inproceedings{lynce2006sat,
-  author    = {In{\^{e}}s Lynce and
-               Jo{\"{e}}l Ouaknine},
-  title     = {Sudoku as a {SAT} Problem},
-  booktitle = {International Symposium on Artificial Intelligence and Mathematics (AI{\&}Math)},
-  year      = {2006},
-  url       = {http://anytime.cs.umass.edu/aimath06/proceedings/P34.pdf},
-  timestamp = {Tue, 08 Feb 2022 09:27:30 +0100},
-  biburl    = {https://dblp.org/rec/conf/isaim/LynceO06.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
+ @String{IMANumerAna = "{IMA} Journal of Numerical Analysis" }
+ @String{IMANumerAna = "{IMA} J. Numer. Anal." }
+ @String{InfProcLet = "Information Processing Letters" }
+ @String{InfProcLet = "Inform. Process. Lett." }
+ @String{InstMathApp = "Journal of the Institute of Mathematics and
+     its Applications" }
+ @String{InstMathApp = "J. Inst. Math. Appl." }
+ @String{IntControl = "International Journal of Control" }
+ @String{IntControl = "Internat. J. Control" }
+ @String{IntNumerEng = "International Journal for Numerical Methods in
+     Engineering" }
+ @String{IntNumerEng = "Internat. J. Numer. Methods Engrg." }
+ @String{IntSuper = "International Journal of Supercomputing Applications" }
+ @String{IntSuper = "Internat. J. Supercomputing Applic." } % didn't find
+%% in AMS MR
+ @String{Kibernetika = "Kibernetika" }
+ @String{JResNatBurStand = "Journal of Research of the National Bureau
+     of Standards" }
+ @String{JResNatBurStand = "J. Res. Nat. Bur. Standards" }
+ @String{LinAlgApp = "Linear Algebra and its Applications" }
+ @String{LinAlgApp = "Linear Algebra Appl." }
+ @String{MathAnaAppl = "Journal of Mathematical Analysis and Applications" }
+ @String{MathAnaAppl = "J. Math. Anal. Appl." }
+ @String{MathAnnalen = "Mathematische Annalen" }
+ @String{MathAnnalen = "Math. Ann." }
+ @String{MathPhys = "Journal of Mathematical Physics" }
+ @String{MathPhys = "J. Math. Phys." }
+ @String{MathComp = "Mathematics of Computation" }
+ @String{MathComp = "Math. Comp." }
+ @String{MathScand = "Mathematica Scandinavica" }
+ @String{MathScand = "Math. Scand." }
+ @String{TablesAidsComp = "Mathematical Tables and Other Aids to Computation" }
+ @String{TablesAidsComp = "Math. Tables Aids Comput." }
+ @String{NumerMath = "Numerische Mathematik" }
+ @String{NumerMath = "Numer. Math." }
+ @String{PacificMath = "Pacific Journal of Mathematics" }
+ @String{PacificMath = "Pacific J. Math." }
+ @String{ParDistComp = "Journal of Parallel and Distributed Computing" }
+ @String{ParDistComp = "J. Parallel and Distrib. Comput." } % didn't find
+%% in AMS MR
+ @String{ParComputing = "Parallel Computing" }
+ @String{ParComputing = "Parallel Comput." }
+ @String{PhilMag = "Philosophical Magazine" }
+ @String{PhilMag = "Philos. Mag." }
+ @String{ProcNAS = "Proceedings of the National Academy of Sciences
+                    of the USA" }
+ @String{ProcNAS = "Proc. Nat. Acad. Sci. U. S. A." }
+ @String{Psychometrika = "Psychometrika" }
+ @String{QuartMath = "Quarterly Journal of Mathematics, Oxford, Series (2)" }
+ @String{QuartMath = "Quart. J. Math. Oxford Ser. (2)" }
+ @String{QuartApplMath = "Quarterly of Applied Mathematics" }
+ @String{QuartApplMath = "Quart. Appl. Math." }
+ @String{RevueInstStat = "Review of the International Statisical Institute" }
+ @String{RevueInstStat = "Rev. Inst. Internat. Statist." }
 
-@inproceedings{pfeiffer2010sat,
-  author    = {Uwe Pfeiffer and
-               Tomas Karnagel and
-               Guido Scheffler},
-  //editor    = {Andrei Voronkov and
-               Geoff Sutcliffe and
-               Matthias Baaz and
-               Christian G. Ferm{\"{u}}ller},
-  title     = {A {S}udoku-Solver for Large Puzzles using {SAT}},
-  booktitle = {International Conference on Logic for Programming, Artificial intelligence, and Reasoning (LPAR)},
-  //series    = {EPiC Series in Computing},
-  //volume    = {13},
-  pages     = {52--57},
-  //publisher = {EasyChair},
-  year      = {2010},
-  url       = {https://doi.org/10.29007/79mc},
-  doi       = {10.29007/79mc},
-  timestamp = {Sun, 15 Aug 2021 00:16:53 +0200},
-  biburl    = {https://dblp.org/rec/conf/lpar/PfeifferKS10.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
+ %SIAM
+ @String{JSIAM = "Journal of the Society for Industrial and Applied
+     Mathematics" }
+ @String{JSIAM = "J. Soc. Indust. Appl. Math." }
+ @String{JSIAMB = "Journal of the Society for Industrial and Applied
+     Mathematics, Series B, Numerical Analysis" }
+ @String{JSIAMB = "J. Soc. Indust. Appl. Math. Ser. B Numer. Anal." }
+ @String{SIAMAlgMeth = "{SIAM} Journal on Algebraic and Discrete Methods" }
+ @String{SIAMAlgMeth = "{SIAM} J. Algebraic Discrete Methods" }
+ @String{SIAMAppMath = "{SIAM} Journal on Applied Mathematics" }
+ @String{SIAMAppMath = "{SIAM} J. Appl. Math." }
+ @String{SIAMComp = "{SIAM} Journal on Computing" }
+ @String{SIAMComp = "{SIAM} J. Comput." }
+ @String{SIAMMatrix = "{SIAM} Journal on Matrix Analysis and Applications" }
+ @String{SIAMMatrix = "{SIAM} J. Matrix Anal. Appl." }
+ @String{SIAMNumAnal = "{SIAM} Journal on Numerical Analysis" }
+ @String{SIAMNumAnal = "{SIAM} J. Numer. Anal." }
+ @String{SIAMReview = "{SIAM} Review" }
+ @String{SIAMReview = "{SIAM} Rev." }
+ @String{SIAMSciStat = "{SIAM} Journal on Scientific and Statistical
+     Computing" }
+ @String{SIAMSciStat = "{SIAM} J. Sci. Statist. Comput." }
 
-@inproceedings{simonis2005sudoku,
-  title={Sudoku as a constraint problem},
-  author={Simonis, Helmut},
-  booktitle={CP Workshop on modeling and reformulating Constraint Satisfaction Problems},
-  //volume={12},
-  pages={13--27},
-  year={2005},
-  //organization={Citeseer}
-}
+ @String{SoftPracExp = "Software Practice and Experience" }
+ @String{SoftPracExp = "Software Prac. Experience" } % didn't find in AMS MR
+ @String{StatScience = "Statistical Science" }
+ @String{StatScience = "Statist. Sci." }
+ @String{Techno = "Technometrics" }
+ @String{USSRCompMathPhys = "{USSR} Computational Mathematics and Mathematical
+     Physics" }
+ @String{USSRCompMathPhys = "{U. S. S. R.} Comput. Math. and Math. Phys." }
+ @String{VLSICompSys = "Journal of {VLSI} and Computer Systems" }
+ @String{VLSICompSys = "J. {VLSI} Comput. Syst." }
+ @String{ZAngewMathMech = "Zeitschrift fur Angewandte Mathematik und
+     Mechanik" }
+ @String{ZAngewMathMech = "Z. Angew. Math. Mech." }
+ @String{ZAngewMathPhys = "Zeitschrift fur Angewandte Mathematik und Physik" }
+ @String{ZAngewMathPhys = "Z. Angew. Math. Phys." }
 
-@inproceedings{crawford2009solving,
-  title={Solving {S}udoku with constraint programming},
-  author={Crawford, Broderick and Castro, Carlos and Monfroy, Eric},
-  booktitle={International Conference on Multiple Criteria Decision Making},
-  pages={345--348},
-  year={2009},
-  //organization={Springer}
-}
+% Publishers % ================================================= |
 
-@article{soto2013ac3tabu,
-  author    = {Ricardo Soto and
-               Broderick Crawford and
-               Cristian Galleguillos and
-               {\'{E}}ric Monfroy and
-               Fernando Paredes},
-  title     = {A hybrid {AC3}-tabu search algorithm for solving {S}udoku puzzles},
-  journal   = {Expert Systems with Applications},
-  volume    = {40},
-  number    = {15},
-  pages     = {5817--5821},
-  year      = {2013},
-  url       = {https://doi.org/10.1016/j.eswa.2013.05.019},
-  doi       = {10.1016/j.eswa.2013.05.019},
-  timestamp = {Tue, 23 Feb 2021 09:09:33 +0100},
-  biburl    = {https://dblp.org/rec/journals/eswa/SotoCGMP13.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
+ @String{Academic = "Academic Press" }
+ @String{ACMPress = "{ACM} Press" }
+ @String{AdamHilger = "Adam Hilger" }
+ @String{AddisonWesley = "Addison-Wesley" }
+ @String{AllynBacon = "Allyn and Bacon" }
+ @String{AMS = "American Mathematical Society" }
+ @String{Birkhauser = "Birkha{\"u}ser" }
+ @String{CambridgePress = "Cambridge University Press" }
+ @String{Chelsea = "Chelsea" }
+ @String{ClaredonPress = "Claredon Press" }
+ @String{DoverPub = "Dover Publications" }
+ @String{Eyolles = "Eyolles" }
+ @String{HoltRinehartWinston = "Holt, Rinehart and Winston" }
+ @String{Interscience = "Interscience" }
+ @String{JohnsHopkinsPress = "The Johns Hopkins University Press" }
+ @String{JohnWileySons = "John Wiley and Sons" }
+ @String{Macmillan = "Macmillan" }
+ @String{MathWorks = "The Math Works Inc." }
+ @String{McGrawHill = "McGraw-Hill" }
+ @String{NatBurStd = "National Bureau of Standards" }
+ @String{NorthHolland = "North-Holland" }
+ @String{OxfordPress = "Oxford University Press" }  %address Oxford or London?
+ @String{PergamonPress = "Pergamon Press" }
+ @String{PlenumPress = "Plenum Press" }
+ @String{PrenticeHall = "Prentice-Hall" }
+ @String{SIAMPub = "{SIAM} Publications" }
+ @String{Springer = "Springer-Verlag" }
+ @String{TexasPress = "University of Texas Press" }
+ @String{VanNostrand = "Van Nostrand" }
+ @String{WHFreeman = "W. H. Freeman and Co." }
 
-@inproceedings{mantere2007sudoku,
-  author    = {Timo Mantere and
-               Janne Koljonen},
-  title     = {Solving, rating and generating {S}udoku puzzles with {GA}},
-  booktitle = {Proceedings of the {IEEE} Congress on Evolutionary Computation ({CEC})},
-  pages     = {1382--1389},
-  //publisher = {{IEEE}},
-  year      = {2007},
-  url       = {https://doi.org/10.1109/CEC.2007.4424632},
-  doi       = {10.1109/CEC.2007.4424632},
-  timestamp = {Thu, 16 Dec 2021 14:01:04 +0100},
-  biburl    = {https://dblp.org/rec/conf/cec/MantereK07.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
+%Entries
 
-@inproceedings{sato2010sudoku,
-  author    = {Yuji Sato and
-               Hazuki Inoue},
-  //editor    = {Georgios N. Yannakakis and
-               Julian Togelius},
-  title     = {Solving {S}udoku with genetic operations that preserve building blocks},
-  booktitle = {Proceedings of the {IEEE} Conference on Computational Intelligence and Games ({CIG})},
-  pages     = {23--29},
-  //publisher = {{IEEE}},
-  year      = {2010},
-  url       = {https://doi.org/10.1109/ITW.2010.5593375},
-  doi       = {10.1109/ITW.2010.5593375},
-  timestamp = {Mon, 03 Jan 2022 22:21:41 +0100},
-  biburl    = {https://dblp.org/rec/conf/cig/SatoI10.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
-@article{lewis2007metaheuristics,
-  author    = {Rhyd Lewis},
-  title     = {Metaheuristics can solve {S}udoku puzzles},
-  journal   = {Journal of Heuristics},
-  volume    = {13},
-  number    = {4},
-  pages     = {387--401},
-  year      = {2007},
-  url       = {https://doi.org/10.1007/s10732-007-9012-8},
-  doi       = {10.1007/s10732-007-9012-8},
-  timestamp = {Tue, 06 Jun 2017 22:22:02 +0200},
-  biburl    = {https://dblp.org/rec/journals/heuristics/Lewis07.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
-@article{lloyd2020antcolony,
-  author    = {Huw Lloyd and
-               Martyn Amos},
-  title     = {Solving {S}udoku With Ant Colony Optimization},
-  journal   = {{IEEE} Transactions on Games},
-  volume    = {12},
-  number    = {3},
-  pages     = {302--311},
-  year      = {2020},
-  url       = {https://doi.org/10.1109/TG.2019.2942773},
-  doi       = {10.1109/TG.2019.2942773},
-  timestamp = {Thu, 16 Sep 2021 17:57:30 +0200},
-  biburl    = {https://dblp.org/rec/journals/tciaig/LloydA20.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
-
-@article{soto2014prefiltered,
-  title={A prefiltered cuckoo search algorithm with geometric operators for solving {S}udoku problems},
-  author={Soto, Ricardo and 
-          Crawford, Broderick and 
-          Galleguillos, Cristian and 
-          Monfroy, Eric and 
-          Paredes, Fernando},
-  journal={The Scientific World Journal},
-  //volume={2014},
-  year={2014},
-  publisher={Hindawi}
-}
-
-@inproceedings{geem2007harmony,
-  author    = {Zong Woo Geem},
-  //editor    = {Bruno Apolloni and
-               Robert J. Howlett and
-               Lakhmi C. Jain},
-  title     = {Harmony Search Algorithm for Solving {S}udoku},
-  booktitle = {International Conference on Knowledge-Based Intelligent Information and Engineering Systems ({KES})},
-  //series    = {Lecture Notes in Computer Science},
-  //volume    = {4692},
-  pages     = {371--378},
-  //publisher = {Springer},
-  year      = {2007},
-  url       = {https://doi.org/10.1007/978-3-540-74819-9\_46},
-  doi       = {10.1007/978-3-540-74819-9\_46},
-  timestamp = {Tue, 14 May 2019 10:00:51 +0200},
-  biburl    = {https://dblp.org/rec/conf/kes/Geem07.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
-
-@article{DBLP:journals/tec/JinH19,
-  author    = {Yan Jin and
-               Jin{-}Kao Hao},
-  title     = {Solving the {L}atin Square Completion Problem by Memetic Graph Coloring},
-  journal   = {IEEE Transactions on Evolutionary Computation},
-  volume    = {23},
-  number    = {6},
-  pages     = {1015--1028},
-  year      = {2019},
-  url       = {https://doi.org/10.1109/TEVC.2019.2899053},
-  doi       = {10.1109/TEVC.2019.2899053},
-  timestamp = {Tue, 12 May 2020 16:51:02 +0200},
-  biburl    = {https://dblp.org/rec/journals/tec/JinH19.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
-
-@article{Bir1992PrecoloringEI,
-  title={Precoloring extension. {I}. Interval graphs},
-  author={Mikl{\'o}s Bir{\'o} and Mih{\'a}ly Hujter and Zsolt Tuza},
-  journal={Discrete Mathematics},
-  year={1992},
-  volume={100},
-  pages={267-279}
-}
-
-@inproceedings{mantere2008solving,
-  title={Solving and analyzing {S}udokus with cultural algorithms},
-  author={Mantere, Timo and Koljonen, Janne},
-  booktitle={Proceedings of the IEEE Congress on Evolutionary Computation (CEC)},
-  pages={4053--4060},
-  year={2008},
-  //organization={IEEE}
-}
-
-@article{glover1998tabu,
-  title={Tabu search},
-  author={Glover, Fred and Laguna, Manuel},
-  journal={Handbook of Combinatorial Optimization},
-  pages={2093--2229},
-  year={1998},
-  publisher={Springer Boston, MA, USA}
-}
-
-@inproceedings{wang2016two,
-  title={Two efficient local search algorithms for maximum weight clique problem},
-  author={Wang, Yiyuan and Cai, Shaowei and Yin, Minghao},
-  booktitle={Thirtieth AAAI Conference on Artificial Intelligence},
-  pages={805--811},
-  year={2016}
-}
-
-@incollection{lourencco2019iterated,
-  title={Iterated local search: Framework and applications},
-  author={Louren{\c{c}}o, Helena Ramalhinho and Martin, Olivier C and St{\"u}tzle, Thomas},
-  booktitle={Handbook of metaheuristics},
-  pages={129--168},
-  year={2019},
-  publisher={Springer}
-}
-
-@article{fleury2020cadical,
-  title={CaDiCaL, kissat, paracooba, plingeling and treengeling entering the SAT competition 2020},
-  author={Armin Biere and
-          Katalin Fazekas and
-          Mathias Fleury and
-          Maximilian Heisinger},
-  journal={Proceedings of {SAT} Competition 2020 : Solver and Benchmark Descriptions},
-  //volume={50},
-  //pages={2020},
-  year={2020}
-}
-
-article{,
-  title={A Fast Local Search Algorithm for the Latin Square Completion Problem},
-  author={Pan, Shiwei and Wang, Yiyuan and Yin, Minghao},
-  year={2022}
-}
-
-@inproceedings{pan2022fast,
-  author    = {Shiwei Pan and
-               Yiyuan Wang and
-               Minghao Yin},
-  title     = {A Fast Local Search Algorithm for the {L}atin Square Completion Problem},
-  booktitle = {Thirty-Sixth {AAAI} Conference on Artificial Intelligence},
-  pages     = {10327--10335},
-  //publisher = {{AAAI} Press},
-  year      = {2022},
-  url       = {https://ojs.aaai.org/index.php/AAAI/article/view/21274},
-  timestamp = {Tue, 12 Jul 2022 14:14:21 +0200},
-  biburl    = {https://dblp.org/rec/conf/aaai/PanWY22.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
-
-@article{wang2023novel,
-  title={A Novel Evolutionary Algorithm with Column and Sub-Block Local Search for {S}udoku Puzzles},
-  author={Wang, Chuan and Sun, Bing and Du, Ke-Jing and Li, Jian-Yu and Zhan, Zhi-Hui and Jeon, Sang-Woon and Wang, Hua and Zhang, Jun},
-  journal={IEEE Transactions on Games},
+@INPROCEEDINGS{multilinear,
+  author={Li, Bohan and Cai, Shaowei},
+  booktitle={2023 Formal Methods in Computer-Aided Design (FMCAD)}, 
+  title={Local Search For SMT On Linear and Multi-linear Real Arithmetic}, 
   year={2023},
-  publisher={IEEE}
+  volume={},
+  number={},
+  pages={1-10},
+  keywords={Design automation;Benchmark testing;Arithmetic},
+  doi={10.34727/2023/isbn.978-3-85448-060-0_25}}
+
+@inproceedings{WZHNRA,
+author = {Wang, Zhonghan and Zhan, Bohua and Li, Bohan and Cai, Shaowei},
+title = {Efficient Local Search for Nonlinear Real Arithmetic},
+year = {2024},
+isbn = {978-3-031-50523-2},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+url = {https://doi.org/10.1007/978-3-031-50524-9_15},
+doi = {10.1007/978-3-031-50524-9_15},
+abstract = {Local search has recently been applied to SMT problems over various arithmetic theories. Among these, nonlinear real arithmetic poses special challenges due to its uncountable solution space and potential need to solve higher-degree polynomials. As a consequence, existing work on local search only considered fragments of the theory. In this work, we analyze the difficulties and propose ways to address them, resulting in an efficient search algorithm that covers the full theory of nonlinear real arithmetic. In particular, we present two algorithmic improvements: incremental computation of variable scores and temporary relaxation of equality constraints. We also discuss choice of candidate moves and a look-ahead mechanism in case when no critical moves are available. The resulting implementation is competitive on satisfiable problem instances against complete methods such as MCSAT in existing SMT solvers.},
+booktitle = {Verification, Model Checking, and Abstract Interpretation: 25th International Conference, VMCAI 2024, London, United Kingdom, January 15–16, 2024, Proceedings, Part I},
+pages = {326–349},
+numpages = {24},
+keywords = {Local search, Nonlinear arithmetic, SMT},
+location = {London, United Kingdom}
 }
 
-@book{rossi2006handbook,
-  title={Handbook of constraint programming},
-  author={Rossi, Francesca and Van Beek, Peter and Walsh, Toby},
-  year={2006},
-  publisher={Elsevier}
+@inproceedings{CADorder2,
+author = {Chen, Changbo and Zhu, Zhangpeng and Chi, Haoyu},
+title = {Variable Ordering Selection for Cylindrical Algebraic Decomposition with Artificial Neural Networks},
+year = {2020},
+isbn = {978-3-030-52199-8},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+url = {https://doi.org/10.1007/978-3-030-52200-1_28},
+doi = {10.1007/978-3-030-52200-1_28},
+abstract = {Cylindrical algebraic decomposition (CAD) is a fundamental tool in computational real algebraic geometry. Previous studies have shown that machine learning (ML) based approaches may outperform traditional heuristic ones on selecting the best variable ordering when the number of variables . One main challenge for handling the general case is the exponential explosion of number of different orderings when n increases. In this paper, we propose an iterative method for generating candidate variable orderings and an ML approach for selecting the best ordering from them via learning neural network classifiers. Experimentations show that this approach outperforms heuristic ones for .},
+booktitle = {Mathematical Software – ICMS 2020: 7th International Conference, Braunschweig, Germany, July 13–16, 2020, Proceedings},
+pages = {281–291},
+numpages = {11},
+keywords = {Neural network, Machine learning, Variable ordering, Cylindrical algebraic decomposition},
+location = {Braunschweig, Germany}
 }
 
-@article{lauriere1978language,
-  title={A language and a program for stating and solving combinatorial problems},
-  author={Lauriere, Jena-Lonis},
-  journal={Artificial intelligence},
-  volume={10},
-  number={1},
-  pages={29--127},
-  year={1978},
-  publisher={Elsevier}
+@misc{sample-cell,
+      title={Solving Satisfiability of Polynomial Formulas By Sample-Cell Projection}, 
+      author={Haokun Li and Bican Xia},
+      year={2020},
+      eprint={2003.00409},
+      archivePrefix={arXiv},
+      primaryClass={cs.LO}
 }
 
-@article{golomb1965backtrack,
-  title={Backtrack programming},
-  author={Golomb, Solomon W and Baumert, Leonard D},
-  journal={Journal of the ACM (JACM)},
-  volume={12},
-  number={4},
-  pages={516--524},
-  year={1965},
-  publisher={ACM New York, NY, USA}
+@article{levelWise,
+author = {Nalbach, Jasper and \'{A}brah\'{a}m, Erika and Specht, Philippe and Brown, Christopher W. and Davenport, James H. and England, Matthew},
+title = {Levelwise construction of a single cylindrical algebraic cell},
+year = {2024},
+issue_date = {Jul 2024},
+publisher = {Academic Press, Inc.},
+address = {USA},
+volume = {123},
+number = {C},
+issn = {0747-7171},
+url = {https://doi.org/10.1016/j.jsc.2023.102288},
+doi = {10.1016/j.jsc.2023.102288},
+journal = {J. Symb. Comput.},
+month = {may},
+numpages = {44},
+keywords = {Satisfiability modulo theories, Cylindrical algebraic decomposition, Non-linear real arithmetic, Model-constructing satisfiability calculus, Formal proofs}
 }
 
-@article{apt1999essence,
-  title={The essence of constraint propagation},
-  author={Apt, Krzysztof R},
-  journal={Theoretical computer science},
-  volume={221},
-  number={1-2},
-  pages={179--210},
-  year={1999},
-  publisher={Elsevier}
+@inproceedings{
+CADorder3,
+title={Suggesting Variable Order for Cylindrical Algebraic Decomposition via Reinforcement Learning},
+author={Fuqi Jia and Yuhang Dong and Minghao Liu and Pei Huang and Feifei Ma and Jian Zhang},
+booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
+year={2023},
+url={https://openreview.net/forum?id=vNsdFwjPtL}
 }
 
-@inproceedings{regin1994filtering,
-  title={A filtering algorithm for constraints of difference in CSPs},
-  author={R{\'e}gin, Jean-Charles},
-  booktitle={AAAI},
-  volume={94},
-  pages={362--367},
-  year={1994}
+
+@article{AkbarpourP10,
+  author       = {Behzad Akbarpour and
+                  Lawrence C. Paulson},
+  title        = {MetiTarski: An Automatic Theorem Prover for Real-Valued Special Functions},
+  journal      = {J. Autom. Reason.},
+  volume       = {44},
+  number       = {3},
+  pages        = {175--205},
+  year         = {2010},
+  url          = {https://doi.org/10.1007/s10817-009-9149-2},
+  doi          = {10.1007/s10817-009-9149-2},
+  timestamp    = {Wed, 02 Sep 2020 13:29:42 +0200},
+  biburl       = {https://dblp.org/rec/journals/jar/AkbarpourP10.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@article{tamura2009compiling,
-  title={Compiling finite linear CSP into SAT},
-  author={Tamura, Naoyuki and Taga, Akiko and Kitagawa, Satoshi and Banbara, Mutsunori},
-  journal={Constraints},
-  volume={14},
-  pages={254--272},
-  year={2009},
-  publisher={Springer}
+@inproceedings{LiXZ23,
+  author       = {Haokun Li and
+                  Bican Xia and
+                  Tianqi Zhao},
+  editor       = {Constantin Enea and
+                  Akash Lal},
+  title        = {Local Search for Solving Satisfiability of Polynomial Formulas},
+  booktitle    = {Computer Aided Verification - 35th International Conference, {CAV}
+                  2023, Paris, France, July 17-22, 2023, Proceedings, Part {II}},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {13965},
+  pages        = {87--109},
+  publisher    = {Springer},
+  year         = {2023},
+  url          = {https://doi.org/10.1007/978-3-031-37703-7\_5},
+  doi          = {10.1007/978-3-031-37703-7\_5},
+  timestamp    = {Sat, 05 Aug 2023 00:01:30 +0200},
+  biburl       = {https://dblp.org/rec/conf/cav/LiXZ23.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@incollection{hoos2006local,
-  title={Local search methods},
-  author={Hoos, Holger H and Tsang, Edward},
-  booktitle={Foundations of Artificial Intelligence},
-  volume={2},
-  pages={135--167},
-  year={2006},
-  publisher={Elsevier}
+@inproceedings{ThorntonPBF04,
+  author       = {John Thornton and
+                  Duc Nghia Pham and
+                  Stuart Bain and
+                  Valnir Ferreira Jr.},
+  editor       = {Deborah L. McGuinness and
+                  George Ferguson},
+  title        = {Additive versus Multiplicative Clause Weighting for {SAT}},
+  booktitle    = {Proceedings of the Nineteenth National Conference on Artificial Intelligence,
+                  Sixteenth Conference on Innovative Applications of Artificial Intelligence,
+                  July 25-29, 2004, San Jose, California, {USA}},
+  pages        = {191--196},
+  publisher    = {{AAAI} Press / The {MIT} Press},
+  year         = {2004},
+  url          = {http://www.aaai.org/Library/AAAI/2004/aaai04-031.php},
+  timestamp    = {Wed, 10 Feb 2021 08:43:24 +0100},
+  biburl       = {https://dblp.org/rec/conf/aaai/ThorntonPBF04.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@article{kumar1999approximating,
-  title={Approximating latin square extensions},
-  author={Kumar, S Ravi and Russell, Alexander and Sundaram, Ravi},
-  journal={Algorithmica},
-  volume={24},
-  pages={128--138},
-  year={1999},
-  publisher={Springer}
+@inproceedings{CimattiMT12,
+  author       = {Alessandro Cimatti and
+                  Sergio Mover and
+                  Stefano Tonetta},
+  editor       = {Gianpiero Cabodi and
+                  Satnam Singh},
+  title        = {A quantifier-free {SMT} encoding of non-linear hybrid automata},
+  booktitle    = {Formal Methods in Computer-Aided Design, {FMCAD} 2012, Cambridge,
+                  UK, October 22-25, 2012},
+  pages        = {187--195},
+  publisher    = {{IEEE}},
+  year         = {2012},
+  url          = {https://ieeexplore.ieee.org/document/6462573/},
+  timestamp    = {Mon, 09 Aug 2021 15:21:44 +0200},
+  biburl       = {https://dblp.org/rec/conf/fmcad/CimattiMT12.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@article{mann1942construction,
-  title={The construction of orthogonal Latin squares},
-  author={Mann, Henry B},
-  journal={The Annals of Mathematical Statistics},
-  volume={13},
-  number={4},
-  pages={418--423},
-  year={1942},
-  publisher={JSTOR}
+@article{LeikeH15,
+  author       = {Jan Leike and
+                  Matthias Heizmann},
+  title        = {Ranking Templates for Linear Loops},
+  journal      = {Log. Methods Comput. Sci.},
+  volume       = {11},
+  number       = {1},
+  year         = {2015},
+  url          = {https://doi.org/10.2168/LMCS-11(1:16)2015},
+  doi          = {10.2168/LMCS-11(1:16)2015},
+  timestamp    = {Thu, 25 Jun 2020 21:29:00 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/LeikeH15.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@article{colbourn2004permutation,
-  title={Permutation arrays for powerline communication and mutually orthogonal latin squares},
-  author={Colbourn, Charles J and Klove, Torleiv and Ling, Alan CH},
-  journal={IEEE Transactions on Information Theory},
-  volume={50},
-  number={6},
-  pages={1289--1291},
-  year={2004},
-  publisher={IEEE}
+@inproceedings{HeizmannHLP13,
+  author       = {Matthias Heizmann and
+                  Jochen Hoenicke and
+                  Jan Leike and
+                  Andreas Podelski},
+  editor       = {Dang Van Hung and
+                  Mizuhito Ogawa},
+  title        = {Linear Ranking for Linear Lasso Programs},
+  booktitle    = {Automated Technology for Verification and Analysis - 11th International
+                  Symposium, {ATVA} 2013, Hanoi, Vietnam, October 15-18, 2013. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {8172},
+  pages        = {365--380},
+  publisher    = {Springer},
+  year         = {2013},
+  url          = {https://doi.org/10.1007/978-3-319-02444-8\_26},
+  doi          = {10.1007/978-3-319-02444-8\_26},
+  timestamp    = {Mon, 16 Sep 2019 15:23:42 +0200},
+  biburl       = {https://dblp.org/rec/conf/atva/HeizmannHLP13.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@article{barnier2004graph,
-  title={Graph coloring for air traffic flow management},
-  author={Barnier, Nicolas and Brisset, Pascal},
-  journal={Annals of operations research},
-  volume={130},
-  pages={163--178},
-  year={2004},
-  publisher={Springer}
+@inproceedings{SusmanL16,
+  author       = {Benjamin Susman and
+                  Yuliya Lierler},
+  editor       = {Manuel Carro and
+                  Andy King and
+                  Neda Saeedloei and
+                  Marina De Vos},
+  title        = {{SMT}-Based Constraint Answer Set Solver {EZSMT} (System Description)},
+  booktitle    = {Technical Communications of the 32nd International Conference on Logic
+                  Programming, {ICLP} 2016 TCs, October 16-21, 2016, New York City,
+                  {USA}},
+  series       = {OASIcs},
+  volume       = {52},
+  pages        = {1:1--1:15},
+  publisher    = {Schloss Dagstuhl - Leibniz-Zentrum f{\"{u}}r Informatik},
+  year         = {2016},
+  url          = {https://doi.org/10.4230/OASIcs.ICLP.2016.1},
+  doi          = {10.4230/OASIcs.ICLP.2016.1},
+  timestamp    = {Tue, 15 Feb 2022 09:40:05 +0100},
+  biburl       = {https://dblp.org/rec/conf/iclp/SusmanL16.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@article{colbourn2001mutually,
-  title={Mutually orthogonal Latin squares: a brief survey of constructions},
-  author={Colbourn, Charles J and Dinitz, Jeffrey H},
-  journal={Journal of Statistical Planning and Inference},
-  volume={95},
-  number={1-2},
-  pages={9--48},
-  year={2001},
-  publisher={Elsevier}
+@inproceedings{ShenL18,
+  author       = {Da Shen and
+                  Yuliya Lierler},
+  editor       = {Michael Thielscher and
+                  Francesca Toni and
+                  Frank Wolter},
+  title        = {{SMT}-Based Constraint Answer Set Solver {EZSMT+} for Non-Tight Programs},
+  booktitle    = {Principles of Knowledge Representation and Reasoning: Proceedings
+                  of the Sixteenth International Conference, {KR} 2018, Tempe, Arizona,
+                  30 October - 2 November 2018},
+  pages        = {67--71},
+  publisher    = {{AAAI} Press},
+  year         = {2018},
+  url          = {https://aaai.org/ocs/index.php/KR/KR18/paper/view/18049},
+  timestamp    = {Tue, 09 Feb 2021 08:33:51 +0100},
+  biburl       = {https://dblp.org/rec/conf/kr/ShenL18.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@article{schulte2010modeling,
-  title={Modeling and programming with gecode},
-  author={Schulte, Christian and Tack, Guido and Lagerkvist, Mikael Z},
-  journal={Schulte, Christian and Tack, Guido and Lagerkvist, Mikael},
-  volume={1},
-  year={2010}
+@inproceedings{AkutsuHT08,
+  author       = {Tatsuya Akutsu and
+                  Morihiro Hayashida and
+                  Takeyuki Tamura},
+  editor       = {Katsuhisa Horimoto and
+                  Georg Regensburger and
+                  Markus Rosenkranz and
+                  Hiroshi Yoshida},
+  title        = {Algorithms for Inference, Analysis and Control of Boolean Networks},
+  booktitle    = {Algebraic Biology, Third International Conference, {AB} 2008, Castle
+                  of Hagenberg, Austria, July 31-August 2, 2008, Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {5147},
+  pages        = {1--15},
+  publisher    = {Springer},
+  year         = {2008},
+  url          = {https://doi.org/10.1007/978-3-540-85101-1\_1},
+  doi          = {10.1007/978-3-540-85101-1\_1},
+  timestamp    = {Fri, 09 Apr 2021 18:42:31 +0200},
+  biburl       = {https://dblp.org/rec/conf/ab/AkutsuHT08.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@inproceedings{codognet2001yet,
-  title={Yet another local search method for constraint solving},
-  author={Codognet, Philippe and Diaz, Daniel},
-  booktitle={Stochastic Algorithms: Foundations and Applications: International Symposium, SAGA 2001 Berlin, Germany, December 13--14, 2001 Proceedings},
-  pages={73--90},
-  year={2001},
-  organization={Springer}
+@inproceedings{CaiLZ22,
+  author       = {Shaowei Cai and
+                  Bohan Li and
+                  Xindi Zhang},
+  editor       = {Sharon Shoham and
+                  Yakir Vizel},
+  title        = {Local Search for {SMT} on Linear Integer Arithmetic},
+  booktitle    = {Computer Aided Verification - 34th International Conference, {CAV}
+                  2022, Haifa, Israel, August 7-10, 2022, Proceedings, Part {II}},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {13372},
+  pages        = {227--248},
+  publisher    = {Springer},
+  year         = {2022},
+  url          = {https://doi.org/10.1007/978-3-031-13188-2\_12},
+  doi          = {10.1007/978-3-031-13188-2\_12},
+  timestamp    = {Fri, 17 Mar 2023 08:34:48 +0100},
+  biburl       = {https://dblp.org/rec/conf/cav/CaiLZ22.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@article{bjordal2015constraint,
-  title={A constraint-based local search backend for MiniZinc},
-  author={Bj{\"o}rdal, Gustav and Monette, Jean-No{\"e}l and Flener, Pierre and Pearson, Justin},
-  journal={Constraints},
-  volume={20},
-  pages={325--345},
-  year={2015},
-  publisher={Springer}
+@inproceedings{Caviness2004QuantifierEA,
+  title={Quantifier Elimination and Cylindrical Algebraic Decomposition},
+  author={B. F. Caviness and Jeremy R. Johnson},
+  booktitle={Texts and Monographs in Symbolic Computation},
+  year={2004}
 }
 
-@incollection{claus2020analysis,
-  title={Analysis of reduced costs filtering for alldifferent and minimum weight alldifferent global constraints},
-  author={Claus, Guillaume and Cambazard, Hadrien and Jost, Vincent},
-  booktitle={ECAI 2020},
-  pages={323--330},
-  year={2020},
-  publisher={IOS Press}
+@article{NieuwenhuisOT06,
+  author       = {Robert Nieuwenhuis and
+                  Albert Oliveras and
+                  Cesare Tinelli},
+  title        = {Solving {SAT} and {SAT} Modulo Theories: From an abstract {D}avis--{P}utnam--{L}ogemann--{L}oveland
+                  procedure to {DPLL}(\emph{T})},
+  journal      = {J. {ACM}},
+  volume       = {53},
+  number       = {6},
+  pages        = {937--977},
+  year         = {2006},
+  url          = {https://doi.org/10.1145/1217856.1217859},
+  doi          = {10.1145/1217856.1217859},
+  timestamp    = {Sun, 02 Oct 2022 15:39:52 +0200},
+  biburl       = {https://dblp.org/rec/journals/jacm/NieuwenhuisOT06.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@inproceedings{zhang2018fast,
-  title={A Fast Algorithm for Generalized Arc Consistency of the Alldifferent Constraint.},
-  author={Zhang, Xizhe and Li, Qian and Zhang, Weixiong},
-  booktitle={IJCAI},
-  pages={1398--1403},
-  year={2018}
+@inproceedings{JovanovicM12,
+  author       = {Dejan Jovanovic and
+                  Leonardo Mendon{\c{c}}a de Moura},
+  editor       = {Bernhard Gramlich and
+                  Dale Miller and
+                  Uli Sattler},
+  title        = {Solving Non-linear Arithmetic},
+  booktitle    = {Automated Reasoning - 6th International Joint Conference, {IJCAR}
+                  2012, Manchester, UK, June 26-29, 2012. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {7364},
+  pages        = {339--354},
+  publisher    = {Springer},
+  year         = {2012},
+  url          = {https://doi.org/10.1007/978-3-642-31365-3\_27},
+  doi          = {10.1007/978-3-642-31365-3\_27},
+  timestamp    = {Tue, 14 May 2019 10:00:39 +0200},
+  biburl       = {https://dblp.org/rec/conf/cade/JovanovicM12.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@article{harris2020improving,
-  title={Improving Constraint Satisfaction Algorithm Efficiency for the AllDifferent Constraint},
-  author={Harris, Geoff},
-  journal={arXiv preprint arXiv:2012.03624},
-  year={2020}
+@inproceedings{MouraJ13,
+  author       = {Leonardo Mendon{\c{c}}a de Moura and
+                  Dejan Jovanovic},
+  editor       = {Roberto Giacobazzi and
+                  Josh Berdine and
+                  Isabella Mastroeni},
+  title        = {A Model-Constructing Satisfiability Calculus},
+  booktitle    = {Verification, Model Checking, and Abstract Interpretation, 14th International
+                  Conference, {VMCAI} 2013, Rome, Italy, January 20-22, 2013. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {7737},
+  pages        = {1--12},
+  publisher    = {Springer},
+  year         = {2013},
+  url          = {https://doi.org/10.1007/978-3-642-35873-9\_1},
+  doi          = {10.1007/978-3-642-35873-9\_1},
+  timestamp    = {Tue, 14 May 2019 10:00:43 +0200},
+  biburl       = {https://dblp.org/rec/conf/vmcai/MouraJ13.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@inproceedings{van2004hyper,
-  title={A hyper-arc consistency algorithm for the soft alldifferent constraint},
-  author={Van Hoeve, Willem Jan},
-  booktitle={Principles and Practice of Constraint Programming--CP 2004: 10th International Conference, CP 2004, Toronto, Canada, September 27-October 1, 2004. Proceedings 10},
-  pages={679--689},
-  year={2004},
-  organization={Springer}
+@phdthesis{Kremer20,
+  author       = {Gereon Kremer},
+  title        = {Cylindrical algebraic decomposition for nonlinear arithmetic problems},
+  school       = {{RWTH} Aachen University, Germany},
+  year         = {2020},
+  url          = {https://publications.rwth-aachen.de/record/792185},
+  urn          = {urn:nbn:de:101:1-2020080423295652975325},
+  timestamp    = {Sat, 17 Jul 2021 09:07:32 +0200},
+  biburl       = {https://dblp.org/rec/phd/dnb/Kremer20.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@inproceedings{zhang2021early,
-  title={Early and efficient identification of useless constraint propagation for alldifferent constraints},
-  author={Zhang, Xizhe and Gao, Jian and Lv, Yizhi and Zhang, Weixiong},
-  booktitle={Proceedings of the Twenty-Ninth International Conference on International Joint Conferences on Artificial Intelligence},
-  pages={1126--1133},
-  year={2021}
+@inproceedings{SelmanLM92,
+  author       = {Bart Selman and
+                  Hector J. Levesque and
+                  David G. Mitchell},
+  editor       = {William R. Swartout},
+  title        = {A New Method for Solving Hard Satisfiability Problems},
+  booktitle    = {Proceedings of the 10th National Conference on Artificial Intelligence,
+                  San Jose, CA, USA, July 12-16, 1992},
+  pages        = {440--446},
+  publisher    = {{AAAI} Press / The {MIT} Press},
+  year         = {1992},
+  url          = {http://www.aaai.org/Library/AAAI/1992/aaai92-068.php},
+  timestamp    = {Tue, 19 Jun 2018 18:21:00 +0200},
+  biburl       = {https://dblp.org/rec/conf/aaai/SelmanLM92.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@inproceedings{li2021improving,
-  title={Improving Local Search for Minimum Weighted Connected Dominating Set Problem by Inner-Layer Local Search},
-  author={Li, Bohan and Wang, Kai and Wang, Yiyuan and Cai, Shaowei},
-  booktitle={27th International Conference on Principles and Practice of Constraint Programming (CP 2021)},
-  year={2021},
-  organization={Schloss Dagstuhl-Leibniz-Zentrum f{\"u}r Informatik}
+@book{HoosS2004,
+  author       = {Holger H. Hoos and
+                  Thomas St{\"{u}}tzle},
+  title        = {Stochastic Local Search: Foundations {\&} Applications},
+  publisher    = {Elsevier / Morgan Kaufmann},
+  year         = {2004},
+  isbn         = {1-55860-872-9},
+  timestamp    = {Mon, 17 Sep 2007 20:11:49 +0200},
+  biburl       = {https://dblp.org/rec/books/mk/HoosS2004.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
-@inproceedings{bjordal2019exploring,
-  title={Exploring declarative local-search neighbourhoods with constraint programming},
-  author={Bj{\"o}rdal, Gustav and Flener, Pierre and Pearson, Justin and Stuckey, Peter J},
-  booktitle={Principles and Practice of Constraint Programming: 25th International Conference, CP 2019, Stamford, CT, USA, September 30--October 4, 2019, Proceedings 25},
-  pages={37--53},
+@inproceedings{MouraB08,
+  author       = {Leonardo Mendon{\c{c}}a de Moura and
+                  Nikolaj S. Bj{\o}rner},
+  editor       = {C. R. Ramakrishnan and
+                  Jakob Rehof},
+  title        = {{Z3:} An Efficient {SMT} Solver},
+  booktitle    = {Tools and Algorithms for the Construction and Analysis of Systems,
+                  14th International Conference, {TACAS} 2008, Held as Part of the Joint
+                  European Conferences on Theory and Practice of Software, {ETAPS} 2008,
+                  Budapest, Hungary, March 29-April 6, 2008. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {4963},
+  pages        = {337--340},
+  publisher    = {Springer},
+  year         = {2008},
+  url          = {https://doi.org/10.1007/978-3-540-78800-3\_24},
+  doi          = {10.1007/978-3-540-78800-3\_24},
+  timestamp    = {Mon, 03 Apr 2023 17:23:33 +0200},
+  biburl       = {https://dblp.org/rec/conf/tacas/MouraB08.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@incollection{BarrettT18,
+  author       = {Clark W. Barrett and
+                  Cesare Tinelli},
+  editor       = {Edmund M. Clarke and
+                  Thomas A. Henzinger and
+                  Helmut Veith and
+                  Roderick Bloem},
+  title        = {Satisfiability Modulo Theories},
+  booktitle    = {Handbook of Model Checking},
+  pages        = {305--343},
+  publisher    = {Springer},
+  year         = {2018},
+  url          = {https://doi.org/10.1007/978-3-319-10575-8\_11},
+  doi          = {10.1007/978-3-319-10575-8\_11},
+  timestamp    = {Mon, 03 Jan 2022 22:13:30 +0100},
+  biburl       = {https://dblp.org/rec/reference/mc/BarrettT18.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@misc{kremer2021proof,
+      title={On the proof complexity of MCSAT}, 
+      author={Gereon Kremer and Erika Abraham and Vijay Ganesh},
+      year={2021},
+      eprint={2109.01585},
+      archivePrefix={arXiv},
+      primaryClass={cs.LO}
+}
+
+@inproceedings{MCSATBIT,
+author = {Graham-Lengrand, St\'{e}phane and Jovanovi\'{c}, Dejan and Dutertre, Bruno},
+title = {Solving Bitvectors with MCSAT: Explanations from Bits and Pieces},
+year = {2020},
+isbn = {978-3-030-51073-2},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+url = {https://doi.org/10.1007/978-3-030-51074-9_7},
+doi = {10.1007/978-3-030-51074-9_7},
+abstract = {We present a decision procedure for the theory of fixed-sized bitvectors in the MCSAT framework. MCSAT is an alternative to CDCL(T) for SMT solving and can be seen as an extension of CDCL to domains other than the Booleans. Our procedure uses BDDs to record and update the sets of feasible values of bitvector variables. For explaining conflicts and propagations, we develop specialized word-level interpolation for two common fragments of the theory. For full generality, explaining conflicts outside of the covered fragments resorts to local bitblasting. The approach is implemented in the Yices 2 SMT solver and we present experimental results.},
+booktitle = {Automated Reasoning: 10th International Joint Conference, IJCAR 2020, Paris, France, July 1–4, 2020, Proceedings, Part I},
+pages = {103–121},
+numpages = {19},
+location = {Paris, France}
+}
+
+@inproceedings{Incremental,
+author = {Cimatti, Alessandro and Griggio, Alberto and Irfan, Ahmed and Roveri, Marco and Sebastiani, Roberto},
+title = {Experimenting on Solving Nonlinear Integer Arithmetic with Incremental Linearization},
+year = {2018},
+isbn = {978-3-319-94143-1},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+url = {https://doi.org/10.1007/978-3-319-94144-8_23},
+doi = {10.1007/978-3-319-94144-8_23},
+abstract = {Incremental linearization is a conceptually simple, yet effective, technique that we have recently proposed for solving SMT problems over nonlinear real arithmetic constraints. In this paper, we show how the same approach can be applied successfully also to the harder case of nonlinear integer arithmetic problems. We describe in detail our implementation of the basic ideas inside the MathSAT SMT solver, and evaluate its effectiveness with an extensive experimental analysis over all nonlinear integer benchmarks in SMT-LIB. Our results show that MathSAT is very competitive with (and often outperforms) state-of-the-art SMT solvers based on alternative techniques.},
+booktitle = {Theory and Applications of Satisfiability Testing – SAT 2018: 21st International Conference, SAT 2018, Held as Part of the Federated Logic Conference, FloC 2018, Oxford, UK, July 9–12, 2018, Proceedings},
+pages = {383–398},
+numpages = {16},
+location = {Oxford, United Kingdom}
+}
+
+@inproceedings{MCSATOrder,
+  title={On Variable Orderings in MCSAT for Non-Linear Real Arithmetic},
+  author={Jasper Nalbach and Gereon Kremer and Erika {\'A}brah{\'a}m},
+  booktitle={SC-square@SIAM AG},
   year={2019},
-  organization={Springer}
+  url={https://api.semanticscholar.org/CorpusID:204767299}
 }
 
-@inproceedings{chen2022nukcp,
-  title={NukCP: An improved local search algorithm for maximum k-club problem},
-  author={Chen, Jiejiang and Wang, Yiyuan and Cai, Shaowei and Yin, Minghao and Zhou, Yupeng and Wu, Jieyu},
-  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
-  volume={36},
-  number={9},
-  pages={10146--10155},
-  year={2022}
+@MISC{BarFT-SMTLIB,
+  author =	 {Clark Barrett and Pascal Fontaine and Cesare Tinelli},
+  title =	 {{The Satisfiability Modulo Theories Library (SMT-LIB)}},
+  howpublished = {{\tt www.SMT-LIB.org}},
+  year =	 2016,
 }
 
-@article{dong2013multi,
-  title={A multi-restart iterated local search algorithm for the permutation flow shop problem minimizing total flow time},
-  author={Dong, Xingye and Chen, Ping and Huang, Houkuan and Nowak, Maciek},
-  journal={Computers \& Operations Research},
-  volume={40},
-  number={2},
-  pages={627--632},
+@inproceedings{CaiZ21,
+  author       = {Shaowei Cai and
+                  Xindi Zhang},
+  editor       = {Chu{-}Min Li and
+                  Felip Many{\`{a}}},
+  title        = {Deep Cooperation of {CDCL} and Local Search for {SAT}},
+  booktitle    = {Theory and Applications of Satisfiability Testing - {SAT} 2021 - 24th
+                  International Conference, Barcelona, Spain, July 5-9, 2021, Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {12831},
+  pages        = {64--81},
+  publisher    = {Springer},
+  year         = {2021},
+  url          = {https://doi.org/10.1007/978-3-030-80223-3\_6},
+  doi          = {10.1007/978-3-030-80223-3\_6},
+  timestamp    = {Fri, 17 Mar 2023 08:34:48 +0100},
+  biburl       = {https://dblp.org/rec/conf/sat/CaiZ21.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{CaiZFB22,
+  author       = {Shaowei Cai and
+                  Xindi Zhang and
+                  Mathias Fleury and
+                  Armin Biere},
+  title        = {Better Decision Heuristics in {CDCL} through Local Search and Target
+                  Phases},
+  journal      = {J. Artif. Intell. Res.},
+  volume       = {74},
+  pages        = {1515--1563},
+  year         = {2022},
+  url          = {https://doi.org/10.1613/jair.1.13666},
+  doi          = {10.1613/jair.1.13666},
+  timestamp    = {Fri, 17 Mar 2023 08:34:48 +0100},
+  biburl       = {https://dblp.org/rec/journals/jair/CaiZFB22.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{GaoKC13,
+  author       = {Sicun Gao and
+                  Soonho Kong and
+                  Edmund M. Clarke},
+  editor       = {Maria Paola Bonacina},
+  title        = {dReal: An {SMT} Solver for Nonlinear Theories over the Reals},
+  booktitle    = {Automated Deduction - {CADE-24} - 24th International Conference on
+                  Automated Deduction, Lake Placid, NY, USA, June 9-14, 2013. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {7898},
+  pages        = {208--214},
+  publisher    = {Springer},
+  year         = {2013},
+  url          = {https://doi.org/10.1007/978-3-642-38574-2\_14},
+  doi          = {10.1007/978-3-642-38574-2\_14},
+  timestamp    = {Tue, 14 May 2019 10:00:39 +0200},
+  biburl       = {https://dblp.org/rec/conf/cade/GaoKC13.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{GaoAC12IJCAR,
+  author       = {Sicun Gao and
+                  Jeremy Avigad and
+                  Edmund M. Clarke},
+  editor       = {Bernhard Gramlich and
+                  Dale Miller and
+                  Uli Sattler},
+  title        = {{\(\delta\)}-Complete Decision Procedures for Satisfiability over
+                  the Reals},
+  booktitle    = {Automated Reasoning - 6th International Joint Conference, {IJCAR}
+                  2012, Manchester, UK, June 26-29, 2012. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {7364},
+  pages        = {286--300},
+  publisher    = {Springer},
+  year         = {2012},
+  url          = {https://doi.org/10.1007/978-3-642-31365-3\_23},
+  doi          = {10.1007/978-3-642-31365-3\_23},
+  timestamp    = {Tue, 14 May 2019 10:00:39 +0200},
+  biburl       = {https://dblp.org/rec/conf/cade/GaoAC12.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{GaoAC12LICS,
+  author       = {Sicun Gao and
+                  Jeremy Avigad and
+                  Edmund M. Clarke},
+  title        = {Delta-Decidability over the Reals},
+  booktitle    = {Proceedings of the 27th Annual {IEEE} Symposium on Logic in Computer
+                  Science, {LICS} 2012, Dubrovnik, Croatia, June 25-28, 2012},
+  pages        = {305--314},
+  publisher    = {{IEEE} Computer Society},
+  year         = {2012},
+  url          = {https://doi.org/10.1109/LICS.2012.41},
+  doi          = {10.1109/LICS.2012.41},
+  timestamp    = {Fri, 24 Mar 2023 00:01:50 +0100},
+  biburl       = {https://dblp.org/rec/conf/lics/GaoAC12.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{FrohlichBWH15,
+  author       = {Andreas Fr{\"{o}}hlich and
+                  Armin Biere and
+                  Christoph M. Wintersteiger and
+                  Youssef Hamadi},
+  editor       = {Blai Bonet and
+                  Sven Koenig},
+  title        = {Stochastic Local Search for Satisfiability Modulo Theories},
+  booktitle    = {Proceedings of the Twenty-Ninth {AAAI} Conference on Artificial Intelligence,
+                  January 25-30, 2015, Austin, Texas, {USA}},
+  pages        = {1136--1143},
+  publisher    = {{AAAI} Press},
+  year         = {2015},
+  url          = {http://www.aaai.org/ocs/index.php/AAAI/AAAI15/paper/view/9896},
+  timestamp    = {Wed, 10 Feb 2021 08:43:24 +0100},
+  biburl       = {https://dblp.org/rec/conf/aaai/FrohlichBWH15.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{NiemetzPB16,
+  author       = {Aina Niemetz and
+                  Mathias Preiner and
+                  Armin Biere},
+  editor       = {Swarat Chaudhuri and
+                  Azadeh Farzan},
+  title        = {Precise and Complete Propagation Based Local Search for Satisfiability
+                  Modulo Theories},
+  booktitle    = {Computer Aided Verification - 28th International Conference, {CAV}
+                  2016, Toronto, ON, Canada, July 17-23, 2016, Proceedings, Part {I}},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {9779},
+  pages        = {199--217},
+  publisher    = {Springer},
+  year         = {2016},
+  url          = {https://doi.org/10.1007/978-3-319-41528-4\_11},
+  doi          = {10.1007/978-3-319-41528-4\_11},
+  timestamp    = {Mon, 16 Sep 2019 15:22:35 +0200},
+  biburl       = {https://dblp.org/rec/conf/cav/NiemetzPB16.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{GriggioPST11,
+  author       = {Alberto Griggio and
+                  Quoc{-}Sang Phan and
+                  Roberto Sebastiani and
+                  Silvia Tomasi},
+  editor       = {Cesare Tinelli and
+                  Viorica Sofronie{-}Stokkermans},
+  title        = {Stochastic Local Search for {SMT:} Combining Theory Solvers with WalkSAT},
+  booktitle    = {Frontiers of Combining Systems, 8th International Symposium, FroCoS
+                  2011, Saarbr{\"{u}}cken, Germany, October 5-7, 2011. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {6989},
+  pages        = {163--178},
+  publisher    = {Springer},
+  year         = {2011},
+  url          = {https://doi.org/10.1007/978-3-642-24364-6\_12},
+  doi          = {10.1007/978-3-642-24364-6\_12},
+  timestamp    = {Fri, 09 Apr 2021 18:39:41 +0200},
+  biburl       = {https://dblp.org/rec/conf/frocos/GriggioPST11.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{Niemetz2015ImprovingLS,
+  title={Improving Local Search for Bit-Vector Logics in SMT with Path Propagation},
+  author={Aina Niemetz and Mathias Preiner and Andreas Fr{\"o}hlich and Armin Biere},
+  year={2015}
+}
+
+@inproceedings{BarbosaBBKLMMMN22,
+  author       = {Haniel Barbosa and
+                  Clark W. Barrett and
+                  Martin Brain and
+                  Gereon Kremer and
+                  Hanna Lachnitt and
+                  Makai Mann and
+                  Abdalrhman Mohamed and
+                  Mudathir Mohamed and
+                  Aina Niemetz and
+                  Andres N{\"{o}}tzli and
+                  Alex Ozdemir and
+                  Mathias Preiner and
+                  Andrew Reynolds and
+                  Ying Sheng and
+                  Cesare Tinelli and
+                  Yoni Zohar},
+  editor       = {Dana Fisman and
+                  Grigore Rosu},
+  title        = {cvc5: {A} Versatile and Industrial-Strength {SMT} Solver},
+  booktitle    = {Tools and Algorithms for the Construction and Analysis of Systems
+                  - 28th International Conference, {TACAS} 2022, Held as Part of the
+                  European Joint Conferences on Theory and Practice of Software, {ETAPS}
+                  2022, Munich, Germany, April 2-7, 2022, Proceedings, Part {I}},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {13243},
+  pages        = {415--442},
+  publisher    = {Springer},
+  year         = {2022},
+  url          = {https://doi.org/10.1007/978-3-030-99524-9\_24},
+  doi          = {10.1007/978-3-030-99524-9\_24},
+  timestamp    = {Fri, 29 Apr 2022 14:50:36 +0200},
+  biburl       = {https://dblp.org/rec/conf/tacas/BarbosaBBKLMMMN22.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{Dutertre14,
+  author       = {Bruno Dutertre},
+  editor       = {Armin Biere and
+                  Roderick Bloem},
+  title        = {Yices 2.2},
+  booktitle    = {Computer Aided Verification - 26th International Conference, {CAV}
+                  2014, Held as Part of the Vienna Summer of Logic, {VSL} 2014, Vienna,
+                  Austria, July 18-22, 2014. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {8559},
+  pages        = {737--744},
+  publisher    = {Springer},
+  year         = {2014},
+  url          = {https://doi.org/10.1007/978-3-319-08867-9\_49},
+  doi          = {10.1007/978-3-319-08867-9\_49},
+  timestamp    = {Mon, 03 Jan 2022 22:13:44 +0100},
+  biburl       = {https://dblp.org/rec/conf/cav/Dutertre14.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{AbrahamDEK21,
+  author       = {Erika {\'{A}}brah{\'{a}}m and
+                  James H. Davenport and
+                  Matthew England and
+                  Gereon Kremer},
+  title        = {Deciding the consistency of non-linear real arithmetic constraints
+                  with a conflict driven search using cylindrical algebraic coverings},
+  journal      = {J. Log. Algebraic Methods Program.},
+  volume       = {119},
+  pages        = {100633},
+  year         = {2021},
+  url          = {https://doi.org/10.1016/j.jlamp.2020.100633},
+  doi          = {10.1016/j.jlamp.2020.100633},
+  timestamp    = {Mon, 31 Jan 2022 07:36:50 +0100},
+  biburl       = {https://dblp.org/rec/journals/jlap/AbrahamDEK21.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{LiXZZ23,
+  author       = {Haokun Li and
+                  Bican Xia and
+                  Huiying Zhang and
+                  Tao Zheng},
+  title        = {Choosing better variable orderings for cylindrical algebraic decomposition
+                  via exploiting chordal structure},
+  journal      = {J. Symb. Comput.},
+  volume       = {116},
+  pages        = {324--344},
+  year         = {2023},
+  url          = {https://doi.org/10.1016/j.jsc.2022.10.009},
+  doi          = {10.1016/j.jsc.2022.10.009},
+  timestamp    = {Wed, 04 Jan 2023 17:50:27 +0100},
+  biburl       = {https://dblp.org/rec/journals/jsc/LiXZZ23.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{Incremental2,
+  author       = {Alessandro Cimatti and
+                  Alberto Griggio and
+                  Ahmed Irfan and
+                  Marco Roveri and
+                  Roberto Sebastiani},
+  title        = {Incremental Linearization for Satisfiability and Verification Modulo
+                  Nonlinear Arithmetic and Transcendental Functions},
+  journal      = {{ACM} Trans. Comput. Log.},
+  volume       = {19},
+  number       = {3},
+  pages        = {19:1--19:52},
+  year         = {2018},
+  url          = {https://doi.org/10.1145/3230639},
+  doi          = {10.1145/3230639},
+  timestamp    = {Fri, 09 Apr 2021 18:33:35 +0200},
+  biburl       = {https://dblp.org/rec/journals/tocl/CimattiGIRS18.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{KhanhO12,
+  author       = {To Van Khanh and
+                  Mizuhito Ogawa},
+  editor       = {Bertrand Jeannet},
+  title        = {{SMT} for Polynomial Constraints on Real Numbers},
+  booktitle    = {Third Workshop on Tools for Automatic Program Analysis, {TAPAS} 2012,
+                  Deauville, France, September 14, 2012},
+  series       = {Electronic Notes in Theoretical Computer Science},
+  volume       = {289},
+  pages        = {27--40},
+  publisher    = {Elsevier},
+  year         = {2012},
+  url          = {https://doi.org/10.1016/j.entcs.2012.11.004},
+  doi          = {10.1016/j.entcs.2012.11.004},
+  timestamp    = {Fri, 25 Nov 2022 14:47:44 +0100},
+  biburl       = {https://dblp.org/rec/journals/entcs/KhanhO12.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{TungKO17,
+  author       = {Vu Xuan Tung and
+                  To Van Khanh and
+                  Mizuhito Ogawa},
+  title        = {ra{SAT}: an {SMT} solver for polynomial constraints},
+  journal      = {Formal Methods Syst. Des.},
+  volume       = {51},
+  number       = {3},
+  pages        = {462--499},
+  year         = {2017},
+  url          = {https://doi.org/10.1007/s10703-017-0284-9},
+  doi          = {10.1007/s10703-017-0284-9},
+  timestamp    = {Fri, 13 Mar 2020 10:55:12 +0100},
+  biburl       = {https://dblp.org/rec/journals/fmsd/TungKO17.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@book{DBLP:books/daglib/0093574,
+  author       = {Fred W. Glover and
+                  Manuel Laguna},
+  title        = {Tabu Search},
+  publisher    = {Kluwer},
+  year         = {1997},
+  url          = {https://doi.org/10.1007/978-1-4615-6089-0},
+  doi          = {10.1007/978-1-4615-6089-0},
+  isbn         = {978-0-7923-9965-0},
+  timestamp    = {Mon, 22 Jul 2019 15:00:49 +0200},
+  biburl       = {https://dblp.org/rec/books/daglib/0093574.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{HoosS00,
+  author       = {Holger H. Hoos and
+                  Thomas St{\"{u}}tzle},
+  title        = {Local Search Algorithms for {SAT:} An Empirical Evaluation},
+  journal      = {J. Autom. Reason.},
+  volume       = {24},
+  number       = {4},
+  pages        = {421--481},
+  year         = {2000},
+  url          = {https://doi.org/10.1023/A:1006350622830},
+  doi          = {10.1023/A:1006350622830},
+  timestamp    = {Wed, 02 Sep 2020 13:29:41 +0200},
+  biburl       = {https://dblp.org/rec/journals/jar/HoosS00.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{FontaineOSV17,
+  author       = {Pascal Fontaine and
+                  Mizuhito Ogawa and
+                  Thomas Sturm and
+                  Xuan{-}Tung Vu},
+  editor       = {Clare Dixon and
+                  Marcelo Finger},
+  title        = {Subtropical Satisfiability},
+  booktitle    = {Frontiers of Combining Systems - 11th International Symposium, FroCoS
+                  2017, Bras{\'{\i}}lia, Brazil, September 27-29, 2017, Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {10483},
+  pages        = {189--206},
+  publisher    = {Springer},
+  year         = {2017},
+  url          = {https://doi.org/10.1007/978-3-319-66167-4\_11},
+  doi          = {10.1007/978-3-319-66167-4\_11},
+  timestamp    = {Mon, 28 Aug 2023 21:17:55 +0200},
+  biburl       = {https://dblp.org/rec/conf/frocos/FontaineOSV17.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{NalbachA23,
+  author       = {Jasper Nalbach and
+                  Erika {\'{A}}brah{\'{a}}m},
+  editor       = {Kristin Yvonne Rozier and
+                  Swarat Chaudhuri},
+  title        = {Subtropical Satisfiability for {SMT} Solving},
+  booktitle    = {{NASA} Formal Methods - 15th International Symposium, {NFM} 2023,
+                  Houston, TX, USA, May 16-18, 2023, Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {13903},
+  pages        = {430--446},
+  publisher    = {Springer},
+  year         = {2023},
+  url          = {https://doi.org/10.1007/978-3-031-33170-1\_26},
+  doi          = {10.1007/978-3-031-33170-1\_26},
+  timestamp    = {Fri, 07 Jul 2023 23:30:52 +0200},
+  biburl       = {https://dblp.org/rec/conf/nfm/NalbachA23.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{CimattiGLS22,
+  author       = {Alessandro Cimatti and
+                  Alberto Griggio and
+                  Enrico Lipparini and
+                  Roberto Sebastiani},
+  editor       = {Ahmed Bouajjani and
+                  Luk{\'{a}}s Hol{\'{\i}}k and
+                  Zhilin Wu},
+  title        = {Handling Polynomial and Transcendental Functions in {SMT} via Unconstrained
+                  Optimisation and Topological Degree Test},
+  booktitle    = {Automated Technology for Verification and Analysis - 20th International
+                  Symposium, {ATVA} 2022, Virtual Event, October 25-28, 2022, Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {13505},
+  pages        = {137--153},
+  publisher    = {Springer},
+  year         = {2022},
+  url          = {https://doi.org/10.1007/978-3-031-19992-9\_9},
+  doi          = {10.1007/978-3-031-19992-9\_9},
+  timestamp    = {Sun, 06 Aug 2023 20:52:16 +0200},
+  biburl       = {https://dblp.org/rec/conf/atva/CimattiGLS22.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{NiWX23,
+    author = {Xinpeng Ni and Yulun Wu and Bican Xia},
+    title = {Solving SMT over non-linear real arithmetic via
+numerical sampling and symbolic verification},
+    booktitle = {{SETTA} 2023},
+    year = {2023}
+}
+
+@article{LiXZ23b,
+    author = {Haokun Li and Bican Xia and Tianqi Zhao},
+    title = {Square-Free Pure Triangular Decomposition of Zero-Dimensional Polynomial Systems},
+    journal = {J. Syst. Sci. Compl.},
+    year = {2023}
+}
+
+@inproceedings{KLEE,
+    author = {Cadar, Cristian and Dunbar, Daniel and Engler, Dawson},
+    title = {KLEE: unassisted and automatic generation of high-coverage tests for complex systems programs},
+    year = {2008},
+    publisher = {USENIX Association},
+    address = {USA},
+    abstract = {We present a new symbolic execution tool, KLEE, capable of automatically generating tests that achieve high coverage on a diverse set of complex and environmentally-intensive programs. We used KLEE to thoroughly check all 89 stand-alone programs in the GNU COREUTILS utility suite, which form the core user-level environment installed on millions of Unix systems, and arguably are the single most heavily tested set of open-source programs in existence. KLEE-generated tests achieve high line coverage -- on average over 90\% per tool (median: over 94\%) -- and significantly beat the coverage of the developers' own hand-written test suite. When we did the same for 75 equivalent tools in the BUSYBOX embedded system suite, results were even better, including 100\% coverage on 31 of them.We also used KLEE as a bug finding tool, applying it to 452 applications (over 430K total lines of code), where it found 56 serious bugs, including three in COREUTILS that had been missed for over 15 years. Finally, we used KLEE to crosscheck purportedly identical BUSYBOX and COREUTILS utilities, finding functional correctness errors and a myriad of inconsistencies.},
+    booktitle = {Proceedings of the 8th USENIX Conference on Operating Systems Design and Implementation},
+    pages = {209–224},
+    numpages = {16},
+    location = {San Diego, California},
+    series = {OSDI'08}
+}
+
+@inproceedings{DART,
+    author = {Godefroid, Patrice and Klarlund, Nils and Sen, Koushik},
+    title = {DART: directed automated random testing},
+    year = {2005},
+    isbn = {1595930566},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/1065010.1065036},
+    doi = {10.1145/1065010.1065036},
+    abstract = {We present a new tool, named DART, for automatically testing software that combines three main techniques: (1) automated extraction of the interface of a program with its external environment using static source-code parsing; (2) automatic generation of a test driver for this interface that performs random testing to simulate the most general environment the program can operate in; and (3) dynamic analysis of how the program behaves under random testing and automatic generation of new test inputs to direct systematically the execution along alternative program paths. Together, these three techniques constitute Directed Automated Random Testing, or DART for short. The main strength of DART is thus that testing can be performed completely automatically on any program that compiles -- there is no need to write any test driver or harness code. During testing, DART detects standard errors such as program crashes, assertion violations, and non-termination. Preliminary experiments to unit test several examples of C programs are very encouraging.},
+    booktitle = {Proceedings of the 2005 ACM SIGPLAN Conference on Programming Language Design and Implementation},
+    pages = {213–223},
+    numpages = {11},
+    keywords = {software testing, random testing, program verification, interfaces, automated test generation},
+    location = {Chicago, IL, USA},
+    series = {PLDI '05}
+}
+
+@inproceedings{solver-aided,
+author = {Torlak, Emina and Bodik, Rastislav},
+title = {A lightweight symbolic virtual machine for solver-aided host languages},
+year = {2014},
+isbn = {9781450327848},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2594291.2594340},
+doi = {10.1145/2594291.2594340},
+abstract = {Solver-aided domain-specific languages (SDSLs) are an emerging class of computer-aided programming systems. They ease the construction of programs by using satisfiability solvers to automate tasks such as verification, debugging, synthesis, and non-deterministic execution. But reducing programming tasks to satisfiability problems involves translating programs to logical constraints, which is an engineering challenge even for domain-specific languages.We have previously shown that translation to constraints can be avoided if SDSLs are implemented by (traditional) embedding into a host language that is itself solver-aided. This paper describes how to implement a symbolic virtual machine (SVM) for such a host language. Our symbolic virtual machine is lightweight because it compiles to constraints only a small subset of the host's constructs, while allowing SDSL designers to use the entire language, including constructs for DSL embedding. This lightweight compilation employs a novel symbolic execution technique with two key properties: it produces compact encodings, and it enables concrete evaluation to strip away host constructs that are outside the subset compilable to constraints. Our symbolic virtual machine architecture is at the heart of Rosette, a solver-aided language that is host to several new SDSLs.},
+booktitle = {Proceedings of the 35th ACM SIGPLAN Conference on Programming Language Design and Implementation},
+pages = {530–541},
+numpages = {12},
+keywords = {symbolic virtual machine, solver-aided languages},
+location = {Edinburgh, United Kingdom},
+series = {PLDI '14}
+}
+
+
+@article{AnalysisSymbol,
+author = {Yao, Peisen and Shi, Qingkai and Huang, Heqing and Zhang, Charles},
+title = {Program analysis via efficient symbolic abstraction},
+year = {2021},
+issue_date = {October 2021},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {5},
+number = {OOPSLA},
+url = {https://doi.org/10.1145/3485495},
+doi = {10.1145/3485495},
+abstract = {This paper concerns the scalability challenges of symbolic abstraction: given a formula ϕ in a logic L and an abstract domain A, find a most precise element in the abstract domain that over-approximates the meaning of ϕ. Symbolic abstraction is an important point in the space of abstract interpretation, as it allows for automatically synthesizing the best abstract transformers. However, current techniques for symbolic abstraction can have difficulty delivering on its practical strengths, due to performance issues. In this work, we introduce two algorithms for the symbolic abstraction of quantifier-free bit-vector formulas, which apply to the bit-vector interval domain and a certain kind of polyhedral domain, respectively. We implement and evaluate the proposed techniques on two machine code analysis clients, namely static memory corruption analysis and constrained random fuzzing. Using a suite of 57,933 queries from the clients, we compare our approach against a diverse group of state-of-the-art algorithms. The experiments show that our algorithms achieve a substantial speedup over existing techniques and illustrate significant precision advantages for the clients. Our work presents strong evidence that symbolic abstraction of numeric domains can be efficient and practical for large and realistic programs.},
+journal = {Proc. ACM Program. Lang.},
+month = {oct},
+articleno = {118},
+numpages = {32},
+keywords = {symbolic abstraction, polyhedral domain, optimization, interval domain, Abstract interpretation}
+}
+
+@article{VerificationSMT,
+author = {Beyer, Dirk and Dangl, Matthias and Wendler, Philipp},
+title = {A Unifying View on SMT-Based Software Verification},
+year = {2018},
+issue_date = {Mar 2018},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+volume = {60},
+number = {3},
+issn = {0168-7433},
+url = {https://doi.org/10.1007/s10817-017-9432-6},
+doi = {10.1007/s10817-017-9432-6},
+abstract = {After many years of successful development of new approaches for software verification, there is a need to consolidate the knowledge about the different abstract domains and algorithms. The goal of this paper is to provide a compact and accessible presentation of four SMT-based verification approaches in order to study them in theory and in practice. We present and compare the following different “schools of thought” of software verification: bounded model checking, k-induction, predicate abstraction, and lazy abstraction with interpolants. Those approaches are well-known and successful in software verification and have in common that they are based on SMT solving as the back-end technology. We reformulate all four approaches in the unifying theoretical framework of configurable program analysis and implement them in the verification framework CPAchecker. Based on this, we can present an evaluation that thoroughly compares the different approaches, where the core differences are expressed in configuration parameters and all other variables are kept constant (such as parser front end, SMT solver, used theory in SMT formulas). We evaluate the effectiveness and the efficiency of the approaches on a large set of verification tasks and discuss the conclusions.},
+journal = {J. Autom. Reason.},
+month = {mar},
+pages = {299–335},
+numpages = {37},
+keywords = {SMT solving, Predicate abstraction, Lazy abstraction, Impact, k-induction, Bounded model checking, Program analysis, Software verification}
+}
+
+@inproceedings{Automata1,
+author = {Tappler, Martin and Aichernig, Bernhard K. and Lorber, Florian},
+title = {Timed Automata Learning via SMT Solving},
+year = {2022},
+isbn = {978-3-031-06772-3},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+url = {https://doi.org/10.1007/978-3-031-06773-0_26},
+doi = {10.1007/978-3-031-06773-0_26},
+abstract = {Automata learning is a technique for automatically inferring models of existing systems, that enables formal verification of black-box systems. In this paper we propose a way of learning timed automata, extended final state machines that can measure the progress of time. We make use of SMT solving to learn timed automata consistent with the observations in a set of timed traces, which can be gathered via active testing or passive monitoring. By imposing a set of restrictions to the learnt models, we ensure that our solutions are not overly general. The presented SMT encoding of the problem allows for two ways of incremental solving and different search orders. We present a prototype implementation with results from case studies and randomly generated timed automata of varying size and complexity. We perform an extensive evaluation over six SMT solvers, using different theories and exploration strategies, as well as incremental and non-incremental solving.},
+booktitle = {NASA Formal Methods: 14th International Symposium, NFM 2022, Pasadena, CA, USA, May 24–27, 2022, Proceedings},
+pages = {489–507},
+numpages = {19},
+location = {Pasadena, CA, USA}
+}
+
+@inproceedings{automata2,
+author = {Xu, Runqing and An, Jie and Zhan, Bohua},
+title = {Active Learning of One-Clock Timed Automata Using Constraint Solving},
+year = {2022},
+isbn = {978-3-031-19991-2},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+url = {https://doi.org/10.1007/978-3-031-19992-9_16},
+doi = {10.1007/978-3-031-19992-9_16},
+abstract = {Active automata learning in the framework of Angluin’s L∗ algorithm has been applied to learning many kinds of automata models. In applications to timed models such as timed automata, the main challenge is to determine guards on the clock value in transitions as well as which transitions reset the clock. In this paper, we introduce a new algorithm for active learning of deterministic one-clock timed automata and timed Mealy machines. The algorithm uses observation tables that do not commit to specific choices of reset, but instead rely on constraint solving to determine reset choices that satisfy readiness conditions. We evaluate our algorithm on randomly-generated examples as well as practical case studies, showing that it is applicable to larger models, and competitive with existing work for learning other forms of timed models.},
+booktitle = {Automated Technology for Verification and Analysis: 20th International Symposium, ATVA 2022, Virtual Event, October 25–28, 2022, Proceedings},
+pages = {249–265},
+numpages = {17},
+keywords = {Constraint solving, Timed automata, Active learning}
+}
+
+@article{CaiLZ2023,
+author = {Cai, Shaowei and Li, Bohan and Zhang, Xindi},
+title = {Local Search For Satisfiability Modulo Integer Arithmetic Theories},
+year = {2023},
+issue_date = {October 2023},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {24},
+number = {4},
+issn = {1529-3785},
+url = {https://doi.org/10.1145/3597495},
+doi = {10.1145/3597495},
+abstract = {Satisfiability Modulo Theories (SMT) refers to the problem of deciding the satisfiability of a formula with respect to certain background first-order theories. In this article, we focus on Satisfiablity Modulo Integer Arithmetic, which is referred to as SMT(IA), including both linear and non-linear integer arithmetic theories. Dominant approaches to SMT rely on calling a CDCL-based SAT solver, either in a lazy or eager flavour. Local search, a competitive approach to solving combinatorial problems including SAT, however, has not been well studied for SMT. We develop the first local-search algorithm for SMT(IA) by directly operating on variables, breaking through the traditional framework. We propose a local-search framework by considering the distinctions between Boolean and integer variables. Moreover, we design a novel operator and scoring functions tailored for integer arithmetic, as well as a two-level operation selection heuristic. Putting these together, we develop a local search SMT(IA) solver called LocalSMT. Experiments are carried out to evaluate LocalSMT on benchmark sets from SMT-LIB. The results show that LocalSMT is competitive and complementary with state-of-the-art SMT solvers, and performs particularly well on those formulae with only integer variables. A simple sequential portfolio with Z3 improves the state-of-the-art on satisfiable benchmark sets from SMT-LIB.},
+journal = {ACM Trans. Comput. Logic},
+month = {jul},
+articleno = {32},
+numpages = {26},
+keywords = {SMT, local search, linear integer arithmetic, non-linear integer arithmetic}
+}
+
+@INPROCEEDINGS{CPS1,
+  author={Bae, Kyungmin and Gao, Sicun},
+  booktitle={2017 Formal Methods in Computer Aided Design (FMCAD)}, 
+  title={Modular SMT-based analysis of nonlinear hybrid systems}, 
+  year={2017},
+  volume={},
+  number={},
+  pages={180-187},
+  keywords={Automata;Encoding;Input variables;Synchronization;Trajectory;Hair;Algorithm design and analysis},
+  doi={10.23919/FMCAD.2017.8102258}}
+
+@article{CPS2,
+author = {Shoukry, Yasser and Chong, Michelle and Wakaiki, Masashi and Nuzzo, Pierluigi and Sangiovanni-Vincentelli, Alberto and Seshia, Sanjit A. and Hespanha, JO\~{A}o P. and Tabuada, Paulo},
+title = {SMT-Based Observer Design for Cyber-Physical Systems under Sensor Attacks},
+year = {2018},
+issue_date = {January 2018},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {2},
+number = {1},
+issn = {2378-962X},
+url = {https://doi.org/10.1145/3078621},
+doi = {10.1145/3078621},
+abstract = {We introduce a scalable observer architecture, which can efficiently estimate the states of a discrete-time linear-time-invariant system whose sensors are manipulated by an attacker, and is robust to measurement noise. Given an upper bound on the number of attacked sensors, we build on previous results on necessary and sufficient conditions for state estimation, and propose a novel Multi-Modal Luenberger (MML) observer based on efficient Satisfiability Modulo Theory (SMT) solving. We present two techniques to reduce the complexity of the estimation problem. As a first strategy, instead of a bank of distinct observers, we use a family of filters sharing a single dynamical equation for the states, but different output equations, to generate estimates corresponding to different subsets of sensors. Such an architecture can reduce the memory usage of the observer from an exponential to a linear function of the number of sensors. We then develop an efficient SMT-based decision procedure that is able to reason about the estimates of the MML observer to detect at runtime which sets of sensors are attack-free, and use them to obtain a correct state estimate. Finally, we discuss two optimization-based algorithms that can efficiently select the observer parameters with the goal of minimizing the sensitivity of the estimates with respect to sensor noise. We provide proofs of convergence for our estimation algorithm and report simulation results to compare its runtime performance with alternative techniques. We show that our algorithm scales well for large systems (including up to 5,000 sensors) for which many previously proposed algorithms are not implementable due to excessive memory and time requirements. Finally, we illustrate the effectiveness of our approach, both in terms of resiliency to attacks and robustness to noise, on the design of large-scale power distribution networks.},
+journal = {ACM Trans. Cyber-Phys. Syst.},
+month = {jan},
+articleno = {5},
+numpages = {27},
+keywords = {Secure state estimation, satisfiability modulo theory, secure cyber-physical systems}
+}
+
+@INPROCEEDINGS{CPS3,
+  author={Cimatti, Alessandro},
+  booktitle={2012 Formal Methods in Computer-Aided Design (FMCAD)}, 
+  title={Application of SMT solvers to hybrid system verification}, 
+  year={2012},
+  volume={},
+  number={},
+  pages={4-4},
+  keywords={Automata;Feature extraction;Design automation;Abstracts;Computational modeling;Vehicle dynamics;Aerodynamics},
+  doi={}}
+
+@inproceedings{hybridSMT,
+author = {Zhang, Xindi and Li, Bohan and Cai, Shaowei},
+title = {Deep Combination of CDCL(T) and Local Search for Satisfiability Modulo Non-Linear Integer Arithmetic Theory},
+year = {2024},
+isbn = {9798400702174},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3597503.3639105},
+doi = {10.1145/3597503.3639105},
+abstract = {Satisfiability Modulo Theory (SMT) generalizes the propositional satisfiability problem (SAT) by extending support for various first-order background theories. In this paper, we focus on the SMT problems in Non-Linear Integer Arithmetic (NIA) theory, referred to as SMT(NIA), which has wide applications in software engineering. The dominant paradigm for SMT(NIA) is the CDCL(T) framework, while recently stochastic local search (SLS) has also shown its effectiveness. However, the cooperation between the two methods has not been studied yet. Motivated by the great success of the deep cooperation of CDCL and SLS for SAT, we propose a two-layer hybrid approach for SMT(NIA). The outer-layer interleaves between the inner-layer and an independent SLS solver. In the inner-layer, we take CDCL(T) as the main body, and design DCL(T)-guided SLS solver, which is invoked at branches corresponding to skeleton solutions and returns useful information to improve the branching heuristics of CDCL(T). We implement our ideas on top of the CDCL(T) tactic of Z3 with an SLS solver called LocalSMT, resulting in a hybrid solver dubbed HybridSMT. Extensive experiments are carried out on the standard SMT(NIA) benchmarks from SMT-LIB, where most of the instances are from real-world software engineering applications of termination and non-termination analysis. Experiment results show that HybridSMT significantly improves the CDCL(T) solver in Z3. Moreover, our solver can solve 10.36\% more instances than the currently best SMT(NIA) solver, and is more efficient for software verification instances.},
+booktitle = {Proceedings of the IEEE/ACM 46th International Conference on Software Engineering},
+articleno = {125},
+numpages = {13},
+keywords = {SMT(NIA), CDCL(T), local search, hybrid method},
+location = {Lisbon, Portugal},
+series = {ICSE '24}
+}
+
+@INPROCEEDINGS{vsids,
+  author={Moskewicz, M.W. and Madigan, C.F. and Zhao, Y. and Zhang, L. and Malik, S.},
+  booktitle={Proceedings of the 38th Design Automation Conference (IEEE Cat. No.01CH37232)}, 
+  title={Chaff: engineering an efficient SAT solver}, 
+  year={2001},
+  volume={},
+  number={},
+  pages={530-535},
+  keywords={Electronic design automation and methodology;Artificial intelligence;Logic testing;Permission;Electronics packaging;Performance gain;Business continuity;Design engineering;Design automation;NP-complete problem},
+  doi={10.1145/378239.379017}
+}
+
+
+@InProceedings{smtrat,
+author="Corzilius, Florian
+and Kremer, Gereon
+and Junges, Sebastian
+and Schupp, Stefan
+and {\'A}brah{\'a}m, Erika",
+editor="Heule, Marijn
+and Weaver, Sean",
+title="SMT-RAT: An Open Source C++ Toolbox for Strategic and Parallel SMT Solving",
+booktitle="Theory and Applications of Satisfiability Testing -- SAT 2015",
+year="2015",
+publisher="Springer International Publishing",
+address="Cham",
+pages="360--368",
+abstract="During the last decade, popular SMT solvers have been extended step-by-step with a wide range of decision procedures for different theories. Some SMT solvers also support the user-defined tuning and combination of such procedures, typically via command-line options. However, configuring solvers this way is a tedious task with restricted options.",
+isbn="978-3-319-24318-4"
+}
+
+@inproceedings{synthesis1,
+author = {Wang, Jingbo and Wang, Chao},
+title = {Learning to Synthesize Relational Invariants},
+year = {2023},
+isbn = {9781450394758},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3551349.3556942},
+doi = {10.1145/3551349.3556942},
+abstract = {We propose a method for synthesizing invariants that can help verify relational properties over two programs or two different executions of a program. Applications of such invariants include verifying functional equivalence, non-interference security, and continuity properties. Our method generates invariant candidates using syntax guided synthesis (SyGuS) and then filters them using an SMT-solver based verifier, to ensure they are both inductive invariants and sufficient for verifying the property at hand. To improve performance, we propose two learning based techniques: a logical reasoning (LR) technique to determine which part of the search space can be pruned away, and a reinforcement learning (RL) technique to determine which part of the search space to prioritize. Our experiments on a diverse set of relational verification benchmarks show that our learning based techniques can drastically reduce the search space and, as a result, they allow our method to generate invariants of a higher quality in much shorter time than state-of-the-art invariant synthesis techniques.},
+booktitle = {Proceedings of the 37th IEEE/ACM International Conference on Automated Software Engineering},
+articleno = {65},
+numpages = {12},
+location = {Rochester, MI, USA},
+series = {ASE '22}
+}
+
+@inproceedings{NN1,
+author = {Amir, Guy and Wu, Haoze and Barrett, Clark and Katz, Guy},
+title = {An SMT-Based Approach for Verifying Binarized Neural Networks},
+year = {2021},
+isbn = {978-3-030-72012-4},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+url = {https://doi.org/10.1007/978-3-030-72013-1_11},
+doi = {10.1007/978-3-030-72013-1_11},
+abstract = {Deep learning has emerged as an effective approach for creating modern software systems, with neural networks often surpassing hand-crafted systems. Unfortunately, neural networks are known to suffer from various safety and security issues. Formal verification is a promising avenue for tackling this difficulty, by formally certifying that networks are correct. We propose an SMT-based technique for verifying binarized neural networks — a popular kind of neural network, where some weights have been binarized in order to render the neural network more memory and energy efficient, and quicker to evaluate. One novelty of our technique is that it allows the verification of neural networks that include both binarized and non-binarized components. Neural network verification is computationally very difficult, and so we propose here various optimizations, integrated into our SMT procedure as deduction steps, as well as an approach for parallelizing verification queries. We implement our technique as an extension to the Marabou framework, and use it to evaluate the approach on popular binarized neural network architectures.},
+booktitle = {Tools and Algorithms for the Construction and Analysis of Systems: 27th International Conference, TACAS 2021, Held as Part of the European Joint Conferences on Theory and Practice of Software, ETAPS 2021,  Luxembourg City, Luxembourg, March 27 – April 1, 2021, Proceedings, Part II},
+pages = {203–222},
+numpages = {20},
+location = {Luxembourg City, Luxembourg}
+}
+
+@InProceedings{NN2,
+author="Katz, Guy
+and Barrett, Clark
+and Dill, David L.
+and Julian, Kyle
+and Kochenderfer, Mykel J.",
+editor="Majumdar, Rupak
+and Kun{\v{c}}ak, Viktor",
+title="Reluplex: An Efficient SMT Solver for Verifying Deep Neural Networks",
+booktitle="Computer Aided Verification",
+year="2017",
+publisher="Springer International Publishing",
+address="Cham",
+pages="97--117",
+abstract="Deep neural networks have emerged as a widely used and effective means for tackling complex, real-world problems. However, a major obstacle in applying them to safety-critical systems is the great difficulty in providing formal guarantees about their behavior. We present a novel, scalable, and efficient technique for verifying properties of deep neural networks (or providing counter-examples). The technique is based on the simplex method, extended to handle the non-convex Rectified Linear Unit (ReLU) activation function, which is a crucial ingredient in many modern neural networks. The verification procedure tackles neural networks as a whole, without making any simplifying assumptions. We evaluated our technique on a prototype deep neural network implementation of the next-generation airborne collision avoidance system for unmanned aircraft (ACAS Xu). Results show that our technique can successfully prove properties of networks that are an order of magnitude larger than the largest networks verified using existing methods.",
+isbn="978-3-319-63387-9"
+}
+
+@inproceedings{NN3,
+author = {Paulsen, Brandon and Wang, Chao},
+title = {LinSyn: Synthesizing Tight Linear Bounds for Arbitrary Neural Network Activation Functions},
+year = {2022},
+isbn = {978-3-030-99523-2},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+url = {https://doi.org/10.1007/978-3-030-99524-9_19},
+doi = {10.1007/978-3-030-99524-9_19},
+abstract = {The most scalable approaches to certifying neural network robustness depend on computing sound linear lower and upper bounds for the network’s activation functions. Current approaches are limited in that the linear bounds must be handcrafted by an expert, and can be sub-optimal, especially when the network’s architecture composes operations using, for example, multiplication such as in LSTMs and the recently popular Swish activation. The dependence on an expert prevents the application of robustness certification to developments in the state-of-the-art of activation functions, and furthermore the lack of tightness guarantees may give a false sense of insecurity about a particular model. To the best of our knowledge, we are the first to consider the problem of automatically synthesizing tight linear bounds for arbitrary n-dimensional activation functions. We propose the first fully automated method that achieves tight linear bounds while only leveraging the mathematical definition of the activation function itself. Our method leverages an efficient heuristic technique to synthesize bounds that are tight and usually sound, and then verifies the soundness (and adjusts the bounds if necessary) using the highly optimized branch-and-bound SMT solver, dReal. Even though our method depends on an SMT solver, we show that the runtime is reasonable in practice, and, compared with state of the art, our method often achieves 2-5X tighter final output bounds and more than quadruple certified robustness.},
+booktitle = {Tools and Algorithms for the Construction and Analysis of Systems: 28th International Conference, TACAS 2022, Held as Part of the European Joint Conferences on Theory and Practice of Software, ETAPS 2022, Munich, Germany, April 2–7, 2022, Proceedings, Part I},
+pages = {357–376},
+numpages = {20},
+location = {Munich, Germany}
+}
+
+@inproceedings{NN4,
+author = {Paulsen, Brandon and Wang, Chao},
+title = {Example Guided Synthesis of Linear Approximations for Neural Network Verification},
+year = {2022},
+isbn = {978-3-031-13184-4},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+url = {https://doi.org/10.1007/978-3-031-13185-1_8},
+doi = {10.1007/978-3-031-13185-1_8},
+abstract = {Linear approximations of nonlinear functions have a wide range of applications such as rigorous global optimization and, recently, verification problems involving neural networks. In the latter case, a linear approximation must be hand-crafted for the neural network’s activation functions. This hand-crafting is tedious, potentially error-prone, and requires an expert to prove the soundness of the linear approximation. Such a limitation is at odds with the rapidly advancing deep learning field – current verification tools either lack the necessary linear approximation, or perform poorly on neural networks with state-of-the-art activation functions. In this work, we consider the problem of automatically synthesizing sound linear approximations for a given neural network activation function. Our approach is example-guided: we develop a procedure to generate examples, and then we leverage machine learning techniques to learn a (static) function that outputs linear approximations. However, since the machine learning techniques we employ do not come with formal guarantees, the resulting synthesized function may produce linear approximations with violations. To remedy this, we bound the maximum violation using rigorous global optimization techniques, and then adjust the synthesized linear approximation accordingly to ensure soundness. We evaluate our approach on several neural network verification tasks. Our evaluation shows that the automatically synthesized linear approximations greatly improve the accuracy (i.e., in terms of the number of verification problems solved) compared to hand-crafted linear approximations in state-of-the-art neural network verification tools. An artifact with our code and experimental scripts is available at: .
+[inline-graphic not available: see fulltext][inline-graphic not available: see fulltext]},
+booktitle = {Computer Aided Verification: 34th International Conference, CAV 2022, Haifa, Israel, August 7–10, 2022, Proceedings, Part I},
+pages = {149–170},
+numpages = {22},
+location = {Haifa, Israel}
+}
+
+@inproceedings{VS,
+author = {Corzilius, Florian and \'{A}brah\'{a}m, Erika},
+title = {Virtual substitution for SMT-solving},
+year = {2011},
+isbn = {9783642229527},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+abstract = {SMT-solving aims at deciding satisfiability for the existential fragment of a first-order theory. A SAT-solver handles the logical part of a given problem and invokes an embedded theory solver to check consistency of theory constraints. For efficiency, the theory solver should be able to work incrementally and generate infeasible subsets. Currently available decision procedures for real algebra - the first-order theory of the reals with addition and multiplication - do not exhibit these features. In this paper we present an adaptation of the virtual substitution method, providing these abilities.},
+booktitle = {Proceedings of the 18th International Conference on Fundamentals of Computation Theory},
+pages = {360–371},
+numpages = {12},
+location = {Oslo, Norway},
+series = {FCT'11}
+}
+
+@INPROCEEDINGS{MCSAT2,
+  author={Jovanovic, Dejan and Barrett, Clark and de Moura, Leonardo},
+  booktitle={2013 Formal Methods in Computer-Aided Design}, 
+  title={The design and implementation of the model constructing satisfiability calculus}, 
   year={2013},
-  publisher={Elsevier}
-}
-
-@inproceedings{suijlen2022parallel,
-  title={A parallel algorithm for GAC filtering of the alldifferent constraint},
-  author={Suijlen, Wijnand and de Framond, F{\'e}lix and Lallouet, Arnaud and Petitet, Antoine},
-  booktitle={International Conference on Integration of Constraint Programming, Artificial Intelligence, and Operations Research},
-  pages={390--407},
-  year={2022},
-  organization={Springer}
-}
-
-@article{prud2016choco,
-  title={Choco solver documentation},
-  author={Prud’homme, Charles and Fages, Jean-Guillaume and Lorca, Xavier},
-  journal={TASC, INRIA Rennes, LINA CNRS UMR},
-  volume={6241},
-  pages={102--106},
-  year={2016}
-}
-
-@incollection{dorne1999tabu,
-  title={Tabu search for graph coloring, T-colorings and set T-colorings},
-  author={Dorne, Rapha{\"e}l and Hao, Jin-Kao},
-  booktitle={Meta-heuristics: Advances and trends in local search paradigms for optimization},
-  pages={77--92},
-  year={1999},
-  publisher={Springer}
-}
-
-@article{prud2019choco,
-  title={Choco solver},
-  author={Prud’homme, Charles and Fages, Jean-Guillaume and Lorca, Xavier},
-  journal={Website, March},
-  year={2019}
-}
-
-@article{rivin1994n,
-  title={The n-queens problem},
-  author={Rivin, Igor and Vardi, Ilan and Zimmermann, Paul},
-  journal={The American Mathematical Monthly},
-  volume={101},
-  number={7},
-  pages={629--639},
-  year={1994},
-  publisher={Taylor \& Francis}
-}
-
-@article{morris1974structure,
-  title={The structure of all-interval series},
-  author={Morris, Robert and Starr, Daniel},
-  journal={Journal of Music Theory},
-  volume={18},
-  number={2},
-  pages={364--389},
-  year={1974},
-  publisher={JSTOR}
-}
-
-@inproceedings{DBLP:conf/ijcai/LiWL23,
-  author       = {Zhe Li and
-                  Yaohua Wang and
-                  Zhanshan Li},
-  title        = {A Bitwise {GAC} Algorithm for Alldifferent Constraints},
-  booktitle    = {Proceedings of the Thirty-Second International Joint Conference on
-                  Artificial Intelligence, {IJCAI} 2023, 19th-25th August 2023, Macao,
-                  SAR, China},
-  pages        = {1988--1995},
-  publisher    = {ijcai.org},
-  year         = {2023},
-  url          = {https://doi.org/10.24963/ijcai.2023/221},
-  doi          = {10.24963/ijcai.2023/221},
-  timestamp    = {Mon, 14 Aug 2023 16:05:12 +0200},
-  biburl       = {https://dblp.org/rec/conf/ijcai/LiWL23.bib},
-  bibsource    = {dblp computer science bibliography, https://dblp.org}
-}
-
-@inproceedings{DBLP:conf/ijcai/ZhenLLL23,
-  author       = {Luhan Zhen and
-                  Zhanshan Li and
-                  Yanzhi Li and
-                  Hongbo Li},
-  title        = {Eliminating the Computation of Strongly Connected Components in Generalized
-                  Arc Consistency Algorithm for AllDifferent Constraint},
-  booktitle    = {Proceedings of the Thirty-Second International Joint Conference on
-                  Artificial Intelligence, {IJCAI} 2023, 19th-25th August 2023, Macao,
-                  SAR, China},
-  pages        = {2049--2057},
-  publisher    = {ijcai.org},
-  year         = {2023},
-  url          = {https://doi.org/10.24963/ijcai.2023/228},
-  doi          = {10.24963/ijcai.2023/228},
-  timestamp    = {Mon, 14 Aug 2023 16:05:12 +0200},
-  biburl       = {https://dblp.org/rec/conf/ijcai/ZhenLLL23.bib},
-  bibsource    = {dblp computer science bibliography, https://dblp.org}
-}
-
-@inproceedings{zhen2023eliminating,
-  title={Eliminating the computation of strongly connected components in generalized arc consistency algorithm for alldifferent constraint},
-  author={Zhen, Luhan and Li, Zhanshan and Li, Yanzhi and Li, Hongbo},
-  booktitle={Proceedings of the Thirty-Second International Joint Conference on Artificial Intelligence},
-  pages={2049--2057},
-  year={2023}
-}
-
-@incollection{van2006backtracking,
-  title={Backtracking search algorithms},
-  author={Van Beek, Peter},
-  booktitle={Foundations of artificial intelligence},
-  volume={2},
-  pages={85--134},
-  year={2006},
-  publisher={Elsevier}
-}
-
-@book{van1987simulated,
-  title={Simulated annealing},
-  author={Van Laarhoven, Peter JM and Aarts, Emile HL and van Laarhoven, Peter JM and Aarts, Emile HL},
-  year={1987},
-  publisher={Springer}
-}
-
-@article{mirjalili2019genetic,
-  title={Genetic algorithm},
-  author={Mirjalili, Seyedali and Mirjalili, Seyedali},
-  journal={Evolutionary algorithms and neural networks: Theory and applications},
-  pages={43--55},
-  year={2019},
-  publisher={Springer}
-}
-
-@article{wang2018particle,
-  title={Particle swarm optimization algorithm: an overview},
-  author={Wang, Dongshu and Tan, Dapei and Liu, Lei},
-  journal={Soft computing},
-  volume={22},
-  pages={387--408},
-  year={2018},
-  publisher={Springer}
-}
-
-@inproceedings{bartak2001theory,
-  title={Theory and practice of constraint propagation},
-  author={Bart{\'a}k, Roman},
-  booktitle={Proceedings of the 3rd Workshop on Constraint Programming in Decision and Control},
-  volume={50},
-  year={2001}
-}
-
-@inproceedings{beame2003understanding,
-  title={Understanding the power of clause learning},
-  author={Beame, Paul and Kautz, Henry and Sabharwal, Ashish},
-  booktitle={IJCAI},
-  pages={1194--1201},
-  year={2003},
-  organization={Citeseer}
-}
-
-@inproceedings{huang2007effect,
-  title={The Effect of Restarts on the Efficiency of Clause Learning.},
-  author={Huang, Jinbo and others},
-  booktitle={IJCAI},
-  volume={7},
-  pages={2318--2323},
-  year={2007}
-}
-
-@book{biere2009handbook,
-  title={Handbook of satisfiability},
-  author={Biere, Armin and Heule, Marijn and van Maaren, Hans},
-  volume={185},
-  year={2009},
-  publisher={IOS press}
-}
-
-@article{barrett2018satisfiability,
-  title={Satisfiability modulo theories},
-  author={Barrett, Clark and Tinelli, Cesare},
-  journal={Handbook of model checking},
-  pages={305--343},
-  year={2018},
-  publisher={Springer}
-}
-
-@article{dantzig2002linear,
-  title={Linear programming},
-  author={Dantzig, George B},
-  journal={Operations research},
-  volume={50},
-  number={1},
-  pages={42--47},
-  year={2002},
-  publisher={INFORMS}
-}
-
-@inproceedings{de2008z3,
-  title={Z3: An efficient SMT solver},
-  author={De Moura, Leonardo and Bj{\o}rner, Nikolaj},
-  booktitle={International conference on Tools and Algorithms for the Construction and Analysis of Systems},
-  pages={337--340},
-  year={2008},
-  organization={Springer}
-}
-
-@inproceedings{barbosa2022cvc5,
-  title={cvc5: A versatile and industrial-strength SMT solver},
-  author={Barbosa, Haniel and Barrett, Clark and Brain, Martin and Kremer, Gereon and Lachnitt, Hanna and Mann, Makai and Mohamed, Abdalrhman and Mohamed, Mudathir and Niemetz, Aina and N{\"o}tzli, Andres and others},
-  booktitle={International Conference on Tools and Algorithms for the Construction and Analysis of Systems},
-  pages={415--442},
-  year={2022},
-  organization={Springer}
-}
-
-@article{sorensson2005minisat,
-  title={Minisat v1. 13-a sat solver with conflict-clause minimization},
-  author={Sorensson, Niklas and Een, Niklas},
-  journal={SAT},
-  volume={2005},
-  number={53},
-  pages={1--2},
-  year={2005}
-}
-@article{van2001alldifferent,
-  title={The alldifferent constraint: A survey},
-  author={Van Hoeve, Willem-Jan},
-  journal={arXiv preprint cs/0105015},
-  year={2001}
-}
-
-@article{ford1957simple,
-  title={A simple algorithm for finding maximal network flows and an application to the Hitchcock problem},
-  author={Ford, Lester Randolph and Fulkerson, Delbert R},
-  journal={Canadian journal of Mathematics},
-  volume={9},
-  pages={210--218},
-  year={1957},
-  publisher={Cambridge University Press}
-}
-
-@article{edmonds1972theoretical,
-  title={Theoretical improvements in algorithmic efficiency for network flow problems},
-  author={Edmonds, Jack and Karp, Richard M},
-  journal={Journal of the ACM (JACM)},
-  volume={19},
-  number={2},
-  pages={248--264},
-  year={1972},
-  publisher={ACM New York, NY, USA}
-}
-
-@inproceedings{michel2002constraint,
-  title={A constraint-based architecture for local search},
-  author={Michel, Laurent and Hentenryck, Pascal Van},
-  booktitle={Proceedings of the 17th ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applications},
-  pages={83--100},
-  year={2002}
-}
-
-@book{apt2003principles,
-  title={Principles of constraint programming},
-  author={Apt, Krzysztof},
-  year={2003},
-  publisher={Cambridge university press}
-}
-
-@inproceedings{nethercote2007minizinc,
-  title={MiniZinc: Towards a standard CP modelling language},
-  author={Nethercote, Nicholas and Stuckey, Peter J and Becket, Ralph and Brand, Sebastian and Duck, Gregory J and Tack, Guido},
-  booktitle={International Conference on Principles and Practice of Constraint Programming},
-  pages={529--543},
-  year={2007},
-  organization={Springer}
-}
-
-@article{hopcroft1973n,
-  title={An n\^{}5/2 algorithm for maximum matchings in bipartite graphs},
-  author={Hopcroft, John E and Karp, Richard M},
-  journal={SIAM Journal on computing},
-  volume={2},
-  number={4},
-  pages={225--231},
-  year={1973},
-  publisher={SIAM}
-}
-
-@article{edmonds1965paths,
-  title={Paths, trees, and flowers},
-  author={Edmonds, Jack},
-  journal={Canadian Journal of mathematics},
-  volume={17},
-  pages={449--467},
-  year={1965},
-  publisher={Cambridge University Press}
-}
-
-@inproceedings{micali1980v,
-  title={An O (v| v| c| E|) algoithm for finding maximum matching in general graphs},
-  author={Micali, Silvio and Vazirani, Vijay V},
-  booktitle={21st Annual symposium on foundations of computer science (Sfcs 1980)},
-  pages={17--27},
-  year={1980},
-  organization={IEEE}
-}
-
-@article{hall1987representatives,
-  title={On representatives of subsets},
-  author={Hall, Philip},
-  journal={Classic Papers in Combinatorics},
-  pages={58--62},
-  year={1987},
-  publisher={Springer}
-}
-
-@article{gent2008generalised,
-  title={Generalised arc consistency for the alldifferent constraint: An empirical survey},
-  author={Gent, Ian P and Miguel, Ian and Nightingale, Peter},
-  journal={Artificial Intelligence},
-  volume={172},
-  number={18},
-  pages={1973--2000},
-  year={2008},
-  publisher={Elsevier}
-}
-
-@inproceedings{li2023bitwise,
-  title={A bitwise GAC algorithm for alldifferent constraints},
-  author={Li, Zhe and Wang, Yaohua and Li, Zhanshan},
-  booktitle={Proceedings of the Thirty-Second International Joint Conference on Artificial Intelligence},
-  pages={1988--1995},
-  year={2023}
-}
-
-@article{glover1990tabu,
-  title={Tabu search: A tutorial},
-  author={Glover, Fred},
-  journal={Interfaces},
-  volume={20},
-  number={4},
-  pages={74--94},
-  year={1990},
-  publisher={INFORMS}
-}
-
-@incollection{lourencco2003iterated,
-  title={Iterated local search},
-  author={Louren{\c{c}}o, Helena R and Martin, Olivier C and St{\"u}tzle, Thomas},
-  booktitle={Handbook of metaheuristics},
-  pages={320--353},
-  year={2003},
-  publisher={Springer}
-}
-
-@article{cai2011local,
-  title={Local search with edge weighting and configuration checking heuristics for minimum vertex cover},
-  author={Cai, Shaowei and Su, Kaile and Sattar, Abdul},
-  journal={Artificial Intelligence},
-  volume={175},
-  number={9-10},
-  pages={1672--1696},
-  year={2011},
-  publisher={Elsevier}
-}
-
-@article{tasgetiren2007particle,
-  title={A particle swarm optimization algorithm for makespan and total flowtime minimization in the permutation flowshop sequencing problem},
-  author={Tasgetiren, M Fatih and Liang, Yun-Chia and Sevkli, Mehmet and Gencyilmaz, Gunes},
-  journal={European journal of operational research},
-  volume={177},
-  number={3},
-  pages={1930--1947},
-  year={2007},
-  publisher={Elsevier}
-}
-
-@book{zhang2014automatic,
-  title={Automatic generation of combinatorial test data},
-  author={Zhang, Jian and Zhang, Zhiqiang and Ma, Feifei},
-  year={2014},
-  publisher={Springer}
-}
-
-@article{mandl1985orthogonal,
-  title={Orthogonal Latin squares: an application of experiment design to compiler testing},
-  author={Mandl, Robert},
-  journal={Communications of the ACM},
-  volume={28},
-  number={10},
-  pages={1054--1058},
-  year={1985},
-  publisher={ACM New York, NY, USA}
-}
+  volume={},
+  number={},
+  pages={173-180},
+  keywords={Calculus;Optimization},
+  doi={10.1109/FMCAD.2013.7027033}}
