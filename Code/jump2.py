@@ -25,17 +25,20 @@ ax.spines['bottom'].set_position(('data', 0))
 plt.text(3, -0.2, 'x', fontsize=12)
 plt.text(-0.2, 3, 'y', fontsize=12)
 # draw x = 0.25
-plt.plot([0.25, 0.25], [-0.2, 2.8], linestyle='--', color='black')
-plt.plot([-0.2, 2.8], [0.25, 0.25], linestyle='--', color='black')
-plt.text(0.25, 0.15, '(0.25, 0.25)', fontsize=12)
+# plt.plot([0.25, 0.25], [-0.2, 2.8], linestyle='--', color='black')
+# plt.plot([-0.2, 2.8], [0.25, 0.25], linestyle='--', color='black')
+# plt.text(1.5, -0.25, '(1.5, 0)', fontsize=12)
+# plt.text(0, 1.25, '(0, 1.5)', fontsize=12)
+
+plt.text(-0.1, -0.1, '(0, 0)', fontsize=12)
 
 # draw dashed line y = x, y = 2x, y = 0.5 x
 plt.plot([-0.2, 2.8], [-0.2, 2.8], linestyle='--', color='black')
-plt.text(0.15, -0.2, 'y = x', fontsize=12)
+plt.text(1.5, 2, 'y = x', fontsize=12)
 plt.plot([-0.2, 2.8], [2*(-0.2), 2*(2.8)], linestyle='--', color='black')
-plt.text(0.15, 2.6, 'y = 2x', fontsize=12)
+plt.text(0.8, 2.6, 'y = 2x', fontsize=12)
 plt.plot([-0.2, 2.8], [0.5*(-0.2), 0.5*(2.8)], linestyle='--', color='black')
-plt.text(0.15, 1.2, 'y = 0.5 x', fontsize=12)
+plt.text(2, 1.2, 'y = 0.5 x', fontsize=12)
 
 # plt.savefig('circle2.png', transparent=False)
-plt.savefig('Code/pre.png', transparent=True)
+plt.savefig('Code/img/jump2.png', transparent=True)
