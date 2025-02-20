@@ -13,27 +13,30 @@
 
 除此之外，我们的算法和Z3、cvc5有很大的互补性。根据表\ref{tab:experiment}，一共有来自不同类别共148个样例仅仅可以使用局部搜索算法求解，而非Z3、cvc5、Yices等完备算法。更具体来说，有291个样例可以被局部搜索求解而非Z3，有378个样例可以被局部搜索求解而非cvc5。
 
+
+
+
 \begin{table*}[]
     \centering
     \resizebox{\linewidth}{!}{
         \begin{tabular}{c | c | c | c | c | c | c}
             \hline
             类别 & 个数 & Z3 & cvc5 & Yices & LS\_NRA （本文） & 单独求解 \\\hline
-            20161105-Sturm-MBO & 120 & 0 & 0 & 0 & 88 & 88 \\
+            20161105-Sturm-MBO & 120 & 0 & 0 & 0 & 84 & 84 \\
             20161105-Sturm-MGC & 2 & 2 & 0 & 0 & 0 & 0 \\
-            20170501-Heizmann & 60 & 3 & 1 & 0 & 8 & 6 \\
-            20180501-Economics-Mulligan & 93 & 93 & 89 & 91 & 90 & 0 \\
-            2019-ezsmt & 61 & 54 & 51 & 52 & 19 & 0 \\
-            20209011-Pine & 237 & 235 & 201 & 235 & 224 & 0 \\
-            20211101-Geogebra & 112 & 109 & 91 & 99 & 101 & 0 \\
-            20220314-Uncu & 74 & 73 & 66 & 74 & 70 & 0 \\
-            LassoRanker & 351 & 155 & 304 & 122 & 272 & 13 \\
-            UltimateAtomizer & 48 & 41 & 34 & 39 & 27 & 2 \\
-            hycomp & 492 & 311 & 216 & 227 & 304 & 11 \\
-            kissing & 42 & 33 & 17 & 10 & 33 & 1 \\
-            meti-tarski & 4391 & 4391 & 4345 & 4369 & 4351 & 0 \\
-            zankl & 133 & 70 & 61 & 58 & 100 & 27 \\\hline
-            总和 & 6216 & 5570 & 5476 & 5376 & 5687 & 148 \\\hline
+            20170501-Heizmann & 60 & 2 & 1 & 0 & 6 & 5 \\
+            20180501-Economics-Mulligan & 93 & 93 & 89 & 91 & 87 & 0 \\
+            2019-ezsmt & 61 & 56 & 50 & 52 & 18 & 0 \\
+            20209011-Pine & 237 & 234 & 199 & 235 & 224 & 0 \\
+            20211101-Geogebra & 112 & 110 & 91 & 99 & 100 & 0 \\
+            20220314-Uncu & 74 & 69 & 62 & 70 & 70 & 0 \\
+            LassoRanker & 351 & 167 & 305 & 122 & 284 & 15 \\
+            UltimateAtomizer & 48 & 35 & 35 & 39 & 26 & 2 \\
+            hycomp & 492 & 307 & 225 & 227 & 270 & 17 \\
+            kissing & 42 & 33 & 17 & 10 & 33 & 2 \\
+            meti-tarski & 4391 & 4391 & 4343 & 4369 & 4356 & 0 \\
+            zankl & 133 & 70 & 58 & 58 & 99 & 26 \\\hline
+            总和 & 6216 & 5569 & 5475 & 5372 & 5657 & 151 \\\hline
         \end{tabular}
         }
         \bicaption{LS\_NRA和其他SMT求解器的求解能力对比。} {Comparison of LS\_NRA and other SMT solvers.}
@@ -50,13 +53,31 @@
 \label{fig:scatter}
 \end{figure*}
 
+我们还参考了不同求解器的求解时间对比，如图\ref{fig:time}所示。可以看出，几乎在任何的限制时间内，局部搜索算法的求解数量都是最多的，这说明了局部搜索的相对轻捷。随着求解时间的增加，局部搜索算法的求解数量增长速度远远快于其他求解器，这说明在充足的时间内，更多的样例可以通过多次迭代找到邻近的可行解。
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{Img/time_solver.png}
+    \bicaption{LS\_NRA与Z3、cvc5在不同时间求解个数对比。}{Comparison of LS\_NRA and Z3, cvc5 solving number in different time.}
+\label{fig:time}
+\end{figure*}
+
+
 \section{和其他局部搜索工作的对比}
 我们还讨论了LS\_NRA与以往局部搜索工作的对比。在\cite{multilinear}考虑的979个多线性样例中，LS\_NRA可以求解826个，略小于前序工作的891个。这种微弱的差异主要来自于\cite{multilinear}更高效的实现，考虑到其工作进需要考虑有理数赋值，而非代数数，因此在数据结构设计和参数优化上更有针对性。在\cite{LiXZ23}考虑的2736个样例中，我们的方法可以求解2589个，高于前序工作的2246个。事实上，我们不仅比局部搜索算法求解的个数要多，也要比前面工作用于对比的其他求解器个数还要多。我们注意到\cite{LiXZ23}使用了不同的计算软件（比如Maple），并且在不同机器上测试，因此数据可能略有误差。
 
 \section{消融实验1：变量分数增量式计算的影响}
 本小节主要展示章节\ref{chap:method1}中提出的变量分数增量式计算对迭代加速的影响。我们比较如下集中实现：基于边界的增量式计算(Incremental)，不采用增量式计算的传统方法(Naive)，以及传统方法但是限制每次考虑的子句数最大为45(Limit-45)。相关的结果如表格\ref{tab:incremental}所示。
 
-我们注意到不同实现方法的求解总数差异并不大，并且主要集中在LassoRanker类别上。LassoRanker样例一般需要比较长时间求解，因此不同实现方法对迭代速度的影响十分重要。通过对比求解时间可以看出对于一个特定的问题而言，Naive和Limit-45的方法基本需要消耗2-10倍于Incremental方法的时间，具体的倍数在不同问题上有所不同。对于限制时间为20分钟的实验，总数的差异并不大，但是这种差异会随着限制时间的减小而增大，特别是当局部搜索融入到其他方法中使用时。
+我们注意到不同实现方法的求解总数差异并不大，并且主要集中在LassoRanker类别上。LassoRanker样例一般需要比较长时间求解，因此不同实现方法对迭代速度的影响十分重要。通过对比求解时间可以看出对于一个特定的问题而言，Naive和Limit-45的方法基本需要消耗2-10倍于Incremental方法的时间，具体的倍数在不同问题上有所不同。
+
+图\ref{fig:time_inc}显示了是否使用增量式计算在不同时间限制下的求解个数。对于1200秒的限制来说，是否使用增量式计算对求解个数的影响并不明显，但是在更少的求解时间时（300秒以下），更多的计算资源消耗在了实根隔离和可行域计算上，因此在迭代中缓存这些昂贵的信息尤为重要。在求解时间为10秒的条件下，二者的差距有150个以上，这说明了增量式计算对于提升求解速度的重要性。
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{Img/time_inc.png}
+    \bicaption{LS\_NRA使用增量式计算在不同时间下求解的个数。}{Number of solutions found by LS\_NRA with incremental calculation in different time.}
+\label{fig:time_inc}
+\end{figure*}
 
 \begin{table*}[]
     \centering
@@ -64,21 +85,21 @@
         \begin{tabular}{c | c | c | c | c}
             \hline
             类别 & 个数 & Incremental & Naive & Limit-45 \\\hline
-            20161105-Sturm-MBO & 120 & 88 & 85 & 85 \\\hline
+            20161105-Sturm-MBO & 120 & 84 & 84 & 84 \\\hline
             20161105-Sturm-MGC & 2 & 0 & 0 & 0 \\\hline
-            20170501-Heizmann & 60 & 8 & 5 & 5 \\\hline
-            20180501-Economics-Mulligan & 93 & 90 & 89 & 89 \\\hline
-            2019-ezsmt & 61 & 19 & 19 & 15 \\\hline
-            20209011-Pine & 237 & 224 & 222 & 222 \\\hline
-            20211101-Geogebra & 112 & 101 & 101 & 101 \\\hline
+            20170501-Heizmann & 60 & 6 & 5 & 5 \\\hline
+            20180501-Economics-Mulligan & 93 & 87 & 88 & 88 \\\hline
+            2019-ezsmt & 61 & 18 & 19 & 15 \\\hline
+            20209011-Pine & 237 & 224 & 221 & 221 \\\hline
+            20211101-Geogebra & 112 & 100 & 99 & 99 \\\hline
             20220314-Uncu & 74 & 70 & 70 & 70 \\\hline
-            LassoRanker & 351 & 272 & 264 & 269 \\\hline
-            UltimateAtomizer & 48 & 27 & 26 & 26 \\\hline
-            hycomp & 492 & 304 & 298 & 298 \\\hline
+            LassoRanker & 351 & 284 & 262 & 267 \\\hline
+            UltimateAtomizer & 48 & 26 & 26 & 26 \\\hline
+            hycomp & 492 & 270 & 257 & 257 \\\hline
             kissing & 42 & 33 & 32 & 33 \\\hline
-            meti-tarski & 4391 & 4351 & 4352 & 4352 \\\hline
-            zankl & 133 & 100 & 100 & 100 \\\hline
-            总和 & 6216 & 5687 & 5663 & 5665 \\\hline
+            meti-tarski & 4391 & 4356 & 4345 & 4345 \\\hline
+            zankl & 133 & 99 & 98 & 98 \\\hline
+            总和 & 6216 & 5657 & 5606 & 5608 \\\hline
         \end{tabular}
         }
         \bicaption{增量式计算对算法的影响。} {Impact of incremental calculation on algorithm.}
@@ -96,23 +117,23 @@
         \begin{tabular}{c | c | c | c | c}
             \hline
             类别 & 个数 & Relaxation & Threshold & NoOrder \\\hline
-            20161105-Sturm-MBO & 120 & 88 & 100 & 99 \\\hline
+            20161105-Sturm-MBO & 120 & 84 & 85 & 84 \\\hline
             20161105-Sturm-MGC & 2 & 0 & 0 & 0 \\\hline
-            20170501-Heizmann & 60 & 8 & 9 & 3 \\\hline
-            20180501-Economics-Mulligan & 93 & 90 & 89 & 86 \\\hline
-            2019-ezsmt & 61 & 19 & 19 & 19 \\\hline
-            20209011-Pine & 237 & 224 & 223 & 222 \\\hline
-            20211101-Geogebra & 112 & 101 & 98 & 92 \\\hline
+            20170501-Heizmann & 60 & 6 & 9 & 3 \\\hline
+            20180501-Economics-Mulligan & 93 & 87 & 89 & 86 \\\hline
+            2019-ezsmt & 61 & 18 & 18 & 18 \\\hline
+            20209011-Pine & 237 & 224 & 220 & 220 \\\hline
+            20211101-Geogebra & 112 & 100 & 100 & 92 \\\hline
             20220314-Uncu & 74 & 70 & 70 & 70 \\\hline
-            LassoRanker & 351 & 272 & 277 & 278 \\\hline
-            UltimateAtomizer & 48 & 27 & 26 & 20 \\\hline
-            hycomp & 492 & 304 & 211 & 164 \\\hline
+            LassoRanker & 351 & 284 & 283 & 278 \\\hline
+            UltimateAtomizer & 48 & 26 & 24 & 19 \\\hline
+            hycomp & 492 & 270 & 204 & 158 \\\hline
             kissing & 42 & 33 & 31 & 27 \\\hline
-            meti-tarski & 4391 & 4351 & 4353 & 4360 \\\hline
-            zankl & 133 & 100 & 100 & 100 \\\hline
-            总和 & 6216 & 5687 & 5606 & 5540 \\\hline
+            meti-tarski & 4391 & 4356 & 4348 & 4355 \\\hline
+            zankl & 133 & 99 & 99 & 99 \\\hline
+            总和 & 6216 & 5657 & 5580 & 5669 \\\hline
         \end{tabular}
-        }
+        } 
         \bicaption{等式约束松弛对算法的影响。} {Impact of relaxation on algorithm.}
 \label{tab:relaxation}
 \end{table*}
