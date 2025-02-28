@@ -102,6 +102,27 @@
 
 实际上，我们在实验中发现两种寻找精确解的启发式方法在不同场景下有不同的用处。第一种基于等式约束结构的方法在涉及到线性方程时表现很好。第二章方法能够很好地处理变量存在多个赋值区域的情况，但是仍然很难保证同时满足所有的不等式约束。事实上，应用很多先进的方法来精确求解等式约束十分有前景\cite{CimattiGLS22, LiXZ23b}。但是，本文提出的方法仍然可以简单地拓展到更复杂的约束中，并且独立地验证精确解的存在。
 
+我们以下面一个例子\ref{ex:relax}详细展示整个等式松弛的运行机制：
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{Img/relax.png}
+    \bicaption {等式松弛和恢复的示意图。} {Demo of equality constraint's relaxation and recovery mechanism in NRA.}
+\label{fig:relax}
+\end{figure*}
+
+\begin{example}
+
+假设当前约束包含一个等式约束$F = \{x^2 + y^2 = 3\}$，初始赋值为$\{x \mapsto 1, y \mapsto 1\}$。整个流程如图\ref{fig:relax}所示。
+\begin{itemize}
+    \item \textbf{无理数赋值（左图）：} 考虑移动变量$x$会得到可行域$\{\sqrt{2}, -\sqrt{2}\}$，变量的无理数赋值启动了我们的赋值复杂度程序，开始进行等式松弛环节。
+    \item \textbf{松弛环节（中间图）：} 在实际运行中，我们取$\epsilon = 0.01$，松弛后的约束变成$F = \{x^2 + y^2 < 3.01, x^2 + y^2 > 2.99\}$。这样，我们重新计算可行域得到$\{(-1.418, -1.411), (1.411, 1.418)\}$(保留三位小数)，这样我们选取一个新的有理数赋值$\{x \mapsto 1.415, y \mapsto 1\}$，可以满足松弛状态下的约束。
+    \item \textbf{其他约束的迭代：}松弛了等式约束后，我们可以暂时忽视原始的等式约束形式，通过局部搜索在有理数赋值迭代，我们可以求解满足其他非等式约束的可行解。
+    \item \textbf{精确解的恢复（右图）：}在局部搜索的最后一步，我们可以发现有理数赋值$\{x \mapsto 1.415, y \mapsto 1\}$并不满足等式约束，因此我们需要恢复约束$x^2 + y^2 = 3$，并使用恢复阶段的局部搜索算法来找到附近的精确解。
+\end{itemize}
+\label{ex:relax}    
+\end{example}
+
+
 
 
 % % 介绍一下什么叫迭代局部搜索。
