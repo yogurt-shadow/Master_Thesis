@@ -14,7 +14,7 @@ SMT问题中的变量根据赋值要求分为布尔变量和算术变量。布�
 \end{definition}
 
 
-Tseitin编码保证了任意的逻辑约束可以在多项式时间内转化为合取范式(CNF)。为方便说明，本文中所有SMT约束表达成为CNF形式，一些基本概念如下：
+Tseitin编码保证了任意的逻辑约束可以在多项式时间内转化为合取范式(Conjunctive Normal Form, CNF)。为方便说明，本文中所有SMT约束表达成为CNF形式，一些基本概念如下：
 \begin{definition}{\textbf{命题文字}}
 命题文字(literal)是可满足问题中的基本结构，包括正文字($p$)和负文字($\neg p$)。非线性实数理论的命题文字一般是多项式约束或布尔变量约束。正文字只有当对应的多项式约束满足时才满足，负文字只有当对应的多项式约束不满足时才满足。一个典型的非线性实数文字比如$x^2 + y > 0$或者$\neg (x + y^3 < 0)$。
 \end{definition}
@@ -26,6 +26,14 @@ Tseitin编码保证了任意的逻辑约束可以在多项式时间内转化为�
 \begin{definition}{\textbf{公式}}
 公式(formula)定义为子句的合取结构，一般记为$\varphi = C_1 \wedge C_2 \wedge \dots \wedge C_m$，其中$C_i$是一个子句。当公式包含的所有子句都满足时公式满足，只要有一个子句不满足公式就不满足。一个非线性实数理论的公式比如$(x^2 + y > 0) \wedge (x + y^3 < 0)$。
 \end{definition}
+
+对于非线性实数理论来说，文字、子句和公式的关系可以由以下形式化定义：
+\begin{align*}
+\textbf{多项式:} \quad & p := x | c | p + p | p \cdot p \\
+\textbf{文字:} \quad & l := b | p \leq 0 | p \geq 0 | p = 0 \\
+\textbf{子句:} \quad & C := l_1 \vee l_2 \vee \dots \vee l_n \\
+\textbf{公式：} \quad & \varphi := C_1 \wedge C_2 \wedge \dots \wedge C_m
+\end{align*}
 
 
 \begin{definition}{\textbf{赋值}}
@@ -65,8 +73,8 @@ Tseitin编码保证了任意的逻辑约束可以在多项式时间内转化为�
 \begin{example}
     \begin{figure*}[]
         \centering
-        \includegraphics[width=0.9\columnwidth]{Img/cell1.png}
-        \bicaption {解空间示意图。} {Solution Space Demo.}
+        \includegraphics[width=0.4\columnwidth]{Img/cell1.png}
+        \bicaption {解空间示意图。} {Demo of Solution Space.}
         \label{fig:solution_space}
     \end{figure*}
     
@@ -74,7 +82,7 @@ Tseitin编码保证了任意的逻辑约束可以在多项式时间内转化为�
 \label{ex:solution_space}
 \end{example}
     
-数学上，我们把这样的区域定义为胞腔。
+数学上，我们把这样的区域定义为胞腔。具体定义如下所示：
 
 \begin{definition}{\textbf{胞腔}}
 对于$R^n$空间上的多项式集合$Q$，$Q$的一个胞腔(cell)是每个多项式$P \in Q$保持符号不变的$R^n$最大联通集合。对于任意的点$a \in R^n$，如果$a$在$Q$的胞腔内，则$a$满足$Q$中的所有多项式，我们记这个胞腔为$cell(Q, a)$。显然，胞腔是$R^n$空间的一个划分。
@@ -83,6 +91,7 @@ Tseitin编码保证了任意的逻辑约束可以在多项式时间内转化为�
 对于逻辑公式而言，因为胞腔内的任意一点对每个多项式$P \in Q$保持符号不变，因此SMT公式对应的所有文字仍然保持布尔值不变，不会对SMT公示的满足或不满足造成任何影响。当找到其中任意一个满足逻辑公式的胞腔时，可以判定原公式可满足；当所有胞腔都被证明不可满足时，可以判定原公式不可满足。
 
 给定逻辑公式，如何快速剔除不满足的胞腔并找到可满足的胞腔非常重要，因此现有的研究工作很多聚焦在更好地胞腔划分上。一般的胞腔划分是根据多项式的根和判别式等来判断的，从一个点得到胞腔的划分成为延拓。
+
 \begin{definition}{\textbf{延拓}}
 假定$R^n$上的多项式集合$Q$和点$a = (a_1, ..., a_n)$。给定一个变量$x_i (i = 1, 2,..., n)$，假定多项式$
 \{q(a_1, ..., a_{i-1}, x_i, a_{i+1}, ..., a_n) | q(a_1, ..., a_{i-1}, x_i, a_{i+1}, ..., a_n) \nequiv 0, q \in Q\}$的实数根$r_1 < r_2 < \cdots < r_s$。一个点$a$关于变量$x_i$在集合$Q$上的延拓定义为一个满足如下性质的点集$\Lambda \subseteq R^n$：
@@ -103,7 +112,7 @@ Tseitin编码保证了任意的逻辑约束可以在多项式时间内转化为�
     \label{fig:expansion}
 \end{figure*}
 紧接着例子\ref{ex:solution_space}，如图\ref{fig:expansion}所示，我们可以得到点$(0, 0)$关于$x$的延拓，即点集$\{(-3, 0), (-1-\sqrt{2}, 0), (-1, 0), (1-\sqrt{2}, 0), (0, 0), (\sqrt{2} - 1, 0), (1, 0), (1+\sqrt{2}, 0), (3, 0)\}$。这些点在$x$变量上分割了多项式的符号区间，从而划分了胞腔在$x$方向上的投影。右侧图的空心点构成了点$(-1, 0)$关于变量$y$的延拓，即点集$\{(-1, -1), (-1, 1-\sqrt{3}), (-1, 1+\sqrt{3}), (-1, 3)\}$，这些点在$y$方向上分开了多项式的符号区间，从而划分了胞腔在$y$方向上的投影。
-\label{ex:expansion}
+\label{ex:expansion1}
 \end{example}
 点$a$关于变量$x$的延拓点集事实上是点$a$在方向$x$上相邻胞腔的采样点，如何能够对$R^n$空间上的所有胞腔进行采样是我们接下来的话题。为此，我们引入柱形延拓的概念。
 
@@ -114,34 +123,11 @@ Tseitin编码保证了任意的逻辑约束可以在多项式时间内转化为�
 柱形延拓可以理解为给定变量顺序下多维的点集延拓，其目的是在$R^n$空间的每一个胞腔上都有一个采样点。
 \begin{figure*}[]
     \centering
-    \includegraphics[width=0.9\columnwidth]{Img/cell4.png}
+    \includegraphics[width=0.5\columnwidth]{Img/cell4.png}
     \bicaption {柱形延拓示意图。} {Cylindrical Expansion Demo.}
     \label{fig:expansion2}
 \end{figure*}
 \begin{example}
-\begin{table*}[]
-    % \footnotesize
-    \centering
-    % \setlength{\tabcolsep}{0.4mm}% column separation
-    % \renewcommand{\arraystretch}{1.2}%row space 
-    \resizebox{\linewidth}{!}{
-        \begin{tabular}{c | c | c | c}
-            \hline
-            点坐标 & $P_1: (x+1)^2 + (y-1)^2 = 3$根 & $P_2: (x -1)^2 + (y-1)^2 = 3$根 & 根集合\\\hline
-            $x \mapsto -3$ & \emptyset & \emptyset & \emptyset \\\hline
-            $x \mapsto -1-\sqrt{2}$ & \{0, 2\} & \emptyset & \{0, 2\} \\\hline
-            $x \mapsto -1$ & $\{1 - \sqrt{3}, 1 + \sqrt{3}\}$ & \emptyset & $\{1 - \sqrt{3}, 1 + \sqrt{3}\}$ \\\hline
-            $x \mapsto 1-\sqrt{2}$ & \{-0.63, 2.63\} & \{0, 2\} & \{-0.63, 0, 2, 2.63\} \\\hline
-            $x \mapsto 0$ & $\{1 - \sqrt{2}, 1 + \sqrt{2}\}$ & $\{1 - \sqrt{2}, 1 + \sqrt{2}\}$ & $\{1 - \sqrt{2}, 1 + \sqrt{2}\}$ \\\hline
-            $x \mapsto \sqrt{2} - 1$ & \{0, 2\} & \{-0.63, 2.63\} & \{-0.63, 0, 2, 2.63\} \\\hline
-            $x \mapsto 1$ & \emptyset & $\{1 - \sqrt{3}, 1 + \sqrt{3}\}$ & $\{1 - \sqrt{3}, 1 + \sqrt{3}\}$ \\\hline
-            $x \mapsto 1+\sqrt{2}$ & \emptyset & \{0, 2\} & \{0, 2\} \\\hline
-            $x \mapsto 3$ & \emptyset & \emptyset & \emptyset \\\hline
-        \end{tabular}
-        }
-        \bicaption{柱形延拓-区间计算。} {Demo of Computation of Cylindrical Expansion-Interval Splitting.}
-\label{tab:expansion}
-\end{table*}
 
 \begin{table*}[]
     \tiny
@@ -206,13 +192,36 @@ Tseitin编码保证了任意的逻辑约束可以在多项式时间内转化为�
 \label{tab:expansion2}
 \end{table*}
 
-紧接着例子\ref{ex:expansion}，如图\ref{fig:expansion2}所示，图中所有的实心点和空心点共同构成了基于变量顺序$x < y$的多项式$Q$的柱形延拓，达到了每个胞腔上均有一个采样点的效果。具体的步骤是，首先点$(0, 0)$关于变量$x$形成延拓（实心点），然后每一个实心点关于变量$y$各自形成延拓（空心点），最终所有点的集合共同构成了柱形延拓。表格\ref{tab:expansion}展示了在实心点处根据多项式集合的根分割得到的区间。表格\ref{tab:expansion2}展示了在每一个分割区间进行采样得到的结果，即最终的柱形延拓点集（空心点）。
+紧接着例子\ref{ex:expansion1}，如图\ref{fig:expansion2}所示，图中所有的实心点和空心点共同构成了基于变量顺序$x < y$的多项式$Q$的柱形延拓，达到了每个胞腔上均有一个采样点的效果。具体的步骤是，首先点$(0, 0)$关于变量$x$形成延拓（实心点），然后每一个实心点关于变量$y$各自形成延拓（空心点），最终所有点的集合共同构成了柱形延拓。表格\ref{tab:expansion}展示了在实心点处根据多项式集合的根分割得到的区间。表格\ref{tab:expansion2}展示了在每一个分割区间进行采样得到的结果，即最终的柱形延拓点集（空心点）。
+
+\begin{table*}[]
+    % \footnotesize
+    \centering
+    % \setlength{\tabcolsep}{0.4mm}% column separation
+    % \renewcommand{\arraystretch}{1.2}%row space 
+    \resizebox{\linewidth}{!}{
+        \begin{tabular}{c | c | c | c}
+            \hline
+            点坐标 & $P_1: (x+1)^2 + (y-1)^2 = 3$根 & $P_2: (x -1)^2 + (y-1)^2 = 3$根 & 根集合\\\hline
+            $x \mapsto -3$ & \emptyset & \emptyset & \emptyset \\\hline
+            $x \mapsto -1-\sqrt{2}$ & \{0, 2\} & \emptyset & \{0, 2\} \\\hline
+            $x \mapsto -1$ & $\{1 - \sqrt{3}, 1 + \sqrt{3}\}$ & \emptyset & $\{1 - \sqrt{3}, 1 + \sqrt{3}\}$ \\\hline
+            $x \mapsto 1-\sqrt{2}$ & \{-0.63, 2.63\} & \{0, 2\} & \{-0.63, 0, 2, 2.63\} \\\hline
+            $x \mapsto 0$ & $\{1 - \sqrt{2}, 1 + \sqrt{2}\}$ & $\{1 - \sqrt{2}, 1 + \sqrt{2}\}$ & $\{1 - \sqrt{2}, 1 + \sqrt{2}\}$ \\\hline
+            $x \mapsto \sqrt{2} - 1$ & \{0, 2\} & \{-0.63, 2.63\} & \{-0.63, 0, 2, 2.63\} \\\hline
+            $x \mapsto 1$ & \emptyset & $\{1 - \sqrt{3}, 1 + \sqrt{3}\}$ & $\{1 - \sqrt{3}, 1 + \sqrt{3}\}$ \\\hline
+            $x \mapsto 1+\sqrt{2}$ & \emptyset & \{0, 2\} & \{0, 2\} \\\hline
+            $x \mapsto 3$ & \emptyset & \emptyset & \emptyset \\\hline
+        \end{tabular}
+        }
+        \bicaption{柱形延拓-区间计算。} {Demo of Computation of Cylindrical Expansion-Interval Splitting.}
+\label{tab:expansion}
+\end{table*}
 \end{example}
 
 \begin{definition}{\textbf{柱形完备}}
-对于$R^n$上的多项式集合$Q$，给定一个变量顺序$x_1 < x_2 < \cdots < x_n$，称$Q$对于变量顺序是柱形完备的，当任意的点$a \in R^n$和其关于$Q$的柱形延拓$\Lambda$，$Q$的每一个胞腔都包含至少一个$\Lambda$的点。
+对于$R^n$上的多项式集合$Q$，给定一个变量顺序$x_1 < x_2 < \cdots < x_n$，称$Q$对于变量顺序是柱形完备的，当任意的点$a \in R^n$和其关于$Q$的柱形延拓$\Lambda$，$Q$的每一个胞腔都包含至少一个$\Lambda$的点。具体的证明请参阅文献\cite{Caviness2004QuantifierEA,Collins74}。
 \end{definition}
-具体的证明请参阅\cite{Caviness2004QuantifierEA,Collins74}。
 
 \subsection{量词消去与柱形代数分解}
 根据前文的讨论，我们引出基于多项式解空间的一种量词消去算法-柱形代数分解(Cylindarical Algebraic Decomposition)。
@@ -225,19 +234,13 @@ Tseitin编码保证了任意的逻辑约束可以在多项式时间内转化为�
 考虑多项式$P_s(x, y) = s(x^2 + y^2 - 1) + (1 - s)(xy - 1)$，和逻辑公式$\varphi = \exists R \forall x, y [P_s(x, y) = 0 \Rightarrow x^2 + y^2 \leq R^2]$。量词消去即求解当$s$取什么值的时候逻辑公式$\varphi$满足。通过量词消去工具，我们可以得到$\varphi \Leftrightarrow s \le -1 \wedge s > \frac{1}{3}$。\label{ex:quantifier_elimination}
 \end{example}
 
-多项式理论常用的一种量词消去是柱形代数分解(Cylindarical Algebraic Decomposition, CAD)。其核心仍然是把$R^n$空间划分成多个符号一致的胞腔，然后通过判断每个胞腔是否满足逻辑公式进而得到给定变量的赋值区间。如图\ref{fig:CAD}所示，给定变量顺序和多项式集合，柱形代数分解可以分为三个步骤：投影、实根隔离和提升，具体的步骤如下：
+多项式理论常用的一种量词消去是柱形代数分解(Cylindarical Algebraic Decomposition, CAD)。其核心仍然是把$R^n$空间划分成多个符号一致的胞腔，然后通过判断每个胞腔是否满足逻辑公式进而得到给定变量的赋值区间。给定变量顺序和多项式集合，柱形代数分解可以分为三个步骤：投影、实根隔离和提升，具体的步骤如下：
 \begin{itemize}
     \item \textbf{投影(projection)：}从多项式集合开始，每次消去一个变量，生成新的多项式集合，新多项式继续消去变量直到只剩下一个变量为止，记为$proj(P)$。
     \item \textbf{实根隔离(root isolation)：}当投影只剩下一个变量时，对当前多项式集合求所有根，得到顺序排列的一组根，这些根表示了胞腔在当前变量上的分割。
     \item \textbf{提升(lift)：}提升是对投影阶段得到的多项式集合进行采样。投影从单变量多项式开始，从采样点继续对上一个投影多项式进行采样，直到最终对$R^n$多项式采样，最终保证了每个胞腔得到了采样点。
 \end{itemize}
 
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=\columnwidth]{Img/cad.png}
-    \bicaption {柱形代数分解步骤示意图。} {Demo of Cylindarical Algebraic Decomposition Steps.}
-\label{fig:CAD}
-\end{figure*}
 投影算子(projection operator)指的是投影过程中对多项式集合的计算，比如Collins算子\cite{Collins74}和McCallum算子\cite{McCallum98}。后者因为其计算相对便捷，被广泛应用于量词消去工具和SMT求解器中。
 
 McCallum算子用到的计算包括结式、判别式和求根等操作。
@@ -288,7 +291,14 @@ $$
 \end{definition}
 
 \begin{example}
-我们给出CAD算法的一个例子。假设$F = \{P_1: x - 2y^2 + 2, P_2: x + 2y^2 - 2\}$，我们规定变量顺序为$y < x$，按步骤计算如下：
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.7\columnwidth]{Img/cad.png}
+    \bicaption {柱形代数分解步骤示意图。} {Demo of Cylindarical Algebraic Decomposition Steps.}
+\label{fig:CAD}
+\end{figure*}
+
+我们给出CAD算法的一个例子，如图\ref{fig:CAD}所示。假设$F = \{P_1: x - 2y^2 + 2, P_2: x + 2y^2 - 2\}$，我们规定变量顺序为$y < x$，按步骤计算如下：
 \begin{enumerate}
     \item \textbf{投影}：计算对于变量$y$的投影$proj(F, y)$
     \begin{itemize}
@@ -299,30 +309,34 @@ $$
     得到投影多项式$proj(F, y) = \{x, x - 2, x + 2\}$
 
     \item \textbf{实根隔离}：我们对$proj(F, y)$的每个多项式求根，得到根集合$\{-2, 0, 2\}$。
-    \item \textbf{提升}：我们对根集合分得的区间进行提升，进一步采样所有胞腔，结果如表格\ref{tab:cad}所示。
+    \item \textbf{提升}：我们对根集合分得的区间进行提升，进一步采样所有胞腔，结果如表格\ref{tab:cad}所示（忽略边界处的胞腔）。
     \begin{table*}[]
         \tiny
         \centering
-        \resizebox{0.65\linewidth}{!}{
-            \begin{tabular}{c | c | c | c | c}
+        \resizebox{0.85\linewidth}{!}{
+            \begin{tabular}{c | c | c}
             \hline
-            分割区间 & $x$采样点 & $y$根集合 & $(x, y)$采样点 & 符号($P_1, P_2$)\\\hline
-            \multirow{5}{*}{$(-\infty, -2)$} & \multirow{5}{*}{$x \rightarrow -3$} & \multirow{5}{*}{$\{-\frac{\sqrt{10}}{2}, \frac{\sqrt{10}}{2}\}$} & (-3, 2) &  (-, +)\\
-            & & & $(-3, \frac{\sqrt{10}}{2})$ & (-, 0)\\
-            & & & $(-3, 0)$ & (-, -)\\
-            & & & $(-3, -\frac{\sqrt{10}}{2})$ & (-, 0)\\
-            & & & $(-3, -2)$ & (-, +)\\\hline
+            符号 & 区间 & 采样点 \\\hline
+            $C_1$ & $x < -2 \wedge y > \sqrt{\frac{2 - x}{2}}$& (-2.4, 1.7) \\\hline
+            $C_2$ & $x < -2 \wedge -\sqrt{\frac{2 - x}{2}} < y < \sqrt{\frac{2 - x}{2}} $ &(-2.4, 0) \\\hline
+            $C_3$ & $x < -2 \wedge y < -\sqrt{\frac{x - 2}{2}}$ & (-2.4, -1.7) \\\hline
 
-            \multirow{7}{*}{$[-2, -2]$} & \multirow{7}{*}{$x \rightarrow -2$} & \multirow{7}{*}{$\{0. -\sqrt{2}, \sqrt{2}\}$} & (-2, 2) &  (-, +)\\
-            & & & $(-2, \sqrt{2})$ & (-, 0)\\
-            & & & (-2, 1) & (-, -)\\
-            & & & (-2, 0) & (0, -)\\
-            & & & (-2, -1) & (-, -)\\
-            & & & $(-2, -\sqrt{2})$ & (-, 0)\\
-            & & & (-2, -2) & (-, +)\\\hline
+            $C_4$ & $-2 < x < 0 \wedge y > \sqrt{\frac{2 - x}{2}}$ & (-1, 1.7) \\\hline
+            $C_5$ & $-2 < x < 0 \wedge \sqrt{\frac{2 + x}{2}} < y < \sqrt{\frac{2 - x}{2}}$ & (-1, 1)\\\hline
+            $C_6$ & $-2 < x < 0 \wedge -\sqrt{\frac{2 + x}{2}} < y < \sqrt{\frac{2 + x}{2}}$ & (-1, 0) \\\hline
+            $C_7$ & $-2 < x < 0 \wedge -\sqrt{\frac{2 - x}{2}}< y < -\sqrt{\frac{2 + x}{2}}$ & (-1, -1) \\\hline
+            $C_8$ & $-2 < x < 0 \wedge y < -\sqrt{\frac{2 - x}{2}}$ & (-1, -1.7) \\\hline
+
+            $C_9$ & $0 < x < 2 \wedge y > \sqrt{\frac{2 + x}{2}}$ & (1, 1.7) \\\hline
+            $C_10$ & $0 < x < 2 \wedge \sqrt{\frac{2 - x}{2}} < y < \sqrt{\frac{2 + x}{2}}$ & (1, 1) \\\hline
+            $C_11$ & $0 < x < 2 \wedge -\sqrt{\frac{2 - x}{2}} < y < \sqrt{\frac{2 - x}{2}}$ & (1, 0) \\\hline
+            $C_12$ & $0 < x < 2 \wedge -\sqrt{\frac{2 + x}{2}} < y < -\sqrt{\frac{2 - x}{2}}$ & (1, -1) \\\hline
+            $C_13$ & $0 < x < 2 \wedge y < -\sqrt{\frac{2 + x}{2}}$ & (1, -1.7) \\\hline
+
+            $C_14$ & $x > 2 \wedge y > \sqrt{\frac{2 + x}{2}}$ & (2.4, 1.7) \\\hline
+            $C_15$ & $x > 2 \wedge \sqrt{\frac{2 + x}{2}} < y < \sqrt{\frac{2 + x}{2}}$ & (2.4, 0) \\\hline
+            $C_16$ & $x > 2 \wedge y < -\sqrt{\frac{2 + x}{2}}$ & (2.4, -1.7) \\\hline
             \end{tabular}
-
-            To be Done
         }
         \bicaption{柱形代数分解-提升。} {Demo of Cylindrical Algebraic Decomposition - Lift.}
         \label{tab:cad}
@@ -330,6 +344,7 @@ $$
 \end{enumerate}
 \label{ex:cad}    
 \end{example}
+
 
 \section{非线性实数理论求解现状}
 \subsection{CDCL(T)算法}
@@ -345,7 +360,7 @@ CDCL(T) (Conflict Driven Clause Learning for Theories)算法主要是在SAT问�
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=\columnwidth]{Img/cdcl_t.png}
+    \includegraphics[width=0.6\columnwidth]{Img/cdcl_t.png}
     \bicaption {CDCL(T)框架示意图。} {Demo of CDCL(T) Framework.}
     \label{fig:cdclt}
 \end{figure*}
@@ -358,7 +373,7 @@ MCSAT(Model-Constructing Satisfiability)和NLSAT(NonLinear Satisfiability)是另
     \item \textbf{日志(trace):}一种记录算法更新的线性结构，包括可行域的更新、决策变量的赋值等。
     \item \textbf{算术传播(arithmetic propagation):}基于可行域的文字层面的传播，可以直接推断某些文字的可满足性。
 \end{itemize}
-其中，MCSAT/NLSAT最关键的步骤就是根据当前变量和文字的可行域关系进行算术文字赋值，假设算术变量的可行域是$curr\_set$，文字的可行域是$lit\_set$，算术传播分为以下几种情况：
+其中，MCSAT/NLSAT最关键的步骤就是根据当前变量和文字的可行域关系进行算术文字赋值，假设算术变量的可行域是$curr\_set$，文字的可行域是$lit\_set$，算术区间传播分为以下几种情况：
 \begin{itemize}
     \item \textbf{$lit\_set = \emptyset$：}任何赋值都不能使文字满足，判断文字为$\bot$。比如当$x \mapsto -1$时，文字$y^2 \leq x$不可满足。
     \item \textbf{$lit\_set = R$:}任何赋值都可以使文字满足，直接赋值文字为$\top$。比如文字$x^2 \geq -1$一定满足。
@@ -366,7 +381,16 @@ MCSAT(Model-Constructing Satisfiability)和NLSAT(NonLinear Satisfiability)是另
     \item \textbf{$curr\_set \cap lit\_set = \emptyset$：}任何可行域内的赋值都不会让文字满足，因此直接赋值文字为$\bot$。比如当$x \in [-2, 2]$时，文字$x^2 \geq 10$不可满足。
 \end{itemize}
 
+具体流程可参见图\ref{fig:mcsat}。搜索模块(Search)主要负责文字层面的单元传播和算术可行域层面的区间约束传播，当没有遇到冲突时，继续进行决策赋值；冲突可以由单元传播（子句中所有文字赋值为$\bot$）、算术区间传播（变量的可行域为空）产生。当发生冲突时，算法首先调用冲突分析，然后进入解释模块(Explain)。基于CAD的MCSAT算法原理是排除导致当前冲突赋值的胞腔，具体方法为首先调用CAD算法的投影和提升过程来得到冲突胞腔，然后学习对应胞腔的子句添加到搜索模块中。之后的搜索会在计算可行域时考虑新添加的子句，因此避免了重复陷入同一个冲突胞腔中。
 例\ref{ex:nlsat}给出了一个MCSAT/NLSAT搜索的具体例子。
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{Img/mcsat.png}
+    \bicaption {基于CAD的MCSAT框架示意图。} {Demo of CAD-based MCSAT Framework.}
+    \label{fig:mcsat}
+\end{figure*}
+
 
 \begin{example}
 考虑公式$F=(P_1: (x-2)^2 + y^2 \le 4) \wedge (P_2: x - y \ge 0)$。假设我们的搜索顺序是$x < y$，算法的搜索过程如下：

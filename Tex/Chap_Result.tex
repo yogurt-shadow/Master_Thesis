@@ -1,24 +1,35 @@
 \chapter{实验设计及结果分析}\label{chap:Result}
 
-本章节主要介绍基于前述算法设计的LS\_NRA求解工具的实验结果，并基于此对其性能进行了分析。本章节主要可以分为三个部分：首先我们介绍实验安排和实验条件，包括测试样例、比较方法、运行环境等；然后我们给出LS\_NRA与其他主流求解器的求解个数与时间对比；最后我们对前述算法进行了消融实验，确保本文介绍的算法的有效性。
+本章节主要介绍基于前述算法设计的LS\_NRA求解工具的实验结果，并基于此对其性能进行了分析。本章节主要可以分为三个部分：首先我们介绍实验安排和实验条件，包括测试样例、比较方法、运行环境等；然后我们给出LS\_NRA与其他主流求解器的求解个数与时间对比；最后我们对前几章提出的策略设计了消融实验，确保本文介绍的算法的有效性。
 
 \section{实验设置}
-\textbf{实验样例：} 本工作选取SMT-LIB中QF\_NRA理论作为测试样例。测试样例大多包含来自工业问题的实例，如非线性混成自动机的分析(hycomp)，程序终止验证的秩函数生成(LassoRanker)等。Kissing样例则包含了球体吻合问题，即给定一个维度，最多可以有多少个一样的球可以和给定的球相切，并且保证两两之间不相交。通过SMT求解器的计算，每一个测试样例会被返回可满足(sat)，不可满足(unsat)或者未知(unknown)。在实际测试中，很多标注为未知的问题往往被其他的求解器(Z3、cvc5)证明为不可满足。由于局部搜索往往用于计算可满足问题，因此在实际测试中，我们首先从SMT-LIB中选择标注为可满足或未知的样例，然后剔除掉被其他求解器证明为不可满足的部分。SMT-LIB包含了各种不同难度的样例，但是并没有显著标注难度等级。比如，metitarski里面的一些样例(来自于MetiTarski工具)一般只包含很少的约束，对局部搜索和完备算法均不构成挑战。最终，我们收集了6216个测试样例。
+\subsection{测试样例}
+本工作选取SMT-LIB\footnote{\url{https://smt-lib.org/}}中QF\_NRA理论作为测试样例。测试样例大多包含来自工业问题的实例，我们介绍其中一些类别如下：
+
+\begin{itemize}
+    \item \textbf{2019-ezsmt:} 该类别来自一种处理non-tight程序的工具EZSMT+。
+    \item \textbf{20170501-Heizmann:} 该类别来自Ultimate程序分析框架的一个组件，主要用于基于约束的不变式合成。
+    \item \textbf{20200911-Pine:} 该类别来自名为Pine的工具，主要用于检查循环不变式的归纳性。
+    \item \textbf{LassoRanker:}该类别来自一种使用秩函数来分析Lassoshaped程序终止性的工具，所含样例都是多线性(multilinear)约束。
+    \item \textbf{UltimateAutomizer:}该类别产生自基于自动机的软件模型检查工具，是Ultimate软件分析工具的一个组件。
+\end{itemize}
+
+\textbf{样例选择：} 在SMT-LIB中，每一个测试样例会标注标签（label），即SAT、UNSAT或UNKNOWN，用来表示是否被其他的求解器求解。由于局部搜索算法只能用来求解可满足的样例，因此我们首先使用主流的SMT求解器（Z3、cvc5、Yices）来被证明为UNSAT的样例，最终留下潜在的可满足样例作为本文的最终测试样例。最终我们收集了6216个测试样例。
 
 
-\textbf{实验环境：} 所有实验都在一台配备有Intel Xeon Platinum 8153（2.00GHz）和2048G RAM 的服务器上进行，系统为Centos 7.7.1908。每一个样例设置的时间限制为20分钟（和SMT比赛相同），内存限制为30GB。
+\subsection{实验方法}
+ \textbf{实验环境:} 所有实验都在一台配备有Intel Xeon Platinum 8153（2.00GHz）和2048G RAM 的服务器上进行，系统为Centos 7.7.1908。每一个样例设置的时间限制为20分钟（和SMT比赛相同），内存限制为30GB。由于我们的工具LS\_NRA实在Z3上实现的，我们保留了默认的随机数设置，来确保与原版Z3求解器对比的公平性。
+
+\textbf{比较方法：} 对于每一个样例，求解器可以输出求解结果（SAT、UNSAT或TIMEOUT）、运行时间和内存占用等信息。我们收集每一个求解器的信息用于后面的结果展示。除此之外，我们对主流求解器均采用默认设置，比如默认不采用增量式求解，全部使用串行方法等。
 
 \section{LS\_NRA求解NRA样例的能力}
 我们在表\ref{tab:experiment}中展示了我们的工具LS\_NRA与其他主流SMT求解器的性能对比。我们的工具一个主要优势是针对Sturm-MBO样例，一种只包含一个非常复杂度数很高的多项式的约束。目前主流的完备算法在该问题上没有求解成功。我们的工具在其他样例上表现也很突出，基本可以和主流求解器的效果持平。
 
 除此之外，我们的算法和Z3、cvc5有很大的互补性。根据表\ref{tab:experiment}，一共有来自不同类别共148个样例仅仅可以使用局部搜索算法求解，而非Z3、cvc5、Yices等完备算法。更具体来说，有291个样例可以被局部搜索求解而非Z3，有378个样例可以被局部搜索求解而非cvc5。
 
-
-
-
 \begin{table*}[]
     \centering
-    \resizebox{\linewidth}{!}{
+    \resizebox{0.9\linewidth}{!}{
         \begin{tabular}{c | c | c | c | c | c | c}
             \hline
             类别 & 个数 & Z3 & cvc5 & Yices & LS\_NRA （本文） & 单独求解 \\\hline
@@ -43,20 +54,21 @@
 \label{tab:experiment}
 \end{table*}
 
-我们在图\ref{fig:scatter}中描绘了LS\_NRA与Z3、cvc5求解时间对比的散点图。图中每一个点的横坐标代表了求解该样例LS\_NRA所需要的时间，纵坐标表示了其他求解器的求解时间，虚线则说明二者在该问题上消耗的求解时间一致。我们注意到在SMT-LIB测试样例中存在大量相对简单的问题。为了考虑这些问题的因素，我们统计了Z3、cvc5和LS\_NRA在1秒内解决的问题个数，共计4765个，这样仅仅剩下1451个被认为是难以求解的样例。从这点来看，LS\_NRA在求解总数、单独求解和互补性上均有优势。
+我们在图\ref{fig:scatter}中描绘了LS\_NRA与Z3、cvc5、Yices求解时间对比的散点图。图中每一个点的横坐标代表了求解该样例LS\_NRA所需要的时间，纵坐标表示了其他求解器的求解时间，虚线则说明二者在该问题上消耗的求解时间一致。我们注意到在SMT-LIB测试样例中存在大量相对简单的问题。为了考虑这些问题的因素，我们统计了Z3、cvc5和LS\_NRA在1秒内解决的问题个数，共计4765个，这样仅仅剩下1451个被认为是难以求解的样例。从这点来看，LS\_NRA在求解总数、单独求解和互补性上均有优势。
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=0.45\columnwidth]{Img/scatter_z3b.png}\qquad
-    \includegraphics[width=0.45\columnwidth]{Img/scatter_cvc5b.png}
-    \bicaption{LS\_NRA与Z3、cvc5求解时间对比。}{Comparison of LS\_NRA and Z3, cvc5 solving time.}
+    \includegraphics[width=0.25\columnwidth]{Img/scatter_z3.png}\qquad
+    \includegraphics[width=0.25\columnwidth]{Img/scatter_cvc5.png}\qquad
+    \includegraphics[width=0.25\columnwidth]{Img/scatter_yices.png}
+    \bicaption{LS\_NRA与Z3、cvc5、Yices求解时间对比。} {Comparison of LS\_NRA and Z3, cvc5, and Yices solving time.}
 \label{fig:scatter}
 \end{figure*}
 
 我们还参考了不同求解器的求解时间对比，如图\ref{fig:time}所示。可以看出，几乎在任何的限制时间内，局部搜索算法的求解数量都是最多的，这说明了局部搜索的相对轻捷。随着求解时间的增加，局部搜索算法的求解数量增长速度远远快于其他求解器，这说明在充足的时间内，更多的样例可以通过多次迭代找到邻近的可行解。
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=\columnwidth]{Img/time_solver.png}
+    \includegraphics[width=0.7\columnwidth]{Img/time_solver.png}
     \bicaption{LS\_NRA与Z3、cvc5在不同时间求解个数对比。}{Comparison of LS\_NRA and Z3, cvc5 solving number in different time.}
 \label{fig:time}
 \end{figure*}
@@ -74,14 +86,14 @@
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=\columnwidth]{Img/time_inc.png}
+    \includegraphics[width=0.7\columnwidth]{Img/time_inc.png}
     \bicaption{LS\_NRA使用增量式计算在不同时间下求解的个数。}{Number of solutions found by LS\_NRA with incremental calculation in different time.}
 \label{fig:time_inc}
 \end{figure*}
 
 \begin{table*}[]
     \centering
-    \resizebox{\linewidth}{!}{
+    \resizebox{0.8\linewidth}{!}{
         \begin{tabular}{c | c | c | c | c}
             \hline
             类别 & 个数 & Incremental & Naive & Limit-45 \\\hline
@@ -113,7 +125,7 @@
 
 \begin{table*}[]
     \centering
-    \resizebox{\linewidth}{!}{
+    \resizebox{0.8\linewidth}{!}{
         \begin{tabular}{c | c | c | c | c}
             \hline
             类别 & 个数 & Relaxation & Threshold & NoOrder \\\hline
@@ -137,3 +149,6 @@
         \bicaption{等式约束松弛对算法的影响。} {Impact of relaxation on algorithm.}
 \label{tab:relaxation}
 \end{table*}
+
+\section{本章小结}
+本章节通过设计实验，深入评估了LS\_NRA工具的求解性能和策略有效性。首先，我们对比了LS\_NRA和其他主流SMT求解器（Z3、cvc5、Yices）在SMT-LIB上的求解个数和求解时间，方法表明LS\_NRA对于高次约束具有优势。然后，我们设计消融实验测试了基于边界的可行域缓存机制和等式松弛机制对整体求解效果的影响，实验表明二者均对算法的求解能力有所提升。

@@ -4,7 +4,7 @@
 \section{胞腔跳跃操作(Cell-Jump)}
 变量的操作移动是局部搜索算法的核心概念，即每一步如何更改变量的赋值，以期望在搜索空间中找到更好的解。在布尔可满足问题（SAT问题）中，变量的操作被定义为翻转（Flip），即将变量的赋值从真（True）改为假（False）或反之。SMT问题因为其赋值的多样性（整数或实数）使得变量的移动操作更为复杂。一个经典的操作是关键移动（critical move）\cite{CaiLZ22}，即使得文字不等式恰好达到满足状态时对应的整数赋值操作。工作\cite{multilinear}将关键移动拓展到了实数操作上，即允许变量赋值为实数。对于多项式理论的关键移动，工作\cite{LiXZ23}借助胞腔的概念首次提出胞腔条约操作(Cell-Jump)，具体定义如下：
 
-\begin{definition}[\textbf{平行坐标轴的胞腔跳跃Cell-Jump Parallel to Axis}]
+\begin{definition}{\textbf{平行坐标轴的胞腔跳跃(Cell-Jump Parallel to Axis)}}\\
 假设当前赋值为$\alpha = \{x_1 \mapsto a_1, x_2 \mapsto a_2, \cdots, x_n \mapsto a_n\}$。$l$是赋值$\alpha$下未满足的多项式不等式，假定其不等式符号为<或者>。
 \begin{itemize}
     \item 假定$l$具有形式$p(x) < 0$。对于每一个单变量多项式$p(a_1, \cdots, a_{i-1}, x_i, a_{i+1}, \cdots, a_n)$具有负值采样点的变量$x_i$来说，存在一个胞腔跳跃操作，记为$cjump(c_i, l)$，即赋值$x_i$到离$a_i$最近的负值采样点。
@@ -13,7 +13,7 @@
 如果把赋值看作是$R^n$空间中的一个点，那么前面的胞腔跳跃操作就是沿着平行坐标轴的直线$(a_1, \cdots, a_{i-1}, R, a_{i+1}, \cdots, a_n)$移动到另一个点。
 \end{definition}
 
-\begin{definition}{\textbf{沿着固定直线的胞腔跳跃Cell-Jump Along Fixed Straight Line}}
+\begin{definition}{\textbf{沿着固定直线的胞腔跳跃(Cell-Jump Along Fixed Straight Line)}}\\
     假设当前赋值为$\alpha = \{x_1 \mapsto a_1, x_2 \mapsto a_2, \cdots, x_n \mapsto a_n\}$。$l$是赋值$\alpha$下未满足的多项式不等式，假定其具有形式$p(x) > 0$或$p(x) < 0$。给定一个方向向量$dir = (d_1, \cdots, d_n)$。引入新变量$t$，对于多项式$p(x)$中的每一个变量$x_i$，用$a_i + d_i t$来替换得到新的多项式$p^{*}(t)$。如果$l$不等式符号为<并且多项式$p^{*}(t)$具有负值采样点，那么定义胞腔跳跃操作$cjump(dir, l)$为将赋值$\alpha$沿着方向$dir$移动到离原点最近的负值采样点。如果$l$不等式符号为>并且多项式$p^{*}(t)$具有正值采样点，那么定义胞腔跳跃操作$cjump(dir, l)$为将赋值$\alpha$沿着方向$dir$移动到离原点最近的正值采样点。假设采样点为$t^*$，则更改后的赋值为$\alpha' = \{x_1 \mapsto a_1 + d_1 t^*, \cdots, x_n \mapsto a_n + d_n t^*\}$。
 \end{definition}
 
@@ -173,9 +173,9 @@ Boundary_4 &: <2.658, \bot, \bot, 2> \nonumber
 \label{ex:update}
 考虑约束集合$F = \{P_1: x^2 + y^2 \leq 1, P_2: x + y < 1, P_3: x + z > 0\}$。当前赋值为$\alpha: \{x \mapsto 1, y \mapsto 1, z \mapsto 1\}$，所有约束权重为1。则当前状态每个约束关于变量$x$的可行域和边界计算如下：
 \begin{align}
-x^2 + y^2 \leq 1 & \rightarrow x \in [0, 0] \nonumber & \quad \text{Boundary: } & \{<0, \bot, \top, 1>, <0, \top, \bot, 1>\} \nonumber \\
-x + y < 1 & \rightarrow x \in (-\infty, 0) \nonumber & \quad \text{Boundary: } & \{<0, \bot, \bot, 1>\} \nonumber \\
-x + z > 1 & \rightarrow x \in (-1, +\infty) \nonumber & \quad \text{Boundary: } & \{<-1, \top, \top, 1>\} \nonumber
+& x^2 + y^2 \leq 1  \rightarrow x \in [0, 0] \nonumber & \quad \text{Boundary: } & \{<0, \bot, \top, 1>, <0, \top, \bot, 1>\} \nonumber \\
+& x + y < 1  \rightarrow x \in (-\infty, 0) \nonumber & \quad \text{Boundary: } & \{<0, \bot, \bot, 1>\} \nonumber \\
+& x + z > 1  \rightarrow x \in (-1, +\infty) \nonumber & \quad \text{Boundary: } & \{<-1, \top, \top, 1>\} \nonumber
 \end{align}
 排序后的边界集合为：
 $$
@@ -185,8 +185,8 @@ $$
 当某次迭代发生赋值$y \mapsto -2$时，约束$x + y < 1$有不满足状态变为可满足状态。由于变量$y$和$z$不为邻居变量（没有共同存在的约束），因此我们无需更改变量$z$的边界。对于前两个同时存在变量$x$和$y$的子句，我们需要重新计算关于变量$x$的边界信息。
 
 \begin{align}
-x^2 + y^2 \leq 1 & \rightarrow x \in \emptyset \nonumber & \quad \text{Boundary: } & \emptyset \nonumber \\
-x + y < 1 & \rightarrow x \in (-\infty, 3) \nonumber & \quad \text{Boundary: } & \{<3, \bot, \bot, 1>\} \nonumber
+& x^2 + y^2 \leq 1  \rightarrow x \in \emptyset \nonumber & \quad \text{Boundary: } & \emptyset \nonumber \\
+& x + y < 1  \rightarrow x \in (-\infty, 3) \nonumber & \quad \text{Boundary: } & \{<3, \bot, \bot, 1>\} \nonumber
 \end{align}
 排序后的边界集合为：
 $$
@@ -199,3 +199,6 @@ $$
     \item \textbf{更复杂的数据结构：}除了使用边界（线性数据结构）维护变量赋值-分数关系之外，也可以使用二叉树等顺序存储的数据结构。一般来说，当变量的边界个数很小时（SMT-LIB中大多数样例），现行的数据结构已经足够高效。对于更多操作，二叉搜索树也许更为高效。
     \item \textbf{迭代优化：}在每次迭代中，由于我们只会从未满足子句中选择操作，因此我们可以只更新那些出现在未满足子句中的变量的边界信息，而不是所有的邻居变量。除此之外，我们可以使用更懒惰的办法，比如为特定需要更新的约束打标记，然后在其不可满足时才更新边界信息。
 \end{itemize}
+
+\section{本章小结}
+本章节首先回顾了以往工作提出的用于求解算术SMT问题的胞腔跳跃操作，具体包括平行坐标轴和沿固定直线两种方法。然后，本文根据一个例子指出了以往针对单个子句的胞腔操作存在冗余问题，并且在迭代过程中容易造成可行域缓存的损失，基于此本文给出了边界和同类操作的定义以及操作缓存机制。最后，本工作给出了邻居变量的定义，并借此给出可行域缓存机制的迭代条件，即只有邻居变量的赋值发生变化时才需要更新边界信息。本工作还讨论了可能的优化，比如更复杂的数据结构或者更新条件等。
