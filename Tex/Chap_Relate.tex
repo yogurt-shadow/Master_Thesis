@@ -347,6 +347,15 @@ $$
 
 
 \section{非线性实数理论求解现状}
+整体来说，SAT和SMT问题的求解方法包括完备方法、局部搜索算法和混合求解方法。以往的技术路线如图\ref{fig:tech}所示，本文工作LS\_NRA属于局部搜索算法在实数理论上的拓展。
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{Img/future.png}
+    \bicaption {局部搜索算法和完备算法的主要技术路线。} {Main Technical Routes of Local Search Algorithms and Complete Algorithms.}
+\label{fig:tech}
+\end{figure*}
+
 \subsection{CDCL(T)算法}
 CDCL(T) (Conflict Driven Clause Learning for Theories)算法主要是在SAT问题的CDCL搜索框架上增加了理论求解器(Theory Solver)，主要的搜索思路包括单元传播、分支决策、冲突分析及回退等CDCL常见技术。理论求解器的作用是对给定的布尔骨架赋值进行推理，当全部布尔骨架得到赋值时通过理论分析返回问题可满足或者报告冲突。具体框架请参见图\ref{fig:cdclt}。
 
@@ -496,6 +505,10 @@ MCSAT(Model-Constructing Satisfiability)和NLSAT(NonLinear Satisfiability)是另
 \label{ex:ls}
 \end{example}
 
+\subsection{混合求解方法}
+近年来，混合求解方法\cite{CaiZ21}成为求解SAT和SMT方法的高效方法之一，其主要思想是结合完备算法的推理能力和局部搜索算法的采样能力。对于一个约束公式，混合求解方法首先使用完备算法进行单元传播，然后在目标可行解附近时（依赖于启发式判断）无视冲突进行赋值的拓展，然后调用局部搜索算法在邻域迭代，企图可以解决当前的冲突。除此之外，混合求解算法为两种求解模式的求解信息提供了桥梁，比如使用变量的冲突频率来加速完备算法的分支决策和相位选择等。
+
+对于SMT问题而言，目前的混合求解方法\cite{hybridSMT}将其抽象为布尔骨架，然后对相应的文字做SAT混合求解方法一样的处理，即使用算术局部搜索方法加速CDCL(T)算法的求解过程。工作\cite{BoostMcsat}则在MCSAT框架上与局部搜索算法做深度耦合，MCSAT为局部搜索算法提供完整的初始赋值，而局部搜索算法则用来为MCSAT算术变量决策提供指导。
 
 \section{本章小结}
 
