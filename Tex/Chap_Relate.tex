@@ -293,7 +293,7 @@ $$
 \begin{example}
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=0.7\columnwidth]{Img/cad.png}
+    \includegraphics[width=0.6\columnwidth]{Img/cad.png}
     \bicaption {柱形代数分解步骤示意图。} {Demo of Cylindarical Algebraic Decomposition Steps.}
 \label{fig:CAD}
 \end{figure*}
@@ -436,7 +436,7 @@ MCSAT(Model-Constructing Satisfiability)和NLSAT(NonLinear Satisfiability)是另
 
 假设状态空间$S$为所有候选解构成的解空间，局部搜索的具体求解过程可以概括如下：
 \begin{enumerate}
-    \item \textbf{初始化：}随机生成一个初始状态$s_0 \in S$。一般来说，初始状态可以启发式生成，尽量减小约束的复杂度。
+    \item 随机生成一个初始状态$s_0 \in S$。一般来说，初始状态可以启发式生成，尽量减小约束的复杂度。
     \item 定义操作$op$，同时定义邻域函数$N: S \rightarrow 2^S$，表示从状态$S$可以到达的状态集合。这样，我们找到了从初始状态可以到达的一系列候选状态$N(s_0)$
     \item 定义打分函数$f: S \rightarrow R$，表示状态的好坏。我们贪心地从候选状态中找到分数最好的一个进行迭代。
     \item 设置停止条件，比如最大迭代次数、最大限制时间，或者已经找到问题的最优解。

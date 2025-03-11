@@ -354,6 +354,21 @@ url={https://openreview.net/forum?id=vNsdFwjPtL}
   bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
+@inproceedings{Lasso3,
+author = {Brockschmidt, Marc and Cook, Byron and Fuhs, Carsten},
+title = {Better Termination Proving through Cooperation},
+year = {2013},
+isbn = {9783642397981},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+abstract = {One of the difficulties of proving program termination is managing the subtle interplay between the finding of a termination argument and the finding of the argument's supporting invariant. In this paper we propose a new mechanism that facilitates better cooperation between these two types of reasoning. In an experimental evaluation we find that our new method leads to dramatic performance improvements.},
+booktitle = {Proceedings of the 25th International Conference on Computer Aided Verification - Volume 8044},
+pages = {413–429},
+numpages = {17},
+location = {Saint Petersburg, Russia},
+series = {CAV 2013}
+}
+
 @article{LeikeH15,
   author       = {Jan Leike and
                   Matthias Heizmann},
@@ -455,6 +470,42 @@ url={https://openreview.net/forum?id=vNsdFwjPtL}
   biburl       = {https://dblp.org/rec/conf/ab/AkutsuHT08.bib},
   bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
+
+@InProceedings{Pine,
+author="Izycheva, Anastasiia
+and Darulova, Eva
+and Seidl, Helmut",
+editor="Pichardie, David
+and Sighireanu, Mihaela",
+title="Counterexample- and Simulation-Guided Floating-Point Loop Invariant Synthesis",
+booktitle="Static Analysis",
+year="2020",
+publisher="Springer International Publishing",
+address="Cham",
+pages="156--177",
+abstract="We present an automated procedure for synthesizing sound inductive invariants for floating-point numerical loops. Our procedure generates invariants of the form of a convex polynomial inequality that tightly bounds the values of loop variables. Such invariants are a prerequisite for reasoning about the safety and roundoff errors of floating-point programs. Unlike previous approaches that rely on policy iteration, linear algebra or semi-definite programming, we propose a heuristic procedure based on simulation and counterexample-guided refinement. We observe that this combination is remarkably effective and general and can handle both linear and nonlinear loop bodies, nondeterministic values as well as conditional statements. Our evaluation shows that our approach can efficiently synthesize loop invariants for existing benchmarks from literature, but that it is also able to find invariants for nonlinear loops that today's tools cannot handle.",
+isbn="978-3-030-65474-0"
+}
+
+
+
+@InProceedings{Heizmann,
+author="Col{\'o}n, Michael A.
+and Sankaranarayanan, Sriram
+and Sipma, Henny B.",
+editor="Hunt, Warren A.
+and Somenzi, Fabio",
+title="Linear Invariant Generation Using Non-linear Constraint Solving",
+booktitle="Computer Aided Verification",
+year="2003",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="420--432",
+abstract="We present a new method for the generation of linear invariants which reduces the problem to a non-linear constraint solving problem. Our method, based on Farkas' Lemma, synthesizes linear invariants by extracting non-linear constraints on the coefficients of a target invariant from a program. These constraints guarantee that the linear invariant is inductive. We then apply existing techniques, including specialized quantifier elimination methods over the reals, to solve these non-linear constraints. Our method has the advantage of being complete for inductive invariants. To our knowledge, this is the first sound and complete technique for generating inductive invariants of this form. We illustrate the practicality of our method on several examples, including cases in which traditional methods based on abstract interpretation with widening fail to generate sufficiently strong invariants.",
+isbn="978-3-540-45069-6"
+}
+
+
 
 @inproceedings{CaiLZ22,
   author       = {Shaowei Cai and

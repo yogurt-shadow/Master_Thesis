@@ -7,10 +7,10 @@
 本工作选取SMT-LIB\footnote{\url{https://smt-lib.org/}}中QF\_NRA理论作为测试样例。测试样例大多包含来自工业问题的实例，我们介绍其中一些类别如下：
 
 \begin{itemize}
-    \item \textbf{2019-ezsmt:} 该类别来自一种处理non-tight程序的工具EZSMT+。
-    \item \textbf{20170501-Heizmann:} 该类别来自Ultimate程序分析框架的一个组件，主要用于基于约束的不变式合成。
-    \item \textbf{20200911-Pine:} 该类别来自名为Pine的工具，主要用于检查循环不变式的归纳性。
-    \item \textbf{LassoRanker:}该类别来自一种使用秩函数来分析Lassoshaped程序终止性的工具，所含样例都是多线性(multilinear)约束。
+    \item \textbf{2019-ezsmt\cite{SusmanL16, ShenL18}:} 该类别来自一种处理non-tight程序的工具EZSMT+。
+    \item \textbf{20170501-Heizmann\cite{Heizmann}:} 该类别来自Ultimate程序分析框架的一个组件，主要用于基于约束的不变式合成。
+    \item \textbf{20200911-Pine\cite{Pine}:} 该类别来自名为Pine的工具，主要用于检查循环不变式的归纳性。
+    \item \textbf{LassoRanker\cite{LeikeH15, HeizmannHLP13, Lasso3}:}该类别来自一种使用秩函数来分析Lassoshaped程序终止性的工具，所含样例都是多线性(multilinear)约束。
     \item \textbf{UltimateAutomizer:}该类别产生自基于自动机的软件模型检查工具，是Ultimate软件分析工具的一个组件。
 \end{itemize}
 
@@ -74,18 +74,19 @@
 \label{fig:scatter}
 \end{figure*}
 
-我们还参考了不同求解器的求解时间对比，如图\ref{fig:time}所示。可以看出，几乎在任何的限制时间内，局部搜索算法的求解数量都是最多的，这说明局部搜索算法对计算时间的要求相对较低，程序迭代速度较快。随着求解时间的增加，局部搜索算法的求解数量增长速度远远快于其他求解器，这说明在充足的时间内，更多的样例可以通过多次迭代找到邻近的可行解。
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=0.7\columnwidth]{Img/time_solver.png}
-    \bicaption{LS\_NRA与Z3、cvc5在不同时间求解个数对比。}{Comparison of LS\_NRA and Z3, cvc5 solving number in different time.}
-\label{fig:time}
-\end{figure*}
+我们还参考了不同求解器的求解时间对比，如图\ref{fig:time}所示。可以看出，几乎在任何的限制时间内，局部搜索算法的求解数量都是最多的，这说明局部搜索算法对计算时间的要求相对较低，程序迭代速度较快。随着求解时间的增加，局部搜索算法的求解数量增长速度远远快于其他求解器，这说明在充足的时间内，更多的样例可以通过多次迭代找到邻近的可行解。相较于完备算法而言，局部搜索算法的另一优势是可以在任意时间内返回质量足够好（接近可满足赋值）的解，为后续其他算法提供了更好的初始解。
+
 
 
 \section{和其他局部搜索工作的对比}
 我们还讨论了LS\_NRA与以往局部搜索工作的对比。在\cite{multilinear}考虑的979个多线性样例中，LS\_NRA可以求解826个，略小于前序工作的891个。这种微弱的差异主要来自于\cite{multilinear}更高效的实现，考虑到其工作进需要考虑有理数赋值，而非代数数，因此在数据结构设计和参数优化上更有针对性。在\cite{LiXZ23}考虑的2736个样例中，我们的方法可以求解2589个，高于前序工作的2246个。事实上，我们不仅比局部搜索算法求解的个数要多，也要比前面工作用于对比的其他求解器个数还要多。我们注意到\cite{LiXZ23}使用了不同的计算软件（比如Maple），并且在不同机器上测试，因此数据可能略有误差。
 
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.65\columnwidth]{Img/time_solver.png}
+    \bicaption{LS\_NRA与Z3、cvc5在不同时间求解个数对比。}{Comparison of LS\_NRA and Z3, cvc5 solving number in different time.}
+\label{fig:time}
+\end{figure*}
 \section{消融实验1：变量分数增量式计算的影响}
 本小节主要展示章节\ref{chap:method1}中提出的变量分数增量式计算对迭代加速的影响。我们比较如下集中实现：基于边界的增量式计算(Incremental)，不采用增量式计算的传统方法(Naive)，以及传统方法但是限制每次考虑的子句数最大为45(Limit-45)。相关的结果如表格\ref{tab:incremental}所示。
 
@@ -94,7 +95,7 @@
 图\ref{fig:scatter_inc}显示了在使用和不使用增量式计算的情况下，局部搜索求解单个样例所需的整体时间(左图)和每次迭代所需时间(右图)。每一个点表示一个测试样例，横纵坐标分别代表了使用和不使用增量式计算下的求解时间。根据散点图可知，绝大多数点分布在虚线以上，这意味着增量式计算在绝大多数样例上增量式计算可以起到提高求解速度的作用。右图可以看出增量式计算在每次迭代的时间上也有所提升。另一方面，我们统计得出基于边界的计算方法往往需要更少的迭代步数，这说明新的计算方法成功规避了传统计算大量同类操作的发生。
 
 
-图\ref{fig:time_inc}显示了是否使用增量式计算在不同时间限制下的求解个数。对于1200秒的限制来说，是否使用增量式计算对求解个数的影响并不明显，但是在更少的求解时间时（300秒以下），更多的计算资源消耗在了实根隔离和可行域计算上，因此在迭代中缓存这些昂贵的信息尤为重要。在求解时间为10秒的条件下，二者的差距有150个以上，这说明了增量式计算对于提升求解速度的重要性。
+图\ref{fig:time_inc}显示了是否使用增量式计算在不同时间限制下的求解个数。对于1200秒的限制来说，是否使用增量式计算对求解个数的影响并不明显，但是在更少的求解时间时（300秒以下），更多的计算资源消耗在了实根隔离和可行域计算上，因此在迭代中缓存这些昂贵的信息尤为重要。在求解时间为10秒的条件下，二者的差距有150个以上，这说明在运行初期大量时间被用于计算变量的可行域区间，因此增量式缓存机制尤为重要。
 
 \begin{figure*}[t]
     \centering
@@ -103,13 +104,13 @@
     \bicaption{增量式计算对整体求解时间和单步迭代时间的影响。}{Empact of incremental calculation on total solving time and per-iteration time.}
 \label{fig:scatter_inc}
 \end{figure*}
-
 \begin{figure*}[t]
     \centering
     \includegraphics[width=0.7\columnwidth]{Img/time_inc.png}
     \bicaption{LS\_NRA使用增量式计算在不同时间下求解的个数。}{Number of solutions found by LS\_NRA with incremental calculation in different time.}
 \label{fig:time_inc}
 \end{figure*}
+
 
 \begin{table*}[]
     \centering
@@ -139,9 +140,12 @@
 \end{table*}
 
 \section{消融实验2：等式约束松弛的影响}
+本小节主要展示章节\ref{chap:method2}中介绍的等式约束松弛对整体算法的影响。我们给出以下三种版本：使用等式松弛机制(Relaxation)，不使用等式松弛但优先选取低复杂度的赋值(Threshold)，不使用等式松弛并且不考虑赋值复杂度(NoOrder)。相关结果在表\ref{tab:relaxation}中展示。
+
+我们可以看到，在整体求解效果上，使用等式松弛机制的效果最好，其次是考虑赋值复杂度和传统方法。三者的主要差距在于hycomp样例，该样例来自于混成自动机的分析和验证，包含了大量的等式约束，并且结果往往涉及无理数赋值。等式松弛技术可以暂缓对于等式约束可满足的处理，进而将计算资源放在更容易处理的严格不等式上，求得近似解后再迭代到最近的精确解。考虑赋值复杂度的方法则会规避一些复杂的有理数赋值，提高每次迭代的速度，进而在更短时间内求解更多的样例。
 \begin{table*}[]
     \centering
-    \resizebox{\linewidth}{!}{
+    \resizebox{0.8\linewidth}{!}{
         \begin{tabular}{c | c | c | c | c}
             \hline
             类别 & 个数 & Relaxation & Threshold & NoOrder \\\hline
@@ -165,10 +169,6 @@
         \bicaption{等式约束松弛对算法的影响。} {Impact of relaxation on algorithm.}
 \label{tab:relaxation}
 \end{table*}
-本小节主要展示章节\ref{chap:method2}中介绍的等式约束松弛对整体算法的影响。我们给出以下三种版本：使用等式松弛机制(Relaxation)，不适用等式松弛但优先选取低复杂度的赋值(Threshold)，不使用等式松弛并且不考虑赋值复杂度(NoOrder)。相关结果在表\ref{tab:relaxation}中展示。
-
-我们可以看到，在整体求解效果上，使用等式松弛机制的效果最好，其次是考虑赋值复杂度和传统方法。三者的主要差距在于hycomp样例，该样例来自于混成自动机的分析和验证，包含了大量的等式约束，并且结果往往涉及无理数赋值。等式松弛技术可以暂缓对于等式约束可满足的处理，进而将计算资源放在更容易处理的严格不等式上，求得近似解后再迭代到最近的精确解。考虑赋值复杂度的方法则会规避一些复杂的有理数赋值，提高每次迭代的速度，进而在更短时间内求解更多的样例。
-
 
 \section{本章小结}
 本章节通过设计实验，深入评估了LS\_NRA工具的求解性能和策略有效性。首先，我们对比了LS\_NRA和其他主流SMT求解器（Z3、cvc5、Yices）在SMT-LIB上的求解个数和求解时间，方法表明LS\_NRA对于高次约束具有优势。然后，我们设计消融实验测试了基于边界的可行域缓存机制和等式松弛机制对整体求解效果的影响，实验表明二者均对算法的求解能力有所提升。
