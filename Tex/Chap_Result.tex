@@ -64,31 +64,33 @@
 \label{tab:experiment}
 \end{table*}
 
-我们在图\ref{fig:scatter}中描绘了LS\_NRA与Z3、CVC5、Yices求解时间对比的散点图。图中每一个点的横坐标代表了求解该样例LS\_NRA所需要的时间，纵坐标表示了其他求解器的求解时间，虚线则说明二者在该问题上消耗的求解时间一致。可以看到与CVC5相比，大多数散点在虚线以上，说明对于大部分样例的求解LS\_NRA更有优势。除此之外，三个散点图中均有不少样例分布在虚线以上，这说明了对于某些样例而言，局部搜索算法有很强的针对性。
+我们在图\ref{fig:scatter}中描绘了LS\_NRA与Z3（左上）、CVC5（右上）、Yices（左下）求解时间对比的散点图。图中每一个点的横坐标代表了求解该样例LS\_NRA所需要的时间，纵坐标表示了其他求解器的求解时间，虚线则说明二者在该问题上消耗的求解时间一致。可以看到与CVC5相比，大多数散点在虚线以上，说明对于大部分样例的求解LS\_NRA更有优势。除此之外，三个散点图中均有不少样例分布在虚线以上，这说明了对于某些样例而言，局部搜索算法有很强的针对性。
 
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=0.25\columnwidth]{Img/scatter_z3.png}\qquad
-    \includegraphics[width=0.25\columnwidth]{Img/scatter_cvc5.png}\qquad
-    \includegraphics[width=0.25\columnwidth]{Img/scatter_yices.png}
-    \bicaption{LS\_NRA与Z3、CVC5、Yices求解时间对比。} {Comparison of LS\_NRA and Z3, CVC5, and Yices solving time.}
+    \includegraphics[width=0.45\columnwidth]{Img/scatter_z3.png}\qquad
+    \includegraphics[width=0.45\columnwidth]{Img/scatter_cvc5.png}\qquad
+    \includegraphics[width=0.45\columnwidth]{Img/scatter_yices.png}\qquad
+    \includegraphics[width=0.45\columnwidth]{Img/time_solver.png}
+    \bicaption{LS\_NRA与Z3 （左上）、CVC5 （右上）、Yices （左下）求解时间对比。不同求解器在不同限定时间内求解个数比较（右下）。} {Comparison of LS\_NRA and Z3 (upper left), CVC5 (upper right), Yices (lower left) solving time. Comparison of number of solutions found by different solvers in different time (lower right).}
 \label{fig:scatter}
 \end{figure*}
 
-我们还参考了不同求解器的求解时间对比，如图\ref{fig:time}所示。可以看出，几乎在任何的限制时间内，局部搜索算法的求解数量都是最多的，这说明局部搜索算法对计算时间的要求相对较低，程序迭代速度较快。随着求解时间的增加，局部搜索算法的求解数量增长速度远远快于其他求解器，这说明在充足的时间内，更多的样例可以通过多次迭代找到邻近的可行解。相较于完备算法而言，局部搜索算法的另一优势是可以在任意时间内返回质量足够好（接近可满足赋值）的解，为后续其他算法提供了更好的初始解。
+我们还参考了不同求解器的求解时间对比，如图\ref{fig:scatter}右下图所示。可以看出，几乎在任何的限制时间内，局部搜索算法的求解数量都是最多的，这说明局部搜索算法对计算时间的要求相对较低，程序迭代速度较快。随着求解时间的增加，局部搜索算法的求解数量增长速度远远快于其他求解器，这说明在充足的时间内，更多的样例可以通过多次迭代找到邻近的可行解。相较于完备算法而言，局部搜索算法的另一优势是可以在任意时间内返回质量足够好（接近可满足赋值）的解，为后续其他算法提供了更好的初始解。
 
 
 
 \section{和其他局部搜索工作的对比}
 我们还讨论了LS\_NRA与以往局部搜索工作的对比。在\cite{multilinear}考虑的979个多线性样例中，LS\_NRA可以求解826个，略小于前序工作的891个。这种微弱的差异主要来自于\cite{multilinear}更高效的实现，考虑到其工作进需要考虑有理数赋值，而非代数数，因此在数据结构设计和参数优化上更有针对性。在\cite{LiXZ23}考虑的2736个样例中，我们的方法可以求解2589个，高于前序工作的2246个。事实上，我们不仅比局部搜索算法求解的个数要多，也要比前面工作用于对比的其他求解器个数还要多。我们注意到\cite{LiXZ23}使用了不同的计算软件（比如Maple），并且在不同机器上测试，因此数据可能略有误差。
 
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=0.65\columnwidth]{Img/time_solver.png}
-    \bicaption{LS\_NRA与Z3、CVC5在不同时间求解个数对比。}{Comparison of LS\_NRA and Z3, CVC5 solving number in different time.}
-\label{fig:time}
-\end{figure*}
+% \begin{figure*}[t]
+%     \centering
+%     \includegraphics[width=0.65\columnwidth]{Img/time_solver.png}
+%     \bicaption{LS\_NRA与Z3、CVC5在不同时间求解个数对比。}{Comparison of LS\_NRA and Z3, CVC5 solving number in different time.}
+% \label{fig:time}
+% \end{figure*}
+
 \section{消融实验1：变量分数增量式计算的影响}
 本小节主要展示章节\ref{chap:method1}中提出的变量分数增量式计算对迭代加速的影响。我们比较如下集中实现：基于边界的增量式计算(Incremental)，不采用增量式计算的传统方法(Naive)，以及传统方法但是限制每次考虑的子句数最大为45(Limit-45)。相关的结果如表格\ref{tab:incremental}所示。
 
@@ -146,8 +148,18 @@
 
 我们可以看到，在整体求解效果上，使用等式松弛机制的效果最好，其次是考虑赋值复杂度和传统方法。三者的主要差距在于hycomp样例，该样例来自于混成自动机的分析和验证，包含了大量的等式约束，并且结果往往涉及无理数赋值。等式松弛技术可以暂缓对于等式约束可满足的处理，进而将计算资源放在更容易处理的严格不等式上，求得近似解后再迭代到最近的精确解。考虑赋值复杂度的方法则会规避一些复杂的有理数赋值，提高每次迭代的速度，进而在更短时间内求解更多的样例。
 
+经过统计，有1109个样例在实际运行中涉及到了等式松弛，使用松弛技术后可以在1200秒时间限制内求解出96个以前求解超时的样例。其中，对于一些等式约束非常复杂的样例，比如hycomp类别下的ball\_count样例，使用等式松弛技术后以在110秒内成功求出可行解。我们还统计了等式松弛技术中恢复阶段所需时间和占总迭代时间比例的规律，如图\ref{fig:restore2}所示。结果表明绝大部分样例（926个）可以在很短时间内(< 0.1秒)的恢复阶段在0.1秒内完成，超过100秒的样例很少，说明我们的松弛算法可以在很短时间内迅速找到精确解。同时，我们还统计了恢复阶段耗时占整体求解时间的比例分布，大约66\%的样例恢复阶段耗时占总时间比例小于10\%，但仍然存在部分难以处理的样例可能很难找到精确解。这部分样例一般存在于多个变量构成的等式方程组中，并且大部分变量的赋值均采用无理数，因此本文提出的基于单个约束的松弛方法可能无法很好的处理这类问题。
+
 \section{本章小结}
 本章节通过设计实验，深入评估了LS\_NRA工具的求解性能和策略有效性。首先，我们对比了LS\_NRA和其他主流SMT求解器（Z3、CVC5、Yices）在SMT-LIB上的求解个数和求解时间，方法表明LS\_NRA对于高次约束具有优势。然后，我们设计消融实验测试了基于边界的可行域缓存机制和等式松弛机制对整体求解效果的影响，实验表明二者均对算法的求解能力有所提升。
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.45\columnwidth]{Img/restore_time.png}\qquad
+    \includegraphics[width=0.45\columnwidth]{Img/restore_ratio.png}
+    \bicaption{左图：松弛解恢复时间分布。右图：松弛解恢复时间占总时间比例。}{Left: Distribution of restoration time. Right: Ratio of restoration time to total time.}
+\label{fig:restore2}
+\end{figure*}
 
 \begin{table*}[]
     \centering
