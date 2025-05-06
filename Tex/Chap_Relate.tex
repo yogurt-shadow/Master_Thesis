@@ -1,6 +1,6 @@
 \chapter{基本概念与相关工作}\label{chap:Relate}
 
-本章节主要介绍SMT和非线性实数理论的相关基本概念以及研究现状。首先，本文给出SMT问题和非线性实数理论的语法，然后给出解空间表达以帮助读者更好地理解SMT问题的本质。紧接着我们给出CDCL(T)算法的结构、MCSAT算法原理以及其他一些SMT求解器的介绍。然后我们给出近几年来局部搜索在SMT问题上的应用，包括线性整数逻辑、多线性逻辑和部分多项式理论等。最后，我们总结目前算法的缺点和非线性问题的挑战，并引出我们的工作带来的进展和突破。
+本章节主要介绍SMT和非线性实数理论的相关基本概念以及研究现状。首先，本文给出SMT问题和非线性实数理论的语法，然后给出解空间表达以帮助读者更好地理解SMT问题的本质。紧接着我给出CDCL(T)算法的结构、MCSAT算法原理以及其他一些SMT求解器的介绍。然后我给出近几年来局部搜索在SMT问题上的应用，包括线性整数逻辑、多线性逻辑和部分多项式理论等。最后，我总结目前算法的缺点和非线性问题的挑战，并引出我的工作带来的进展和突破。
 
 \section{可满足性模理论与非线性实数问题}
 首先，本文给出可满足行模理论(Satisfiability Modulo Theories, SMT)问题的一般定义，前置概念介绍如下：
@@ -21,7 +21,11 @@ SMT问题中的变量根据赋值要求分为布尔变量和算术变量。布�
 多线性约束是一种特殊的多项式约束，其中多项式中的每一项的变量次数不能超过1次，即每一项的每一个变量次数都是1。比如，$x y + y z k < 0$是一个多线性约束。
 \end{definition}
 
-Tseitin编码保证了任意的逻辑约束可以在多项式时间内转化为合取范式(Conjunctive Normal Form, CNF)。为方便说明，本文中所有SMT约束表达成为CNF形式，一些基本概念如下：
+\begin{definition}{\textbf{Tseitin编码(Tseitin Encoding)}}
+Tseitin编码是一种将布尔公式转化为CNF形式的编码方法。它通过引入新的变量来表示子公式，从而可以在多项式时间内将复杂的布尔公式转化为一组简单的子公式的合取形式。
+\end{definition}
+
+监狱Tseitin编码的能力，为方便说明，本文中所有SMT约束表达成为CNF形式，一些基本概念如下：
 \begin{definition}{\textbf{命题文字 (Literal)}}
 命题文字是可满足问题中的基本结构，包括正文字($p$)和负文字($\neg p$)。非线性实数理论的命题文字一般是多项式约束或布尔变量约束。正文字只有当对应的多项式约束满足时才满足，负文字只有当对应的多项式约束不满足时才满足。一个典型的非线性实数文字比如$x^2 + y > 0$或者$\neg (x + y^3 < 0)$。
 \end{definition}
@@ -41,7 +45,7 @@ Tseitin编码保证了任意的逻辑约束可以在多项式时间内转化为�
 \textbf{子句:} \quad & C := l_1 \vee l_2 \vee \dots \vee l_n \\
 \textbf{公式：} \quad & \varphi := C_1 \wedge C_2 \wedge \dots \wedge C_m
 \end{align*}
-
+多项式可以是变量$x$，常数$c$，或者两个多项式的加和以及乘积构成；文字可以是单一的布尔变量$b$，多项式构成的不等式$p \leq 0$，$p \geq 0$或者$p = 0$；子句是多个文字的析取；公式是多个子句的合取。
 
 \begin{definition}{\textbf{赋值 (Assignment)}}
 赋值指的是变量到布尔值或者实数的一种映射，布尔变量赋值为$f: B \rightarrow \{\top, \bot\}$，算术变量赋值为$f: R \rightarrow \mathbb{R}$。一个赋值$f$满足一个公式$\varphi$，记作$f \models \varphi$，当且仅当对于公式中的每一个子句$C_i$，至少有一个文字$l_j$满足$f \models l_j$。赋值可以分为部分赋值(partial assignment)和完全赋值(full assignment)，部分赋值只对部分变量存在映射，完全赋值对所有变量都存在映射。赋值一般记为一组映射，比如$\{x \mapsto 2, y \mapsto 3\}$。
@@ -55,15 +59,15 @@ Tseitin编码保证了任意的逻辑约束可以在多项式时间内转化为�
 可满足性模理论(SMT)指的是给定一个逻辑公式$\varphi$，如果存在一组赋值$f$使得$f \models \varphi$，则称$\varphi$是\textbf{可满足的(satisfiable)}，否则称$\varphi$是\textbf{不可满足的(unsatisfiable)}。SMT问题的目标是找到一个可满足的赋值，即找到一个满足公式的赋值，或者证明赋值不可满足。
 \end{definition}
 
-我们给出以下例子\ref{ex:SMT}进一步说明SMT问题的可满足性。
+我给出以下例子\ref{ex:SMT}进一步说明SMT问题的可满足性。
 
 \begin{example}
 \label{ex:SMT}
-给定SMT公式$\varphi = (x^2 + y > 0) \wedge (x + y^3 < 0)$，我们可以找到一组赋值$f = \{x \mapsto 2, y \mapsto -2\}$使得$f \models \varphi$。因此我们称该问题是可满足的。给定SMT公式$\varphi = (x^2 + y^2 < 0)$，我们在实数空间上找不到一组赋值满足当前约束，因此该问题是不可满足的。
+给定SMT公式$\varphi = (x^2 + y > 0) \wedge (x + y^3 < 0)$，我可以找到一组赋值$f = \{x \mapsto 2, y \mapsto -2\}$使得$f \models \varphi$。因此我称该问题是可满足的。给定SMT公式$\varphi = (x^2 + y^2 < 0)$，我在实数空间上找不到一组赋值满足当前约束，因此该问题是不可满足的。
 \end{example}
 
 
-\textbf{逻辑公式化简：} 为方便说明，我们把所有的算术文字化简为以下几种形式$\{p > 0, p \geq 0, p = 0\}$，其中$p$是多项式。具体的化简规则表述如下：
+\textbf{逻辑公式化简：} 为方便说明，我把所有的算术文字化简为以下几种形式$\{p > 0, p \geq 0, p = 0\}$，其中$p$是多项式。具体的化简规则表述如下：
 \begin{itemize}
     \item $p < 0$化简为$p' > 0$，其中$p'$表示$p$的相反多项式。
     \item $p \leq 0$化简为$p' \geq 0$，其中$p'$表示$p$的相反多项式。
@@ -89,10 +93,10 @@ Tseitin编码保证了任意的逻辑约束可以在多项式时间内转化为�
 \label{ex:solution_space}
 \end{example}
     
-数学上，我们把符号一致的连通区域定义为胞腔。具体定义如\ref{def:cell}所示：
+数学上，我把符号一致的连通区域定义为胞腔。具体定义如\ref{def:cell}所示：
 
 \begin{definition}{\textbf{胞腔 (Cell)}}
-对于$R^n$空间上的多项式集合$Q$，$Q$的一个胞腔(cell)是每个多项式$P \in Q$保持符号不变的$R^n$最大连通集合。对于任意的点$a \in R^n$，如果$a$在$Q$的胞腔内，则$a$满足$Q$中的所有多项式，我们记这个胞腔为$cell(Q, a)$。显然，胞腔是$R^n$空间的一个划分。
+对于$R^n$空间上的多项式集合$Q$，$Q$的一个胞腔(cell)是每个多项式$P \in Q$保持符号不变的$R^n$最大连通集合。对于任意的点$a \in R^n$，如果$a$在$Q$的胞腔内，则$a$满足$Q$中的所有多项式，我记这个胞腔为$cell(Q, a)$。显然，胞腔是$R^n$空间的一个划分。
 \label{def:cell}
 \end{definition}
 
@@ -119,13 +123,13 @@ q(a_1, ..., a_{i-1}, x_i, a_{i+1}, ..., a_n)$的实数根为$r_1 < r_2 < \cdots 
     \bicaption {延拓点集示意图。} {Expansion Demo.}
     \label{fig:expansion}
 \end{figure*}
-继续考虑例子\ref{ex:solution_space}，如图\ref{fig:expansion}所示，我们可以得到点$(0, 0)$关于$x$的延拓，即点集$\{(-3, 0), (-1-\sqrt{2}, 0), (-1, 0), (1-\sqrt{2}, 0), (0, 0), (\sqrt{2} - 1, 0), (1, 0), (1+\sqrt{2}, 0), (3, 0)\}$。这些点在$x$变量上分割了多项式的符号区间，从而划分了胞腔在$x$方向上的投影。右侧图的空心点构成了点$(-1, 0)$关于变量$y$的延拓，即点集$\{(-1, -1), (-1, 1-\sqrt{3}), (-1, 1+\sqrt{3}), (-1, 3)\}$，这些点在$y$方向上分开了多项式的符号区间，从而划分了胞腔在$y$方向上的投影。
+继续考虑例子\ref{ex:solution_space}，如图\ref{fig:expansion}所示，我可以得到点$(0, 0)$关于$x$的延拓，即点集$\{(-3, 0), (-1-\sqrt{2}, 0), (-1, 0), (1-\sqrt{2}, 0), (0, 0), (\sqrt{2} - 1, 0), (1, 0), (1+\sqrt{2}, 0), (3, 0)\}$。这些点在$x$变量上分割了多项式的符号区间，从而划分了胞腔在$x$方向上的投影。右侧图的空心点构成了点$(-1, 0)$关于变量$y$的延拓，即点集$\{(-1, -1), (-1, 1-\sqrt{3}), (-1, 1+\sqrt{3}), (-1, 3)\}$，这些点在$y$方向上分开了多项式的符号区间，从而划分了胞腔在$y$方向上的投影。
 \label{ex:expansion1}
 \end{example}
-点$a$关于变量$x$的延拓点集事实上是点$a$在方向$x$上相邻胞腔的采样点，如何能够对$R^n$空间上的所有胞腔进行采样是我们接下来的话题。为此，我们引入柱形延拓的概念。
+点$a$关于变量$x$的延拓点集事实上是点$a$在方向$x$上相邻胞腔的采样点，如何能够对$R^n$空间上的所有胞腔进行采样是我接下来的话题。为此，我引入柱形延拓的概念。
 
 \begin{definition}{\textbf{柱形延拓 (Cylindrical Expansion)}}
-假设$R^n$上的多项式集合$Q$和点$a$。给定一个变量顺序$x_1 < x_2 < \cdots < x_n$，定义点$a$关于变量顺序在$Q$上的柱形延拓是$\bigcup_{i=1}^n \Lambda_i$，其中$\Lambda_1$是$a$关于变量$x_1$在$Q$上的延拓，并且$\Lambda_{i+1}$是$\Lambda_i$关于变量$x_{i+1}$在$Q$上的延拓。我们把最终的结果$\bigcup_{i=1}^n \Lambda_i$称为$Q$上的柱形延拓。
+假设$R^n$上的多项式集合$Q$和点$a$。给定一个变量顺序$x_1 < x_2 < \cdots < x_n$，定义点$a$关于变量顺序在$Q$上的柱形延拓是$\bigcup_{i=1}^n \Lambda_i$，其中$\Lambda_1$是$a$关于变量$x_1$在$Q$上的延拓，并且$\Lambda_{i+1}$是$\Lambda_i$关于变量$x_{i+1}$在$Q$上的延拓。我把最终的结果$\bigcup_{i=1}^n \Lambda_i$称为$Q$上的柱形延拓。
 \end{definition}
 
 柱形延拓可以理解为给定变量顺序下多维的点集延拓，其目的是在$R^n$空间的每一个胞腔上都有一个采样点。
@@ -232,14 +236,14 @@ q(a_1, ..., a_{i-1}, x_i, a_{i+1}, ..., a_n)$的实数根为$r_1 < r_2 < \cdots 
 \end{definition}
 
 \subsection{量词消去与柱形代数分解}
-根据前文的讨论，我们引出基于多项式解空间的一种量词消去算法-柱形代数分解(Cylindrical Algebraic Decomposition, CAD)。
+根据前文的讨论，我引出基于多项式解空间的一种量词消去算法-柱形代数分解(Cylindrical Algebraic Decomposition, CAD)。
 
 \begin{definition}{\textbf{量词消去 (Quantifier Elimination)}}
 量词消去指的是给定一个带有量词的逻辑公式$\varphi$，找到另一个不带有量词的逻辑公式$\psi$，使得$\varphi$和$\psi$的逻辑等价，记为$\varphi \Leftrightarrow \psi$。量词消去的目的是将逻辑公式转化为更易处理的形式，以更好地判断问题的可满足性。
 \end{definition}
 
 \begin{example}
-考虑多项式$P_s(x, y) = s(x^2 + y^2 - 1) + (1 - s)(xy - 1)$，和逻辑公式$\varphi = \exists R \forall x, y [P_s(x, y) = 0 \Rightarrow x^2 + y^2 \leq R^2]$。量词消去即求解当$s$取什么值的时候逻辑公式$\varphi$满足。通过量词消去工具，我们可以得到$\varphi \Leftrightarrow s \le -1 \wedge s > \frac{1}{3}$。\label{ex:quantifier_elimination}
+考虑多项式$P_s(x, y) = s(x^2 + y^2 - 1) + (1 - s)(xy - 1)$，和逻辑公式$\varphi = \exists R \forall x, y [P_s(x, y) = 0 \Rightarrow x^2 + y^2 \leq R^2]$。量词消去即求解当$s$取什么值的时候逻辑公式$\varphi$满足。通过量词消去工具，我可以得到$\varphi \Leftrightarrow s \le -1 \wedge s > \frac{1}{3}$。\label{ex:quantifier_elimination}
 \end{example}
 
 多项式理论常用的一种量词消去是柱形代数分解(Cylindrical Algebraic Decomposition, CAD)。其核心仍然是把$R^n$空间划分成多个符号一致的胞腔，然后通过判断每个胞腔是否满足逻辑公式进而得到给定变量的赋值区间。给定变量顺序和多项式集合，柱形代数分解可以分为三个步骤：投影、实根隔离和提升，具体的步骤如下：
@@ -249,7 +253,7 @@ q(a_1, ..., a_{i-1}, x_i, a_{i+1}, ..., a_n)$的实数根为$r_1 < r_2 < \cdots 
     \item \textbf{提升(lift)：}提升是对投影阶段得到的多项式集合进行采样。投影从单变量多项式开始，从采样点继续对上一个投影多项式进行采样，直到最终对$R^n$多项式采样，最终保证了每个胞腔得到了采样点。
 \end{itemize}
 
-投影算子(projection operator)指的是投影过程中对多项式集合的计算，比如Collins算子\cite{Collins74}和McCallum算子\cite{McCallum98}。后者因为其计算相对便捷，被广泛应用于量词消去工具和SMT求解器中。为方便说明投影算子的计算，我们先简要介绍以下几种多项式操作：
+投影算子(projection operator)指的是投影过程中对多项式集合的计算，比如Collins算子\cite{Collins74}和McCallum算子\cite{McCallum98}。后者因为其计算相对便捷，被广泛应用于量词消去工具和SMT求解器中。为方便说明投影算子的计算，我先简要介绍以下几种多项式操作：
 
 \begin{definition}{\textbf{结式(Resultant)}}
 对于两个多项式$P_1, P_2 \in R[x_1, ..., x_n]$，假定$$
@@ -304,7 +308,7 @@ $$
 \label{fig:CAD}
 \end{figure*}
 
-我们给出CAD算法的一个例子，如图\ref{fig:CAD}所示。假设$F = \{P_1: x - 2y^2 + 2, P_2: x + 2y^2 - 2\}$，我们规定变量顺序为$y < x$，按步骤计算如下：
+我给出CAD算法的一个例子，如图\ref{fig:CAD}所示。假设$F = \{P_1: x - 2y^2 + 2, P_2: x + 2y^2 - 2\}$，我规定变量顺序为$y < x$，按步骤计算如下：
 \begin{enumerate}
     \item \textbf{投影}：计算对于变量$y$的投影$proj(F, y)$
     \begin{itemize}
@@ -314,8 +318,8 @@ $$
     \end{itemize}
     取并集得到投影多项式集合$proj(F, y) = \{x, x - 2, x + 2\}$
 
-    \item \textbf{实根隔离}：我们对$proj(F, y)$的每个多项式求根，得到根集合$\{-2, 0, 2\}$。
-    \item \textbf{提升}：我们对根集合分得的区间进行提升，进一步采样所有胞腔，结果如表格\ref{tab:cad}所示（忽略边界处的胞腔）。
+    \item \textbf{实根隔离}：我对$proj(F, y)$的每个多项式求根，得到根集合$\{-2, 0, 2\}$。
+    \item \textbf{提升}：我对根集合分得的区间进行提升，进一步采样所有胞腔，结果如表格\ref{tab:cad}所示（忽略边界处的胞腔）。
     \begin{table*}[]
         \tiny
         \centering
@@ -408,7 +412,7 @@ MCSAT(Model-Constructing Satisfiability)和NLSAT(NonLinear Satisfiability)是另
 
 
 \begin{example}
-考虑公式$F=(P_1: (x-2)^2 + y^2 \le 4) \wedge (P_2: x - y \ge 0)$。假设我们的搜索顺序是$x < y$，算法的搜索过程如下：
+考虑公式$F=(P_1: (x-2)^2 + y^2 \le 4) \wedge (P_2: x - y \ge 0)$。假设我的搜索顺序是$x < y$，算法的搜索过程如下：
 \begin{enumerate}
     \item \textbf{决策算术变量：}赋值$x \mapsto 5$。
     \item \textbf{可行域计算：}计算$P_1$关于变量$y$的可行域是$\emptyset$，发现冲突。
@@ -422,7 +426,7 @@ MCSAT(Model-Constructing Satisfiability)和NLSAT(NonLinear Satisfiability)是另
 \end{example}
 
 \subsection{局部搜索算法现状}
-局部搜索算法是一种启发式的非完备算法，它的主要思想是把SMT问题看作是一个优化问题，通过迭代操作找到最终的可行解。一般来说，局部搜索只能用来求解可满足问题，而不能证明问题的不可满足性。我们首先给出基本概念的定义如下：
+局部搜索算法是一种启发式的非完备算法，它的主要思想是把SMT问题看作是一个优化问题，通过迭代操作找到最终的可行解。一般来说，局部搜索只能用来求解可满足问题，而不能证明问题的不可满足性。我首先给出基本概念的定义如下：
 
 \begin{definition}{\textbf{状态 (State)}}
 状态是指问题的一个解，比如变量的一组赋值。
@@ -443,15 +447,15 @@ MCSAT(Model-Constructing Satisfiability)和NLSAT(NonLinear Satisfiability)是另
 假设状态空间$S$为所有候选解构成的解空间，局部搜索的具体求解过程可以概括如下：
 \begin{enumerate}
     \item 随机生成一个初始状态$s_0 \in S$。一般来说，初始状态可以启发式生成，尽量减小约束的复杂度。
-    \item 定义操作$op$，同时定义邻域函数$N: S \rightarrow 2^S$，表示从状态$S$可以到达的状态集合。这样，我们找到了从初始状态可以到达的一系列候选状态$N(s_0)$
-    \item 定义打分函数$f: S \rightarrow R$，表示状态的好坏。我们贪心地从候选状态中找到分数最好的一个进行迭代。
+    \item 定义操作$op$，同时定义邻域函数$N: S \rightarrow 2^S$，表示从状态$S$可以到达的状态集合。这样，我找到了从初始状态可以到达的一系列候选状态$N(s_0)$
+    \item 定义打分函数$f: S \rightarrow R$，表示状态的好坏。我贪心地从候选状态中找到分数最好的一个进行迭代。
     \item 设置停止条件，比如最大迭代次数、最大限制时间，或者已经找到问题的最优解。
     \item 迭代搜索2-3步，直到满足停止条件4。
 \end{enumerate}
 对于SMT问题而言，工作\cite{CaiLZ2023}给出了一种实例化的概念：
 \begin{itemize}
     \item 初始解：一般通过变量的上下界来选取，比如当变量$v$的上下界为$[-2, 3]$时，可以选择初始状态为$v \mapsto 0$。
-    \item 单变量关键操作：SMT问题的操作定义为让一个约束满足的赋值变量进行变化。比如对于约束$x + y \geq 2$，当前状态为$\{x \mapsto 1, y \mapsto 0\}$，则我们有以下两种操作：
+    \item 单变量关键操作：SMT问题的操作定义为让一个约束满足的赋值变量进行变化。比如对于约束$x + y \geq 2$，当前状态为$\{x \mapsto 1, y \mapsto 0\}$，则我有以下两种操作：
     \begin{itemize}
         \item 保持变量$x$不变，增加变量$y$的值，使约束满足，比如$y \mapsto 1$。
         \item 保持变量$y$不变，增加变量$x$的值，使约束满足，比如$x \mapsto 2$。
@@ -497,15 +501,15 @@ MCSAT(Model-Constructing Satisfiability)和NLSAT(NonLinear Satisfiability)是另
     \end{algorithmic}
 \end{algorithm}
 
-我们以一个具体的例子\ref{ex:ls}进行说明。
+我以一个具体的例子\ref{ex:ls}进行说明。
 \begin{example}
-    假设当前SMT约束$F = \{C_1: x + y \leq 2, C_2: 2x + 3y \geq 5\}$，我们的目标是找到一个满足约束的解。我们可以通过局部搜索算法进行求解，具体步骤如下：
+    假设当前SMT约束$F = \{C_1: x + y \leq 2, C_2: 2x + 3y \geq 5\}$，我的目标是找到一个满足约束的解。我可以通过局部搜索算法进行求解，具体步骤如下：
 
     \begin{enumerate}
         \item \textbf{初始解生成：} 初始赋值$\{x \mapsto 0, y \mapsto 0\}$。当前赋值满足约束$C_1$，但不满足约束$C_2$。
-        \item \textbf{生成操作：} 考虑未满足约束$C_2$，我们可以固定变量$x$或$y$的赋值，比如赋值$op_1: \{x \mapsto 0, y \mapsto 2\}$，或者$op_2: \{x \mapsto 3, y \mapsto 0\}$。
+        \item \textbf{生成操作：} 考虑未满足约束$C_2$，我可以固定变量$x$或$y$的赋值，比如赋值$op_1: \{x \mapsto 0, y \mapsto 2\}$，或者$op_2: \{x \mapsto 3, y \mapsto 0\}$。
         \item \textbf{打分函数：} 打分函数设计为移动前后约束权重的差值，操作$op_1$可以满足两种约束，而操作$op_2$在满足约束$C_2$的同时破坏了约束$C_1$。
-        \item \textbf{移动操作：} 我们选择操作$op_1$，移动后赋值为$\{x \mapsto 0, y \mapsto 2\}$。
+        \item \textbf{移动操作：} 我选择操作$op_1$，移动后赋值为$\{x \mapsto 0, y \mapsto 2\}$。
         \item \textbf{算法停止：} 当所有约束都满足时，算法停止，返回当前赋值。
     \end{enumerate}
 \label{ex:ls}
@@ -519,6 +523,6 @@ MCSAT(Model-Constructing Satisfiability)和NLSAT(NonLinear Satisfiability)是另
 \section{本章小结}
 
 本章节主要介绍了SMT非线性算术问题的相关概念和研究现状。
-首先，我们给出逻辑公式的形式化定义，包括文字、子句、赋值等基本概念，然后引出非线性多项式及对应的可满足问题。
-然后，我们讨论了SMT问题的解空间，并讨论了柱形代数分解求得解空间胞腔的方法。
-最后，我们介绍了目前的几种求解方法，包括CDCL(T)、MCSAT和局部搜索算法。这些算法在实际应用中有着不同的优势和劣势，可以根据具体问题的特点选择合适的算法进行求解。
+首先，我给出逻辑公式的形式化定义，包括文字、子句、赋值等基本概念，然后引出非线性多项式及对应的可满足问题。
+然后，我讨论了SMT问题的解空间，并讨论了柱形代数分解求得解空间胞腔的方法。
+最后，我介绍了目前的几种求解方法，包括CDCL(T)、MCSAT和局部搜索算法。这些算法在实际应用中有着不同的优势和劣势，可以根据具体问题的特点选择合适的算法进行求解。
