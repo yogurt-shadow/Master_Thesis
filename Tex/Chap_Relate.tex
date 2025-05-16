@@ -22,10 +22,10 @@ SMT问题中的变量根据赋值要求分为布尔变量和算术变量。布�
 \end{definition}
 
 \begin{definition}{\textbf{Tseitin编码(Tseitin Encoding)}}
-Tseitin编码是一种将布尔公式转化为CNF形式的编码方法。它通过引入新的变量来表示子公式，从而可以在多项式时间内将复杂的布尔公式转化为一组简单的子公式的合取形式。
+Tseitin编码具体做法是为每一个子公式引入一个新变量，然后写出新变量和原来子公式之间的等价关系，最后将所有的等价关系和原公式的子公式一起写成CNF形式。Tseitin编码的优点是可以有效地减少公式的大小，并且保持了公式的可满足性。
 \end{definition}
 
-监狱Tseitin编码的能力，为方便说明，本文中所有SMT约束表达成为CNF形式，一些基本概念如下：
+鉴于Tseitin编码的能力，为方便说明，本文中所有SMT约束表达成为CNF形式，一些基本概念如下：
 \begin{definition}{\textbf{命题文字 (Literal)}}
 命题文字是可满足问题中的基本结构，包括正文字($p$)和负文字($\neg p$)。非线性实数理论的命题文字一般是多项式约束或布尔变量约束。正文字只有当对应的多项式约束满足时才满足，负文字只有当对应的多项式约束不满足时才满足。一个典型的非线性实数文字比如$x^2 + y > 0$或者$\neg (x + y^3 < 0)$。
 \end{definition}
@@ -84,8 +84,8 @@ Tseitin编码是一种将布尔公式转化为CNF形式的编码方法。它通�
 \begin{example}
     \begin{figure*}[]
         \centering
+        \bicaption {解空间示意图} {Demo of Solution Space.}
         \includegraphics[width=0.4\columnwidth]{Img/cell1.png}
-        \bicaption {解空间示意图。} {Demo of Solution Space.}
         \label{fig:solution_space}
     \end{figure*}
     
@@ -118,9 +118,9 @@ q(a_1, ..., a_{i-1}, x_i, a_{i+1}, ..., a_n)$的实数根为$r_1 < r_2 < \cdots 
 \begin{example}
 \begin{figure*}[]
     \centering
+    \bicaption {延拓点集示意图} {Expansion Demo.}
     \includegraphics[width=0.45\columnwidth]{Img/cell2.png} \qquad
     \includegraphics[width=0.45\columnwidth]{Img/cell3.png}
-    \bicaption {延拓点集示意图。} {Expansion Demo.}
     \label{fig:expansion}
 \end{figure*}
 继续考虑例子\ref{ex:solution_space}，如图\ref{fig:expansion}所示，可以得到点$(0, 0)$关于$x$的延拓，即点集$\{(-3, 0), (-1-\sqrt{2}, 0), (-1, 0), (1-\sqrt{2}, 0), (0, 0), (\sqrt{2} - 1, 0), (1, 0), (1+\sqrt{2}, 0), (3, 0)\}$。这些点在$x$变量上分割了多项式的符号区间，从而划分了胞腔在$x$方向上的投影。右侧图的空心点构成了点$(-1, 0)$关于变量$y$的延拓，即点集$\{(-1, -1), (-1, 1-\sqrt{3}), (-1, 1+\sqrt{3}), (-1, 3)\}$，这些点在$y$方向上分开了多项式的符号区间，从而划分了胞腔在$y$方向上的投影。
@@ -135,72 +135,49 @@ q(a_1, ..., a_{i-1}, x_i, a_{i+1}, ..., a_n)$的实数根为$r_1 < r_2 < \cdots 
 柱形延拓可以理解为给定变量顺序下多维的点集延拓，其目的是在$R^n$空间的每一个胞腔上都有一个采样点。
 \begin{figure*}[]
     \centering
+    \bicaption {柱形延拓示意图} {Cylindrical Expansion Demo.}
     \includegraphics[width=0.5\columnwidth]{Img/cell4.png}
-    \bicaption {柱形延拓示意图。} {Cylindrical Expansion Demo.}
     \label{fig:expansion2}
 \end{figure*}
 \begin{example}
 
 \begin{table*}[]
-    \tiny
+    % \tiny
     \centering
-    \resizebox{0.65\linewidth}{!}{
-        \begin{tabular}{c | c | c}
+    \bicaption{柱形延拓-采样点生成} {Demo of Computation of Cylindrical Expansion-Sampling Points.}
+    \resizebox{\linewidth}{!}{
+        \begin{tabular}{c | c | c | c | c | c}
     \hline
-    投影点 & 分割区间 & 延拓点集（采样点）\\\hline
+    投影点1 & 分割区间1 & 延拓点集1（采样点1） & 投影点2 & 分割区间2 & 延拓点集2（采样点2）\\\hline
     
-    (-3, 0) & $(-\infty, \infty)$ & (-3, 0)\\\hline
+    (-3, 0) & $(-\infty, \infty)$ & (-3, 0) & (3, 0) & $(-\infty, \infty)$ & (3, 0) \\\hline
     
-    \multirow{5}{*}{$(-1-\sqrt{2}, 0)$} & $(-\infty, 0)$ & $(-1-\sqrt{2}, -1)$ \\ & [0, 0] & $(-1-\sqrt{2}, 0)$ \\ & (0, 2) & $(-1-\sqrt{2}, 1)$ \\ & [2, 2] & $(-1-\sqrt{2}, 2)$ \\ & (2, \infty) & $(-1-\sqrt{2}, 3)$ \\\hline
+    \multirow{5}{*}{$(-1-\sqrt{2}, 0)$} & $(-\infty, 0)$ & $(-1-\sqrt{2}, -1)$ & \multirow{5}{*}{$(1+\sqrt{2}, 0)$} & $(-\infty, 0)$ & $(1+\sqrt{2}, -1)$ \\ & [0, 0] & $(-1-\sqrt{2}, 0)$ && [0, 0] & $(1 + \sqrt{2}, 0)$ \\ & (0, 2) & $(-1-\sqrt{2}, 1)$ && (0, 2) & $(1+\sqrt{2}, 1)$  \\ & [2, 2] & $(-1-\sqrt{2}, 2)$ && [2, 2] & $(1+\sqrt{2}, 2)$ \\ & $(2, \infty)$ & $(-1-\sqrt{2}, 3)$ && $(2, \infty)$ & $(1+\sqrt{2}, 3)$ \\\hline
     
-    \multirow{5}{*}{(-1, 0)} & $(-\infty, 1-\sqrt{3})$ & (-1, -1) \\
-    & $[1-\sqrt{3}, 1-\sqrt{3}]$ & $(-1, 1-\sqrt{3})$ \\
-    & $(1-\sqrt{3}, 1+\sqrt{3})$ & (-1, 0) \\
-    & $[1+\sqrt{3}, 1+\sqrt{3}]$ & $(-1, 1+\sqrt{3})$ \\
-    & $(1+\sqrt{3}, \infty)$ & (-1, 3) \\\hline
+    \multirow{5}{*}{(-1, 0)} & $(-\infty, 1-\sqrt{3})$ & (-1, -1) & \multirow{5}{*}{(1, 0)} & $(-\infty, 1-\sqrt{3})$ & (1, -1) \\
+    & $[1-\sqrt{3}, 1-\sqrt{3}]$ & $(-1, 1-\sqrt{3})$ && $[1-\sqrt{3}, 1-\sqrt{3}]$ & $(1, 1-\sqrt{3})$ \\
+    & $(1-\sqrt{3}, 1+\sqrt{3})$ & (-1, 0) && $(1-\sqrt{3}, 1+\sqrt{3})$ & $(1, 0)$ \\
+    & $[1+\sqrt{3}, 1+\sqrt{3}]$ & $(-1, 1+\sqrt{3})$ && $[1+\sqrt{3}, 1+\sqrt{3}]$ & $(1, 1+\sqrt{3})$ \\
+    & $(1+\sqrt{3}, \infty)$ & (-1, 3) && $(1+\sqrt{3}, \infty)$ & (1, 3) \\\hline 
 
-    \multirow{9}{*}{$(1-\sqrt{2}, 0)$} & $(-\infty, -0.63)$ & $(1-\sqrt{2}, -1)$ \\
-    & [-0.63, -0.63] & $(1-\sqrt{2}, -0.63)$ \\
-    & (-0.63, 0) & $(1-\sqrt{2}, -0.5)$ \\
-    & [0, 0] & $(1-\sqrt{2}, 0)$ \\
-    & (0, 2) & $(1-\sqrt{2}, 1)$ \\
-    & [2, 2] & $(1-\sqrt{2}, 2)$ \\
-    & (2, 2.63) & $(1-\sqrt{2}, 2.5)$ \\
-    & [2.63, 2.63] & $(1-\sqrt{2}, 2.63)$ \\
-    & (2.63, \infty) & $(1-\sqrt{2}, 3)$ \\\hline
+    \multirow{9}{*}{$(1-\sqrt{2}, 0)$} & $(-\infty, -0.63)$ & $(1-\sqrt{2}, -1)$ & \multirow{9}{*}{$(1+\sqrt{2}, 0)$} & $(-\infty, -0.63)$ & $(1+\sqrt{2}, -1)$ \\
+    & [-0.63, -0.63] & $(1-\sqrt{2}, -0.63)$ && [-0.63, -0.63] & $(1+\sqrt{2}, -0.63)$ \\
+    & (-0.63, 0) & $(1-\sqrt{2}, -0.5)$ && (-0.63, 0) & $(\sqrt{2}-1, -0.5)$ \\
+    & [0, 0] & $(1-\sqrt{2}, 0)$ && [0, 0] & $(\sqrt{2}-1, 0)$ \\
+    & (0, 2) & $(1-\sqrt{2}, 1)$ && (0, 2) & $(\sqrt{2}-1, 1)$\\
+    & [2, 2] & $(1-\sqrt{2}, 2)$ && [2, 2] & $(\sqrt{2}-1, 2)$ \\
+    & (2, 2.63) & $(1-\sqrt{2}, 2.5)$ && (2, 2.63) & $(\sqrt{2}-1, 2.5)$  \\
+    & [2.63, 2.63] & $(1-\sqrt{2}, 2.63)$ && [2.63, 2.63] & $(\sqrt{2}-1, 2.63)$\\
+    & (2.63, \infty) & $(1-\sqrt{2}, 3)$ && $(2.63, \infty)$ & $(\sqrt{2}-1, 3)$ \\\hline
 
-    \multirow{5}{*}{(0, 0)} & $(-\infty, 1-\sqrt{2})$ & $(0, -1)$ \\
-    & $[1-\sqrt{2}, 1-\sqrt{2}]$ & $(0, 1-\sqrt{2})$ \\
-    & $(1-\sqrt{2}, 1+\sqrt{2})$ & (0, 0) \\
-    & $[1+\sqrt{2}, 1+\sqrt{2}]$ & $(0, 1+\sqrt{2})$ \\
-    & $(1+\sqrt{2}, \infty)$ & (0, 3) \\\hline
-
-    \multirow{9}{*}{$(\sqrt{2}-1, 0)$} & $(-\infty, -0.63)$ & $(\sqrt{2}-1, -1)$ \\
-    & [-0.63, -0.63] & $(\sqrt{2}-1, -0.63)$ \\
-    & (-0.63, 0) & $(\sqrt{2}-1, -0.5)$ \\
-    & [0, 0] & $(\sqrt{2}-1, 0)$ \\
-    & (0, 2) & $(\sqrt{2}-1, 1)$ \\
-    & [2, 2] & $(\sqrt{2}-1, 2)$ \\
-    & (2, 2.63) & $(\sqrt{2}-1, 2.5)$ \\
-    & [2.63, 2.63] & $(\sqrt{2}-1, 2.63)$ \\
-    & (2.63, \infty) & $(\sqrt{2}-1, 3)$ \\\hline
-
-    \multirow{5}{*}{(1, 0)} & $(-\infty, 1-\sqrt{3})$ & $(1, -1)$ \\
-    & $[1-\sqrt{3}, 1-\sqrt{3}]$ & $(1, 1-\sqrt{3})$ \\
-    & $(1-\sqrt{3}, 1+\sqrt{3})$ & (1, 0) \\
-    & $[1+\sqrt{3}, 1+\sqrt{3}]$ & $(1, 1+\sqrt{3})$ \\
-    & $(1+\sqrt{3}, \infty)$ & (1, 3) \\\hline
-
-    \multirow{5}{*}{$(1+\sqrt{2}, 0)$} & $(-\infty, 0)$ & $(1+\sqrt{2}, -1)$ \\
-    & [0, 0] & $(1+\sqrt{2}, 0)$ \\
-    & (0, 2) & $(1+\sqrt{2}, 1)$ \\
-    & [2, 2] & $(1+\sqrt{2}, 2)$ \\
-    & (2, \infty) & $(1+\sqrt{2}, 3)$ \\\hline
-
-    (3, 0) & $(-\infty, \infty)$ & (3, 0) \\\hline
+    \multirow{5}{*}{(0, 0)} & $(-\infty, 1-\sqrt{2})$ & $(0, -1)$ & \multirow{5}{*}{(0, 0)} & $(-\infty, 1-\sqrt{2})$ & $(0, -1)$ \\
+    & $[1-\sqrt{2}, 1-\sqrt{2}]$ & $(0, 1-\sqrt{2})$ && $[1-\sqrt{2}, 1-\sqrt{2}]$ & $(0, 1-\sqrt{2})$ \\
+    & $(1-\sqrt{2}, 1+\sqrt{2})$ & (0, 0)&& $(1-\sqrt{2}, 1+\sqrt{2})$ & (0, 0) \\
+    & $[1+\sqrt{2}, 1+\sqrt{2}]$ & $(0, 1+\sqrt{2})$&& $[1+\sqrt{2}, 1+\sqrt{2}]$ & $(0, 1+\sqrt{2})$ \\
+    & $(1+\sqrt{2}, \infty)$ & (0, 3)
+    &&$(1+\sqrt{2}, \infty)$ & (0, 3)\\\hline
 \end{tabular}
         }
-        \bicaption{柱形延拓-采样点生成。} {Demo of Computation of Cylindrical Expansion-Sampling Points.}
 \label{tab:expansion2}
 \end{table*}
 
@@ -209,6 +186,7 @@ q(a_1, ..., a_{i-1}, x_i, a_{i+1}, ..., a_n)$的实数根为$r_1 < r_2 < \cdots 
 \begin{table*}[]
     % \footnotesize
     \centering
+    \bicaption{柱形延拓-区间计算} {Demo of Computation of Cylindrical Expansion-Interval Splitting.}
     % \setlength{\tabcolsep}{0.4mm}% column separation
     % \renewcommand{\arraystretch}{1.2}%row space 
     \resizebox{\linewidth}{!}{
@@ -226,7 +204,6 @@ q(a_1, ..., a_{i-1}, x_i, a_{i+1}, ..., a_n)$的实数根为$r_1 < r_2 < \cdots 
             $x \mapsto 3$ & \emptyset & \emptyset & \emptyset \\\hline
         \end{tabular}
         }
-        \bicaption{柱形延拓-区间计算。} {Demo of Computation of Cylindrical Expansion-Interval Splitting.}
 \label{tab:expansion}
 \end{table*}
 \end{example}
@@ -303,8 +280,8 @@ $$
 \begin{example}
 \begin{figure*}[t]
     \centering
+    \bicaption {柱形代数分解步骤示意图} {Demo of Cylindrical Algebraic Decomposition Steps.}
     \includegraphics[width=0.6\columnwidth]{Img/cad.png}
-    \bicaption {柱形代数分解步骤示意图。} {Demo of Cylindrical Algebraic Decomposition Steps.}
 \label{fig:CAD}
 \end{figure*}
 
@@ -320,10 +297,11 @@ $$
 
     \item \textbf{实根隔离}：对$proj(F, y)$的每个多项式求根，得到根集合$\{-2, 0, 2\}$。
     \item \textbf{提升}：对根集合分得的区间进行提升，进一步采样所有胞腔，结果如表格\ref{tab:cad}所示（忽略边界处的胞腔）。
-    \begin{table*}[]
-        \tiny
+    \begin{table*}
+        % \tiny
         \centering
-        \resizebox{0.85\linewidth}{!}{
+        \bicaption{柱形代数分解-提升} {Demo of Cylindrical Algebraic Decomposition - Lift.}
+        \resizebox{\linewidth}{!}{
             \begin{tabular}{c | c | c}
             \hline
             胞腔符号 & 对应区间 & 采样点坐标 \\\hline
@@ -348,7 +326,6 @@ $$
             $C_{16}$ & $x > 2 \wedge y < -\sqrt{\frac{2 + x}{2}}$ & (2.4, -1.7) \\\hline
             \end{tabular}
         }
-        \bicaption{柱形代数分解-提升。} {Demo of Cylindrical Algebraic Decomposition - Lift.}
         \label{tab:cad}
     \end{table*}
 \end{enumerate}
@@ -379,8 +356,8 @@ CDCL(T) (Conflict Driven Clause Learning for Theories)算法主要是在SAT问�
 
 \begin{figure*}[t]
     \centering
+    \bicaption {CDCL(T)框架示意图} {Demo of CDCL(T) Framework.}
     \includegraphics[width=0.6\columnwidth]{Img/cdcl_t.png}
-    \bicaption {CDCL(T)框架示意图。} {Demo of CDCL(T) Framework.}
     \label{fig:cdclt}
 \end{figure*}
 
@@ -405,8 +382,8 @@ MCSAT(Model-Constructing Satisfiability)和NLSAT(NonLinear Satisfiability)是另
 
 \begin{figure*}[t]
     \centering
+    \bicaption {基于CAD的MCSAT框架示意图} {Demo of CAD-based MCSAT Framework.}
     \includegraphics[width=0.6\columnwidth]{Img/mcsat.png}
-    \bicaption {基于CAD的MCSAT框架示意图。} {Demo of CAD-based MCSAT Framework.}
     \label{fig:mcsat}
 \end{figure*}
 

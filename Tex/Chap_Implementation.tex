@@ -1,4 +1,4 @@
-\chapter{LS\_NRA的工具实现}\label{chap:implementation}
+\chapter{LS\_NRA求解器的启发式前瞻机制与高效实现}\label{chap:implementation}
 
 本章节主要介绍了LS\_NRA的整体框架和算法细节。除了前面两章介绍的胞腔跳跃缓存机制和等式松弛机制，本文还为非线性问题操作的停滞设计了简单的前瞻机制。然后，本文详细讨论本工具的具体实现，包括预处理阶段、重启策略、线性方程的快速运算、变量可行域的计算以及参数设置。
 
@@ -29,8 +29,8 @@
 
 \begin{figure*}[t]
     \centering
+    \bicaption {前瞻策略示意图} {Demo of look-ahead strategy.}
     \includegraphics[width=0.7\columnwidth]{Img/look-ahead.png}
-    \bicaption {前瞻策略示意图。} {Demo of look-ahead strategy.}
 \label{fig:look-ahead}
 \end{figure*}
 \label{ex:look-ahead}
@@ -62,8 +62,8 @@ LS\_NRA主要在Z3定理证明器上实现，并且使用Z3原生的多项式和
 
 \begin{figure*}[]
     \centering
+    \bicaption {工具整体框架} {Overall framework of LS\_NRA.}
     \includegraphics[width=0.9\columnwidth]{Img/structure.png}
-    \bicaption {工具整体框架。} {Overall framework of LS\_NRA.}
     \label{fig:total}
 \end{figure*}
 
@@ -83,6 +83,7 @@ LS\_NRA主要在Z3定理证明器上实现，并且使用Z3原生的多项式和
 
 \begin{table*}[]
     \centering
+    \bicaption{算法的可调参数设置} {Tunable parameters of the algorithm.}
     \resizebox{0.7\linewidth}{!}{
         \begin{tabular}{c | c | c}
             符号 & 参数说明 & 预设值 \\\hline
@@ -93,7 +94,6 @@ LS\_NRA主要在Z3定理证明器上实现，并且使用Z3原生的多项式和
             $\epsilon_c$ & 等式松弛的程度 & $10^{-4}$\\\hline
         \end{tabular}
         }
-        \bicaption{算法的可调参数设置。} {Tunable parameters of the algorithm.}
 \label{tab:parameter}
 \end{table*}
 
